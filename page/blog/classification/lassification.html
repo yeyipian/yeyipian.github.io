@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客分类 | 叶一片的博客</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="icon" href="../../../logo.jpg" type="image/x-icon">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background: #fafafa;
+            color: #333;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        /* 导航栏 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            color: #0071e3;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a.active {
+            color: #0071e3;
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #0071e3;
+        }
+        
+        .nav-links a:hover {
+            color: #0071e3;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0071e3;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* 页面头部 */
+        .page-header {
+            text-align: center;
+            padding: 100px 8% 60px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e6e9ff 100%);
+            border-bottom: 1px solid #eee;
+        }
+        
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #000, #0071e3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .page-subtitle {
+            font-size: 1.4rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* 分类容器 */
+        .categories-container {
+            max-width: 1400px;
+            margin: 50px auto;
+            padding: 0 5%;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #000;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 15px;
+            color: #0071e3;
+        }
+        
+        /* 分类网格 */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .category-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 1px solid #f0f0f0;
+            position: relative;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,113,227,0.15);
+        }
+        
+        .category-header {
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .category-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #000;
+        }
+        
+        .category-count {
+            color: #777;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .category-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .category-link {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #f0f7ff;
+            color: #0071e3;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .category-link:hover {
+            background: #0071e3;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .category-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: 0;
+        }
+        
+        /* 分类文章展示 */
+        .category-posts {
+            margin-top: 50px;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .article-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,113,227,0.1);
+        }
+        
+        .article-card-image {
+            height: 200px;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 20px;
+        }
+        
+        .article-card-content {
+            padding: 25px;
+        }
+        
+        .article-card-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .article-card-meta span {
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .article-card-meta i {
+            margin-right: 5px;
+        }
+        
+        .article-card-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #000;
+            line-height: 1.4;
+        }
+        
+        .article-card-excerpt {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .article-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            background: #f0f7ff;
+            color: #0071e3;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        
+        .tag:hover {
+            background: #0071e3;
+            color: white;
+            cursor: pointer;
+        }
+        
+        /* 分类筛选 */
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background: #f0f7ff;
+            color: #0071e3;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #0071e3;
+            color: white;
+        }
+        
+        /* 页脚 */
+        .footer {
+            background: #000;
+            color: #fff;
+            padding: 60px 8% 30px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #0071e3;
+        }
+        
+        .social-icons-footer {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons-footer a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: #222;
+            border-radius: 50%;
+            color: #fff;
+            transition: all 0.3s;
+        }
+        
+        .social-icons-footer a:hover {
+            background: #0071e3;
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            .categories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .articles-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 5%;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* 动画效果 */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">叶<span>一片</span></div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">首页</a></li>
+            <li><a href="../../blog.html" style="color: #0071e3;">博客</a></li>
+            <li><a href="#">项目</a></li>
+            <li><a href="#">关于</a></li>
+        </ul>
+    </nav>
+    
+    <!-- 页面头部 -->
+    <header class="page-header">
+        <h1 class="page-title">博客分类</h1>
+        <p class="page-subtitle">探索不同领域的知识和见解，选择您感兴趣的主题深入阅读</p>
+    </header>
+    
+    <!-- 分类容器 -->
+    <div class="categories-container">
+        <!-- 分类筛选 -->
+        <div class="category-filter">
+            <button class="filter-btn active">全部分类</button>
+            <button class="filter-btn">前端技术</button>
+            <button class="filter-btn">设计思维</button>
+            <button class="filter-btn">生活随笔</button>
+            <button class="filter-btn">项目案例</button>
+            <button class="filter-btn">工具分享</button>
+        </div>
+        
+        <!-- 分类网格 -->
+        <div class="categories-grid">
+            <!-- 前端技术分类 -->
+            <div class="category-card fade-in">
+                <div class="category-bg" style="background: #6a11cb;"></div>
+                <div class="category-header">
+                    <div class="category-icon" style="background: linear-gradient(45deg, #6a11cb, #2575fc);">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="category-title">前端技术</h3>
+                    <div class="category-count">32 篇文章 · 最后更新: 2023-10-15</div>
+                    <p class="category-description">探索Web开发的最新技术和趋势，包括JavaScript框架、CSS技巧和性能优化策略。</p>
+                    <a href="#" class="category-link">查看所有文章</a>
+                </div>
+            </div>
+            
+            <!-- 设计思维分类 -->
+            <div class="category-card fade-in">
+                <div class="category-bg" style="background: #ff416c;"></div>
+                <div class="category-header">
+                    <div class="category-icon" style="background: linear-gradient(45deg, #ff416c, #ff4b2b);">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="category-title">设计思维</h3>
+                    <div class="category-count">18 篇文章 · 最后更新: 2023-10-08</div>
+                    <p class="category-description">学习如何将设计思维融入开发流程，创造用户喜爱的产品体验和界面设计。</p>
+                    <a href="#" class="category-link">查看所有文章</a>
+                </div>
+            </div>
+            
+            <!-- 生活随笔分类 -->
+            <div class="category-card fade-in">
+                <div class="category-bg" style="background: #11998e;"></div>
+                <div class="category-header">
+                    <div class="category-icon" style="background: linear-gradient(45deg, #11998e, #38ef7d);">
+                        <i class="fas fa-feather"></i>
+                    </div>
+                    <h3 class="category-title">生活随笔</h3>
+                    <div class="category-count">15 篇文章 · 最后更新: 2023-09-28</div>
+                    <p class="category-description">分享技术之外的生活感悟、创作灵感和个人成长故事。</p>
+                    <a href="#" class="category-link">查看所有文章</a>
+                </div>
+            </div>
+            
+            <!-- 项目案例分类 -->
+            <div class="category-card fade-in">
+                <div class="category-bg" style="background: #654ea3;"></div>
+                <div class="category-header">
+                    <div class="category-icon" style="background: linear-gradient(45deg, #654ea3, #da98b4);">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="category-title">项目案例</h3>
+                    <div class="category-count">12 篇文章 · 最后更新: 2023-09-15</div>
+                    <p class="category-description">深入分析实际项目案例，分享开发过程中的经验教训和解决方案。</p>
+                    <a href="#" class="category-link">查看所有文章</a>
+                </div>
+            </div>
+            
+            <!-- 工具分享分类 -->
+            <div class="category-card fade-in">
+                <div class="category-bg" style="background: #0071e3;"></div>
+                <div class="category-header">
+                    <div class="category-icon" style="background: linear-gradient(45deg, #0071e3, #00c6ff);">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="category-title">工具分享</h3>
+                    <div class="category-count">10 篇文章 · 最后更新: 2023-09-10</div>
+                    <p class="category-description">发现提升开发效率的工具和资源，从IDE插件到设计资源应有尽有。</p>
+                    <a href="#" class="category-link">查看所有文章</a>
+                </div>
+            </div>
+            
+            <!-- 技术趋势分类 -->
+            <div class="category-card fade-in">
+                <div class="category-bg" style="background: #ff8c00;"></div>
+                <div class="category-header">
+                    <div class="category-icon" style="background: linear-gradient(45deg, #ff8c00, #ff2d55);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="category-title">技术趋势</h3>
+                    <div class="category-count">8 篇文章 · 最后更新: 2023-09-05</div>
+                    <p class="category-description">洞察技术发展前沿，分析未来趋势和新兴技术的应用前景。</p>
+                    <a href="#" class="category-link">查看所有文章</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 最新文章 -->
+        <div class="category-posts">
+            <h2 class="section-title"><i class="fas fa-newspaper"></i> 最新文章</h2>
+            
+            <div class="articles-grid">
+                <!-- 文章1 -->
+                <div class="article-card fade-in">
+                    <div class="article-card-image" style="background: linear-gradient(45deg, #6a11cb, #2575fc);">
+                        <div>前端开发的未来趋势</div>
+                    </div>
+                    <div class="article-card-content">
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> 2023-10-15</span>
+                            <span><i class="far fa-folder"></i> 前端技术</span>
+                            <span><i class="far fa-eye"></i> 2.4K</span>
+                        </div>
+                        <h3 class="article-card-title">探索2024年前端开发的五大趋势与创新方向</h3>
+                        <p class="article-card-excerpt">深入探讨WebAssembly的崛起、渐进式Web应用的普及、AI在前端的应用、微前端架构的实践以及设计系统的重要性。</p>
+                        <div class="article-card-tags">
+                            <span class="tag">前端开发</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">技术趋势</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 文章2 -->
+                <div class="article-card fade-in">
+                    <div class="article-card-image" style="background: linear-gradient(45deg, #ff416c, #ff4b2b);">
+                        <div>设计思维实践</div>
+                    </div>
+                    <div class="article-card-content">
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> 2023-10-08</span>
+                            <span><i class="far fa-folder"></i> 设计思维</span>
+                            <span><i class="far fa-eye"></i> 1.8K</span>
+                        </div>
+                        <h3 class="article-card-title">如何将设计思维融入开发流程：从概念到实现</h3>
+                        <p class="article-card-excerpt">分享如何将设计思维方法融入敏捷开发流程，通过用户研究、原型设计、用户测试等环节，确保产品解决用户痛点。</p>
+                        <div class="article-card-tags">
+                            <span class="tag">UI/UX</span>
+                            <span class="tag">产品设计</span>
+                            <span class="tag">设计方法</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 文章3 -->
+                <div class="article-card fade-in">
+                    <div class="article-card-image" style="background: linear-gradient(45deg, #11998e, #38ef7d);">
+                        <div>自然与技术</div>
+                    </div>
+                    <div class="article-card-content">
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> 2023-09-28</span>
+                            <span><i class="far fa-folder"></i> 生活随笔</span>
+                            <span><i class="far fa-eye"></i> 1.5K</span>
+                        </div>
+                        <h3 class="article-card-title">风与我作伴：在数字世界中寻找自然的灵感</h3>
+                        <p class="article-card-excerpt">分享如何从自然中汲取灵感应用于数字创作，探讨在技术工作中保持内心平静的方法。</p>
+                        <div class="article-card-tags">
+                            <span class="tag">生活</span>
+                            <span class="tag">创作</span>
+                            <span class="tag">思考</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 热门分类 -->
+        <div class="category-posts">
+            <h2 class="section-title"><i class="fas fa-fire"></i> 热门分类文章</h2>
+            
+            <div class="articles-grid">
+                <!-- 文章1 -->
+                <div class="article-card fade-in">
+                    <div class="article-card-image" style="background: linear-gradient(45deg, #654ea3, #da98b4);">
+                        <div>性能优化指南</div>
+                    </div>
+                    <div class="article-card-content">
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> 2023-09-15</span>
+                            <span><i class="far fa-folder"></i> 前端技术</span>
+                            <span><i class="far fa-eye"></i> 2.1K</span>
+                        </div>
+                        <h3 class="article-card-title">现代Web应用的性能优化：2023年实用指南</h3>
+                        <p class="article-card-excerpt">提供全面的性能优化指南，涵盖资源加载策略、代码分割、图像优化到运行时性能的各个方面。</p>
+                        <div class="article-card-tags">
+                            <span class="tag">性能优化</span>
+                            <span class="tag">Web Vitals</span>
+                            <span class="tag">最佳实践</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 文章2 -->
+                <div class="article-card fade-in">
+                    <div class="article-card-image" style="background: linear-gradient(45deg, #0071e3, #00c6ff);">
+                        <div>React Hooks解析</div>
+                    </div>
+                    <div class="article-card-content">
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> 2023-09-20</span>
+                            <span><i class="far fa-folder"></i> 前端技术</span>
+                            <span><i class="far fa-eye"></i> 1.8K</span>
+                        </div>
+                        <h3 class="article-card-title">React Hooks 深度解析与最佳实践</h3>
+                        <p class="article-card-excerpt">深入探讨React Hooks的设计原理，以及如何避免常见陷阱，构建可维护的高性能组件。</p>
+                        <div class="article-card-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Hooks</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 文章3 -->
+                <div class="article-card fade-in">
+                    <div class="article-card-image" style="background: linear-gradient(45deg, #ff8c00, #ff2d55);">
+                        <div>个人品牌建设</div>
+                    </div>
+                    <div class="article-card-content">
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> 2023-08-25</span>
+                            <span><i class="far fa-folder"></i> 生活随笔</span>
+                            <span><i class="far fa-eye"></i> 1.5K</span>
+                        </div>
+                        <h3 class="article-card-title">从零构建个人品牌：开发者的自我营销指南</h3>
+                        <p class="article-card-excerpt">分享如何建立个人技术品牌，提升行业影响力，从内容创作到社交媒体策略的全方位指南。</p>
+                        <div class="article-card-tags">
+                            <span class="tag">个人成长</span>
+                            <span class="tag">品牌建设</span>
+                            <span class="tag">职业发展</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>叶一片</h3>
+                <p style="color: #aaa; max-width: 300px; margin-bottom: 20px;">探索数字世界的旅人，创造与分享的爱好者</p>
+                <div class="social-icons-footer">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-bilibili"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>博客分类</h3>
+                <ul class="footer-links">
+                    <li><a href="#">前端技术</a></li>
+                    <li><a href="#">设计思维</a></li>
+                    <li><a href="#">生活随笔</a></li>
+                    <li><a href="#">项目案例</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>实用资源</h3>
+                <ul class="footer-links">
+                    <li><a href="#">设计工具</a></li>
+                    <li><a href="#">开发文档</a></li>
+                    <li><a href="#">学习路径</a></li>
+                    <li><a href="#">免费素材</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>联系我</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:contact@yeyipian.com">contact@yeyipian.com</a></li>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">商务合作</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 叶一片 博客 | 风与我作伴白云作衣裳，天地在兜里面</p>
+        </div>
+    </footer>
+    
+    <script>
+        // 分类筛选功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const categoryCards = document.querySelectorAll('.category-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 更新按钮状态
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.textContent;
+                    
+                    // 筛选分类
+                    categoryCards.forEach(card => {
+                        if (filter === '全部分类') {
+                            card.style.display = 'block';
+                        } else {
+                            const categoryTitle = card.querySelector('.category-title').textContent;
+                            if (categoryTitle === filter) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+            
+            // 滚动动画
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
