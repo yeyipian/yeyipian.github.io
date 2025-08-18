@@ -3,29 +3,501 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>页面标题</title>
-    <!-- 可以在这里引入外部资源，如CSS样式表、JavaScript文件等 -->
-    <!-- <link rel="stylesheet" href="styles.css"> -->
-    <!-- <script src="script.js"></script> -->
+    <title>叶骏辰 - 数据科学与大数据技术</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        // 配置Tailwind自定义主题（苹果风格）
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1D1D1F', // 苹果深色
+                        secondary: '#86868B', // 苹果灰色
+                        accent: '#0071E3', // 苹果蓝色
+                        light: '#F5F5F7', // 苹果浅色背景
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'apple': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'apple-hover': '0 10px 30px rgba(0, 0, 0, 0.08)',
+                    }
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-balance {
+                text-wrap: balance;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    </style>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* 渐显动画 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* 导航栏滚动效果 */
+        .nav-scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+    </style>
 </head>
-<body>
-    <!-- 页面内容都写在这里 -->
-    <header>
-        <!-- 页头内容，如导航栏、标题等 -->
-        <h1>欢迎来到我的网站</h1>
-    </header>
+<body class="bg-white text-primary font-sans">
+    <!-- 导航栏 -->
+    <nav id="main-nav" class="fixed w-full z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+            <a href="#hero" class="text-xl font-medium tracking-tight">叶骏辰</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="text-secondary hover:text-primary transition-colors">关于</a>
+                <a href="#skills" class="text-secondary hover:text-primary transition-colors">技能</a>
+                <a href="#experience" class="text-secondary hover:text-primary transition-colors">经历</a>
+                <a href="#projects" class="text-secondary hover:text-primary transition-colors">项目</a>
+                <a href="#awards" class="text-secondary hover:text-primary transition-colors">荣誉</a>
+            </div>
+            <button class="md:hidden text-primary" id="menu-toggle">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-apple p-6">
+            <div class="flex flex-col space-y-4">
+                <a href="#about" class="text-secondary hover:text-primary transition-colors">关于</a>
+                <a href="#skills" class="text-secondary hover:text-primary transition-colors">技能</a>
+                <a href="#experience" class="text-secondary hover:text-primary transition-colors">经历</a>
+                <a href="#projects" class="text-secondary hover:text-primary transition-colors">项目</a>
+                <a href="#awards" class="text-secondary hover:text-primary transition-colors">荣誉</a>
+            </div>
+        </div>
+    </nav>
 
-    <main>
-        <!-- 主要内容区域 -->
-        <section>
-            <h2>这是一个章节标题</h2>
-            <p>这是一段文本内容...</p>
-        </section>
-    </main>
+    <!-- 英雄区域 -->
+    <section id="hero" class="min-h-screen flex items-center justify-center pt-20 pb-16 px-6">
+        <div class="container mx-auto text-center">
+            <h1 class="text-[clamp(2.5rem,6vw,4.5rem)] font-light leading-tight mb-6">
+                叶骏辰
+            </h1>
+            <p class="text-[clamp(1.2rem,3vw,1.8rem)] text-secondary font-light mb-10 max-w-3xl mx-auto">
+                数据科学与大数据技术专业 · 数字化工程师
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 mb-16">
+                <a href="tel:15815392002" class="inline-flex items-center px-6 py-3 border border-primary rounded-full text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                    <i class="fa fa-phone mr-2"></i> 15815392002
+                </a>
+                <a href="mailto:tizzyyc@163.com" class="inline-flex items-center px-6 py-3 bg-accent text-white rounded-full hover:bg-accent/90 transition-all duration-300">
+                    <i class="fa fa-envelope mr-2"></i> 联系我
+                </a>
+            </div>
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <a href="#about" class="text-secondary hover:text-primary transition-colors">
+                    <i class="fa fa-chevron-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-        <!-- 页脚内容，如版权信息等 -->
-        <p>&copy; 2023 我的网站 版权所有</p>
+    <!-- 关于我 -->
+    <section id="about" class="py-24 bg-light">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-light mb-16 text-center fade-in">关于我</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h3 class="text-xl font-medium mb-4">教育背景</h3>
+                    <div class="bg-white p-6 rounded-2xl shadow-apple hover:shadow-apple-hover transition-shadow duration-300">
+                        <p class="font-medium">重庆财经学院</p>
+                        <p class="text-secondary">数据科学与大数据技术 | 本科</p>
+                        <p class="text-secondary">2021.09 - 2025.07</p>
+                        <p class="mt-2">专业成绩: GPA 3.35/5.00 (专业前3%)</p>
+                        <p class="mt-2">主修课程: 大数据采集与预处理、大数据可视化、HTML5移动应用开发、MySQL数据库</p>
+                    </div>
+                    
+                    <h3 class="text-xl font-medium mt-8 mb-4">校园经历</h3>
+                    <div class="bg-white p-6 rounded-2xl shadow-apple hover:shadow-apple-hover transition-shadow duration-300">
+                        <p class="font-medium">班长 | 2021.09 - 2025.07</p>
+                        <ul class="list-disc list-inside text-secondary mt-2 space-y-1">
+                            <li>负责班级事务协调与管理，保持与辅导员的有效沟通</li>
+                            <li>带领班级荣获"优良学风班"、"五四红旗团支部"等荣誉</li>
+                            <li>提升了组织能力、沟通技巧和问题解决能力</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <h3 class="text-xl font-medium mb-4">自我评价</h3>
+                    <div class="bg-white p-6 rounded-2xl shadow-apple hover:shadow-apple-hover transition-shadow duration-300 mb-8">
+                        <p class="mb-3">对互联网充满热情，喜欢接触前沿技术，具有项目需求分析和二次开发能力，具备一定的学习能力。</p>
+                        <p class="mb-3">适应快节奏工作，抗压能力强，细心、耐心，适应出差生活，接受有产出的加班。</p>
+                        <p>注重生活习惯，热爱摄影，保持学习英语的习惯，在精进技术的同时不断提升自身综合素质。</p>
+                    </div>
+                    
+                    <h3 class="text-xl font-medium mb-4">基本信息</h3>
+                    <div class="bg-white p-6 rounded-2xl shadow-apple hover:shadow-apple-hover transition-shadow duration-300">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-secondary">籍贯</p>
+                                <p>广东惠州</p>
+                            </div>
+                            <div>
+                                <p class="text-secondary">政治面貌</p>
+                                <p>中共党员</p>
+                            </div>
+                            <div>
+                                <p class="text-secondary">出生年月</p>
+                                <p>2002.11</p>
+                            </div>
+                            <div>
+                                <p class="text-secondary">英语水平</p>
+                                <p>大学英语四级(CET-4)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills" class="py-24">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-light mb-16 text-center fade-in">专业技能</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <h3 class="text-xl font-medium mb-6 flex items-center">
+                        <i class="fa fa-cogs text-accent mr-2"></i> 开发技能
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-light p-5 rounded-xl hover:shadow-apple transition-all duration-300">
+                            <p class="font-medium mb-1">前端开发</p>
+                            <p class="text-secondary text-sm">Vue.js及其核心生态，响应式和移动端适配</p>
+                        </div>
+                        <div class="bg-light p-5 rounded-xl hover:shadow-apple transition-all duration-300">
+                            <p class="font-medium mb-1">数据库</p>
+                            <p class="text-secondary text-sm">MySQL数据库操作与设计</p>
+                        </div>
+                        <div class="bg-light p-5 rounded-xl hover:shadow-apple transition-all duration-300">
+                            <p class="font-medium mb-1">大数据技术</p>
+                            <p class="text-secondary text-sm">Spark、Hadoop集群搭建</p>
+                        </div>
+                        <div class="bg-light p-5 rounded-xl hover:shadow-apple transition-all duration-300">
+                            <p class="font-medium mb-1">自动化测试</p>
+                            <p class="text-secondary text-sm">JMeter、Selenium、禅道等工具</p>
+                        </div>
+                        <div class="bg-light p-5 rounded-xl hover:shadow-apple transition-all duration-300">
+                            <p class="font-medium mb-1">脚本编写</p>
+                            <p class="text-secondary text-sm">Linux命令，简单的shell脚本</p>
+                        </div>
+                        <div class="bg-light p-5 rounded-xl hover:shadow-apple transition-all duration-300">
+                            <p class="font-medium mb-1">机器学习</p>
+                            <p class="text-secondary text-sm">基础算法学习与应用</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <h3 class="text-xl font-medium mb-6 flex items-center">
+                        <i class="fa fa-star text-accent mr-2"></i> 基本技能
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-light p-5 rounded-xl hover:shadow-apple transition-all duration-300">
+                            <p class="font-medium mb-1">项目管理</p>
+                            <p class="text-secondary text-sm">熟悉从需求调研到上线的全流程，能制定计划跟踪进度，及时汇报风险</p>
+                        </div>
+                        <div class="bg-light p-5 rounded-xl hover:shadow-apple transition-all duration-300">
+                            <p class="font-medium mb-1">需求梳理</p>
+                            <p class="text-secondary text-sm">设计问卷和访谈提纲，记录并整理客户要点，协助撰写需求文档</p>
+                        </div>
+                        <div class="bg-light p-5 rounded-xl hover:shadow-apple transition-all duration-300">
+                            <p class="font-medium mb-1">技术沟通</p>
+                            <p class="text-secondary text-sm">能与开发、测试同事保持日常同步，用原型或流程图帮助理解需求</p>
+                        </div>
+                        <div class="bg-light p-5 rounded-xl hover:shadow-apple transition-all duration-300">
+                            <p class="font-medium mb-1">工具使用</p>
+                            <p class="text-secondary text-sm">Office/WPS办公套件、visio、Xmind等</p>
+                        </div>
+                        <div class="bg-light p-5 rounded-xl hover:shadow-apple transition-all duration-300">
+                            <p class="font-medium mb-1">职业认证</p>
+                            <p class="text-secondary text-sm">人工智能数据处理职业技能(中级)等级认证</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工作经历 -->
+    <section id="experience" class="py-24 bg-light">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-light mb-16 text-center fade-in">工作经历</h2>
+            
+            <div class="max-w-3xl mx-auto fade-in">
+                <div class="relative">
+                    <!-- 时间线 -->
+                    <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 transform md:translate-x-px"></div>
+                    
+                    <!-- 工作经历 -->
+                    <div class="relative pl-8 md:pl-0 md:flex mb-16 last:mb-0">
+                        <div class="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
+                            <h3 class="text-xl font-medium">数字化工程师(实习)</h3>
+                            <p class="text-accent mb-2">浩云科技股份有限公司</p>
+                            <p class="text-secondary mb-3">2024.07 - 2025.04</p>
+                            <ul class="text-secondary list-disc list-inside md:list-outside md:mr-4 space-y-1">
+                                <li>负责外部项目系统的全流程开发，深入理解客户需求与业务流程</li>
+                                <li>参与需求调研与竞品分析、原型页面产出，精准识别核心业务逻辑与潜在风险点</li>
+                                <li>进行系统功能测试与性能测试，主动发现并记录问题</li>
+                                <li>负责系统优化迭代，跟进问题修复与验证</li>
+                                <li>系统上线后负责试用管理，包含培训、过程指导，高效收集、分析、跟踪用户反馈</li>
+                            </ul>
+                        </div>
+                        <!-- 时间点 -->
+                        <div class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-accent transform -translate-y-1/2 md:translate-x-px mt-2 order-1 md:order-2"></div>
+                        <div class="md:w-1/2 md:pl-12 hidden md:block order-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目经历 -->
+    <section id="projects" class="py-24">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-light mb-16 text-center fade-in">项目经历</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- 项目1 -->
+                <div class="bg-white rounded-2xl shadow-apple hover:shadow-apple-hover transition-all duration-300 overflow-hidden fade-in">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-medium">广州某汽车配件公司短视频系统项目</h3>
+                            <span class="text-sm text-secondary">2024.10 - 2025.03</span>
+                        </div>
+                        <p class="text-secondary mb-4">
+                            该系统是针对公司短视频业务进行整合，涵盖了短视频素材、运营、客服、ai与数字人等方面，打破数据孤岛，以「短视频全生命周期」为主线，打通拍摄-剪辑-发布-投流-互动-复盘闭环，项目一次性通过测试与客户验收。
+                        </p>
+                        <h4 class="font-medium mb-2">个人职责：</h4>
+                        <ul class="text-secondary list-disc list-inside space-y-1 text-sm">
+                            <li>负责其中某一系统，主导客户需求调研，梳理短视频业务流程</li>
+                            <li>输出功能清单及交互原型，提出3项ai创新方案提升用户体验</li>
+                            <li>基于公司开发平台完成系统搭建与实现，涉及外部应用的接口对接</li>
+                            <li>负责系统功能、性能、安全测试</li>
+                            <li>测试通过后主导用户培训与试用数据初始化，组织周期性例会</li>
+                            <li>收集反馈优化需求，最终通过客户验收</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 项目2 -->
+                <div class="bg-white rounded-2xl shadow-apple hover:shadow-apple-hover transition-all duration-300 overflow-hidden fade-in">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-medium">智慧轨道交通大数据分析及管理系统</h3>
+                            <span class="text-sm text-secondary">2024.03 - 2025.05</span>
+                        </div>
+                        <p class="text-secondary mb-4">
+                            该系统基于大数据技术，实现了轨道交通数据的采集、存储、分析与可视化展示，为运营决策提供数据支持。系统包含数据接入、清洗、分析、可视化等功能模块。
+                        </p>
+                        <h4 class="font-medium mb-2">项目成果：</h4>
+                        <p class="text-secondary text-sm">
+                            荣获第十七届中国大学生计算机设计大赛大数据应用省级二等奖
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 荣誉奖项 -->
+    <section id="awards" class="py-24 bg-light">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-light mb-16 text-center fade-in">荣誉奖项</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-apple hover:shadow-apple-hover transition-all duration-300 fade-in">
+                    <p class="font-medium mb-1">第十七届中国大学生计算机设计大赛</p>
+                    <p class="text-accent mb-2">大数据应用省级二等奖</p>
+                    <p class="text-secondary text-sm">2021-2024</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl shadow-apple hover:shadow-apple-hover transition-all duration-300 fade-in">
+                    <p class="font-medium mb-1">第五届讯飞杯编程大赛</p>
+                    <p class="text-accent mb-2">校级优秀奖</p>
+                    <p class="text-secondary text-sm">2021-2024</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl shadow-apple hover:shadow-apple-hover transition-all duration-300 fade-in">
+                    <p class="font-medium mb-1">浙江大学第一届"辉农杯"大数据创新大赛</p>
+                    <p class="text-accent mb-2">全国优胜奖</p>
+                    <p class="text-secondary text-sm">2023-2024</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl shadow-apple hover:shadow-apple-hover transition-all duration-300 fade-in">
+                    <p class="font-medium mb-1">国家励志奖学金</p>
+                    <p class="text-accent mb-2"></p>
+                    <p class="text-secondary text-sm">2025</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl shadow-apple hover:shadow-apple-hover transition-all duration-300 fade-in">
+                    <p class="font-medium mb-1">校级优秀团干</p>
+                    <p class="text-accent mb-2"></p>
+                    <p class="text-secondary text-sm">2021-2024</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl shadow-apple hover:shadow-apple-hover transition-all duration-300 fade-in">
+                    <p class="font-medium mb-1">校级三好学生</p>
+                    <p class="text-accent mb-2"></p>
+                    <p class="text-secondary text-sm">2021-2024</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl shadow-apple hover:shadow-apple-hover transition-all duration-300 fade-in">
+                    <p class="font-medium mb-1">省级三好学生</p>
+                    <p class="text-accent mb-2"></p>
+                    <p class="text-secondary text-sm">2023-2024</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl shadow-apple hover:shadow-apple-hover transition-all duration-300 fade-in">
+                    <p class="font-medium mb-1">优秀毕业生</p>
+                    <p class="text-accent mb-2"></p>
+                    <p class="text-secondary text-sm"></p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl shadow-apple hover:shadow-apple-hover transition-all duration-300 fade-in">
+                    <p class="font-medium mb-1">校级一等奖学金</p>
+                    <p class="text-accent mb-2"></p>
+                    <p class="text-secondary text-sm">2021-2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="py-24">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-light mb-16 text-center fade-in">联系我</h2>
+            
+            <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-apple fade-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-medium mb-6">联系方式</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-light flex items-center justify-center mr-4">
+                                    <i class="fa fa-phone text-accent"></i>
+                                </div>
+                                <div>
+                                    <p class="text-secondary text-sm">电话</p>
+                                    <p>15815392002</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-light flex items-center justify-center mr-4">
+                                    <i class="fa fa-envelope text-accent"></i>
+                                </div>
+                                <div>
+                                    <p class="text-secondary text-sm">邮箱</p>
+                                    <p>tizzyyc@163.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-light flex items-center justify-center mr-4">
+                                    <i class="fa fa-map-marker text-accent"></i>
+                                </div>
+                                <div>
+                                    <p class="text-secondary text-sm">籍贯</p>
+                                    <p>广东惠州</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-medium mb-6">扫码联系</h3>
+                        <div class="bg-light p-6 rounded-xl flex items-center justify-center">
+                            <!-- 此处可替换为你的二维码图片 -->
+                            <div class="w-48 h-48 bg-white flex items-center justify-center">
+                                <p class="text-secondary text-sm text-center">微信/简历二维码</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-12 bg-primary text-white">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <p class="mb-4">© 2025 叶骏辰. 保留所有权利.</p>
+            <p class="text-white/60 text-sm">使用苹果风格设计的个人主页</p>
+        </div>
     </footer>
+
+    <script>
+        // 导航栏滚动效果
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        });
+        
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 关闭移动端菜单（点击链接后）
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // 渐显动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeInObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+    </script>
 </body>
 </html>
