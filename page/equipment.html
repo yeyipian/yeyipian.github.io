@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>装备栏 - 叶一片</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="./css/equipment.css">
+    <style>
+        /* 下拉菜单样式 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* 确保导航栏链接样式一致 */
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+        }
+
+
+        .wechat-trigger {
+            position: relative;
+        }
+
+        .wechat-qr {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 120px;
+            height: 120px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all .25s ease;
+            z-index: 1000;
+        }
+
+        .wechat-trigger:hover .wechat-qr {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">叶<span>一片</span></div>
+        <ul class="nav-links">
+            <li><a href="../index.html">首页</a></li>
+            <!-- 下拉菜单 -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">我的世界</a>
+                <div class="dropdown-content">
+                    <a href="../page/blog.html"><i class="fas fa-blog" style="margin-right: 5px;"></i> 个人博客</a>
+                    <a href="../page/introduction.html"><i class="fas fa-book" style="margin-right: 5px;"></i> 个人简介</a>
+                    <a href="../page/project.html"><i class="fas fa-images" style="margin-right: 5px;"></i> 作品集</a>
+                    <a href="../page/photography.html"><i class="fas fa-camera" style="margin-right: 5px;"></i> 摄影集</a>
+                    <a href="../page/equipment.html"><i class="fas fa-computer" style="margin-right: 5px;"></i> 装备栏</a>
+                    <a href="../page/music.html"><i class="fas fa-music" style="margin-right: 5px;"></i> 音乐馆</a>
+                </div>
+            </li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+    </nav>
+
+    <!-- 页面标题 -->
+    <section class="page-header" style="margin-top: 50px;">
+
+        <h1>装备库</h1>
+        <p>探索我日常使用的工具和设备，这些装备帮助我创造、学习和记录生活</p>
+    </section>
+
+    <!-- 装备分类 -->
+    <div class="category-tabs">
+        <button class="category-tab active" data-category="all">全部装备</button>
+        <button class="category-tab" data-category="digital">数码产品</button>
+        <button class="category-tab" data-category="audio">音频设备</button>
+        <button class="category-tab" data-category="wearable">智能穿戴</button>
+        <button class="category-tab" data-category="other">其他装备</button>
+    </div>
+
+    <!-- 装备网格 -->
+    <div class="equipment-grid" id="equipment-container">
+        <!-- 装备卡片将通过JavaScript动态生成 -->
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer" id="contact">
+
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>叶一片</h3>
+                <p style="color: #aaa; max-width: 300px; margin-bottom: 20px;">探索数字世界的旅人，工具与创造的伙伴</p>
+                <div class="social-icons">
+                    <a href="https://github.com/yeyipian"><i class="fab fa-github"></i></a>
+                    <a href="https://space.bilibili.com/87607674"><i class="fab fa-bilibili"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fa fa-music"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>快速链接</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html#home">首页</a></li>
+                    <li><a href="index.html#features">功能入口</a></li>
+                    <li><a href="index.html#about">关于我</a></li>
+                    <li><a href="blog.html">个人博客</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>探索更多</h3>
+                <ul class="footer-links">
+                    <li><a href="project.html">项目作品</a></li>
+                    <li><a href="photography.html">摄影集</a></li>
+                    <li><a href="equipment.html">装备栏</a></li>
+                    <li><a href="music.html">音乐馆</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>联系我</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:tizzyyc@163.com">tizzyyc@163.com</a></li>
+                    <li class="wechat-trigger">
+                        <a>微信</a>
+                        <img class="wechat-qr" src="../file/contact/wechat.jpg" alt="微信二维码">
+                    </li>
+                    <li class="wechat-trigger">
+                        <a>打赏一下</a>
+                        <img class="wechat-qr" src="../file/contact/wechatpay.jpg" alt="微信二维码">
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 叶一片 个人主页 | 风与我作伴白云作衣裳，天地在兜里面</p>
+        </div>
+    </footer>
+
+    <script>
+        // 装备数据数组
+        const equipmentData = [
+            {
+                id: 1,
+                name: "联想小新 Pro 16 2021锐龙版",
+                category: "digital",
+                description: "高性能轻薄本，适合编程和设计工作",
+                specs: ["R7 5800H", "16GB RAM", "512GB SSD", "集成显卡"],
+                icon: "laptop",
+                image: "../file/equipment/image (1).png"
+
+            },
+            {
+                id: 2,
+                name: "小米15",
+                category: "digital",
+                description: "旗舰智能手机，提供出色的性能和摄影能力",
+                specs: ["黑色", "16GB RAM", "512GB存储", "骁龙8 Gen 4"],
+                icon: "mobile",
+                image: "../file/equipment/image (2).png"
+            },
+            {
+                id: 3,
+                name: "小米平板6s Pro",
+                category: "digital",
+                description: "大屏平板电脑，适合娱乐和轻度办公",
+                specs: ["12GB RAM", "256GB存储", "12.4英寸屏幕", "骁龙8 Gen 2"],
+                icon: "tablet",
+                image: "../file/equipment/image (3).png"
+            },
+            {
+                id: 4,
+                name: "AirPods Pro (第二代)",
+                category: "audio",
+                description: "主动降噪无线耳机，提供沉浸式音频体验",
+                specs: ["主动降噪", "空间音频", "自适应通透模式", "MagSafe充电"],
+                icon: "headphones",
+                image: "../file/equipment/AirPods Pro.png"
+
+            },
+            {
+                id: 5,
+                name: "Redmi Watch 4",
+                category: "wearable",
+                description: "智能手表，监测健康数据和运动状态",
+                specs: ["银雪白", "1.97英寸AMOLED", "心率监测", "长达20天续航"],
+                icon: "clock",
+                image: "../file/equipment/image (4).png"
+            },
+            {
+                id: 6,
+                name: "米家电动剃须刀S101",
+                category: "other",
+                description: "便携式电动剃须刀，适合旅行和日常使用",
+                specs: ["岩砂灰", "Type-C充电", "IPX7防水", "双环刀网"],
+                icon: "cut",
+                image: "../file/equipment/image (5).png"
+            },
+            {
+                id: 7,
+                name: "DJI Pocket 3",
+                category: "digital",
+                description: "便携云台相机，拍摄稳定高清视频",
+                specs: ["1英寸CMOS", "4K/120fps", "三轴机械云台", "2英寸旋转屏"],
+                icon: "camera",
+                image: "../file/equipment/image.png"
+            },
+            {
+                id: 8,
+                name: "小米无线鼠标3彩色版",
+                category: "digital",
+                description: "轻量化无线鼠标，多彩配色，办公娱乐两相宜",
+                specs: ["2.4GHz无线连接", "1000DPI分辨率", "12个月续航", "轻音按键设计"],
+                icon: "computer-mouse",
+                image: "../file/equipment/image (6).png"
+            },
+            {
+                id: 9,
+                name: "小米体脂秤",
+                category: "other",
+                description: "精准测量体脂率，支持多用户管理，健康数据一目了然",
+                specs: ["高精度压力传感器", "13项身体数据", "APP数据同步", "钢化玻璃面板"],
+                icon: "weight",
+                image: "../file/equipment/image (7).png"
+            }
+
+
+        ];
+
+        // 分类图标映射
+        const categoryIcons = {
+            digital: "laptop",
+            audio: "headphones",
+            wearable: "clock",
+            other: "gift"
+        };
+
+        // 分类名称映射
+        const categoryNames = {
+            digital: "数码产品",
+            audio: "音频设备",
+            wearable: "智能穿戴",
+            other: "其他装备"
+        };
+
+        // 渲染装备卡片
+        function renderEquipment(category = 'all') {
+            const container = document.getElementById('equipment-container');
+            container.innerHTML = '';
+
+            const filteredEquipment = category === 'all'
+                ? equipmentData
+                : equipmentData.filter(item => item.category === category);
+
+            filteredEquipment.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'equipment-card';
+                card.setAttribute('data-category', item.category);
+
+                card.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="equipment-image">
+                    <div class="equipment-info">
+                        <div style="display: flex;flex-direction: row;align-items: flex-end;">
+                        <div class="card-icon">
+                            <i class="fas fa-${item.icon}"></i>
+                        </div>
+                        <span class="equipment-category">${categoryNames[item.category]}</span>
+                        </div>
+
+                        <h3 class="equipment-name">${item.name}</h3>
+                        <p class="equipment-desc">${item.description}</p>
+                        <div class="equipment-specs">
+                            ${item.specs.map(spec => `<span class="spec-tag">${spec}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+                // <a href="#" class="equipment-link">查看详情 <i class="fas fa-arrow-right"></i></a>
+
+                container.appendChild(card);
+            });
+        }
+
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function () {
+            // 渲染所有装备
+            renderEquipment();
+
+            // 分类筛选功能
+            const tabs = document.querySelectorAll('.category-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    const category = tab.getAttribute('data-category');
+                    renderEquipment(category);
+                });
+            });
+
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

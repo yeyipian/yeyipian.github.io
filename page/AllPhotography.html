@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>摄影集 | 叶一片</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/photography.css"/>
+           <style>
+        /* 下拉菜单样式 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        /* 确保导航栏链接样式一致 */
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links li a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+        }
+
+        
+        .wechat-trigger {
+            position: relative;
+        }
+
+        .wechat-qr {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 120px;
+            height: 120px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all .25s ease;
+            z-index: 1000;
+        }
+
+        .wechat-trigger:hover .wechat-qr {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">叶<span>一片</span></div>
+        <ul class="nav-links">
+            <li><a href="../index.html">首页</a></li>
+             <!-- 下拉菜单 -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">我的世界</a>
+                <div class="dropdown-content">
+                    <a href="../page/blog.html"><i class="fas fa-blog" style="margin-right: 5px;"></i> 个人博客</a>
+                    <a href="../page/introduction.html"><i class="fas fa-book" style="margin-right: 5px;"></i> 个人简介</a>
+                    <a href="../page/project.html"><i class="fas fa-images" style="margin-right: 5px;"></i> 作品集</a>
+                    <a href="../page/photography.html"><i class="fas fa-camera" style="margin-right: 5px;"></i> 摄影集</a>
+                    <a href="../page/equipment.html"><i class="fas fa-computer" style="margin-right: 5px;"></i> 装备栏</a>
+                    <a href="../page/music.html"><i class="fas fa-music" style="margin-right: 5px;"></i> 音乐馆</a>
+                </div>
+            </li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+    </nav>
+
+<!-- 摄影集网格 -->
+<div class="gallery-container" style="margin-top: 30px;">
+  <div class="section-header">
+    <h2 class="section-title" style="color:white;">全部摄影作品</h2>
+  </div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</div>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="footer-content">
+      <div class="footer-column">
+                <h3>叶一片</h3>
+                <p style="color: #aaa; max-width: 300px; margin-bottom: 20px;">探索数字世界的旅人，创造与分享的爱好者</p>
+                <div class="social-icons">
+                    <a href="https://github.com/yeyipian" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://space.bilibili.com/87607674"><i class="fab fa-bilibili"></i></a>
+                    <a href="https://www.douyin.com/user/MS4wLjABAAAAliiakv9Jh2yOYOztD1uQHeruaGrUCgbbNvshN_hP2xZUNZi_7-EctVKtz1tstUDh?from_tab_name=main"
+                        target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://music.163.com/#/user/home?id=360800172" target="_blank"><i
+                            class="fa fa-music"></i></a>
+                    <!-- <a href="https://weibo.com" target="_blank"><i class="fab fa-weibo"></i></a> -->
+                </div>
+            </div>
+    <div class="footer-column">
+      <h3>摄影主题</h3>
+      <ul class="footer-links">
+        <li><a href="#">自然风光</a></li>
+        <li><a href="#">城市建筑</a></li>
+        <li><a href="#">人文纪实</a></li>
+        <li><a href="#">夜景长曝</a></li>
+        <li><a href="#">微距世界</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>摄影地点</h3>
+      <ul class="footer-links">
+        <li><a href="#">中国系列</a></li>
+        <li><a href="#">日本系列</a></li>
+        <li><a href="#">东南亚系列</a></li>
+        <li><a href="#">欧洲系列</a></li>
+        <li><a href="#">北美系列</a></li>
+      </ul>
+    </div>
+            <div class="footer-column">
+                <h3>联系我</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:tizzyyc@163.com">tizzyyc@163.com</a></li>
+                    <li class="wechat-trigger">
+                        <a>微信</a>
+                        <!-- 二维码弹层 -->
+                        <img class="wechat-qr" src="../file/contact/wechat.jpg" alt="微信二维码">
+
+                    </li>
+                    <li class="wechat-trigger">
+                        <a>打赏一下</a>
+                        <!-- 二维码弹层 -->
+                        <img class="wechat-qr" src="../file/contact/wechatpay.jpg" alt="微信二维码">
+
+                    </li>
+                </ul>
+            </div>
+  </div>
+  <div class="copyright">
+    <p>&copy; 2025 叶一片摄影集 | 风与我作伴白云作衣裳，天地在兜里面</p>
+    <p style="margin-top:10px;">所有图片版权归叶一片所有，未经许可不得使用</p>
+  </div>
+</footer>
+
+<!-- 图片模态框 -->
+<div id="photoModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <div class="modal-nav">
+      <div class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></div>
+      <div class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></div>
+    </div>
+    <div class="modal-img-container">
+      <img id="modalImage" class="modal-img" src="" alt="摄影作品">
+      <div class="photo-counter" id="photoCounter">1 / 5</div>
+    </div>
+    <div class="thumbnail-container" id="thumbnailContainer"></div>
+    <div class="modal-info">
+      <h2 id="modalTitle" class="modal-title"></h2>
+      <div class="modal-meta">
+        <span id="modalLocation"></span>
+        <span id="modalDate"></span>
+      </div>
+      <p id="modalDesc" class="modal-desc"></p>
+      <div class="photo-tags" id="modalTags"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 照片组数据
+  const photoGroups = [
+  {
+    "id": 1,
+    "title": "山城毕业礼",
+    "images": [
+      "../file/photography/山城毕业礼/2.jpg",
+      "../file/photography/山城毕业礼/1.jpg",
+      "../file/photography/山城毕业礼/3.jpg",
+      "../file/photography/山城毕业礼/4.jpg",
+      "../file/photography/山城毕业礼/5.jpg",
+      "../file/photography/山城毕业礼/6.jpg",
+      "../file/photography/山城毕业礼/7.jpg",
+      "../file/photography/山城毕业礼/8.jpg"
+    ],
+    "location": "重庆",
+    "date": "2025年6月20日",
+    "category": ["旅行"],
+    "tags": ["毕业季", "赛博朋克", "山城", "友情"],
+    "description": "我们站在洪崖洞的灯火里，把学士帽抛向夜空，像把四年光阴投进一锅红油火锅，辣得掉眼泪。"
+  },
+  {
+    "id": 2,
+    "title": "汴梁焦虑缓释剂",
+    "images": [
+      "../file/photography/汴梁焦虑缓释剂/1.jpg",
+      "../file/photography/汴梁焦虑缓释剂/2.jpg",
+      "../file/photography/汴梁焦虑缓释剂/3.jpg",
+      "../file/photography/汴梁焦虑缓释剂/4.jpg",
+      "../file/photography/汴梁焦虑缓释剂/5.jpg",
+      "../file/photography/汴梁焦虑缓释剂/6.jpg",
+      "../file/photography/汴梁焦虑缓释剂/7.jpg",
+      "../file/photography/汴梁焦虑缓释剂/8.jpg",
+      "../file/photography/汴梁焦虑缓释剂/9.jpg"
+    ],
+    "location": "开封",
+    "date": "2025年6月16日",
+    "category": ["旅行"],
+    "tags": ["古都", "低饱和", "散焦", "失重"],
+    "description": "北宋的瓦当替我接住现代性的疲惫，我在鼓楼的风里把 KPI 吹成扬尘。"
+  },
+  {
+    "id": 3,
+    "title": "登泰山而小天下",
+    "images": [
+      "../file/photography/登泰山而小天下/1.jpg",
+      "../file/photography/登泰山而小天下/2.jpg",
+      "../file/photography/登泰山而小天下/3.jpg",
+      "../file/photography/登泰山而小天下/4.jpg",
+      "../file/photography/登泰山而小天下/5.jpg",
+      "../file/photography/登泰山而小天下/6.jpg",
+      "../file/photography/登泰山而小天下/7.jpg",
+      "../file/photography/登泰山而小天下/8.jpg"
+    ],
+    "location": "泰安泰山",
+    "date": "2025年6月13日",
+    "category": ["旅行"],
+    "tags": ["极简", "日出", "负空间", "顿悟"],
+    "description": "把十八盘折叠成一条直线，日出像一枚公章，在云海合同上盖下“渺小”二字。"
+  },
+  {
+    "id": 4,
+    "title": "泉城72次心跳",
+    "images": [
+      "../file/photography/泉城72次心跳/5.jpg",
+      "../file/photography/泉城72次心跳/1.jpg",
+      "../file/photography/泉城72次心跳/2.jpg",
+      "../file/photography/泉城72次心跳/3.jpg",
+      "../file/photography/泉城72次心跳/4.jpg",
+      "../file/photography/泉城72次心跳/6.jpg",
+      "../file/photography/泉城72次心跳/7.jpg",
+      "../file/photography/泉城72次心跳/8.jpg",
+      "../file/photography/泉城72次心跳/9.jpg"
+    ],
+    "location": "济南",
+    "date": "2025年6月12日",
+    "category": ["旅行"],
+    "tags": ["泉水", "蓝色时刻", "微距", "疗愈"],
+    "description": "趵突泉的每一次脉动，都是地球在深夜偷偷按下的 F5。"
+  },
+  {
+    "id": 5,
+    "title": "鲸落 万物生",
+    "images": [
+      "../file/photography/鲸落 万物生/1.jpg",
+      "../file/photography/鲸落 万物生/2.jpg",
+      "../file/photography/鲸落 万物生/3.jpg",
+      "../file/photography/鲸落 万物生/4.jpg",
+      "../file/photography/鲸落 万物生/5.jpg",
+      "../file/photography/鲸落 万物生/6.jpg"
+    ],
+    "location": "烟台",
+    "date": "2025年6月10日",
+    "category": ["旅行"],
+    "tags": ["海洋", "暗调", "生态史诗", "重生"],
+    "description": "一具鲸的坠落，换来一场海底文艺复兴，我用六张照片做它的墓志铭。"
+  },
+  {
+    "id": 6,
+    "title": "人生不能搁浅",
+    "images": [
+      "../file/photography/人生不能搁浅/2.jpg",
+      "../file/photography/人生不能搁浅/1.jpg",
+      "../file/photography/人生不能搁浅/3.jpg",
+      "../file/photography/人生不能搁浅/4.jpg",
+      "../file/photography/人生不能搁浅/5.jpg",
+      "../file/photography/人生不能搁浅/6.jpg"
+    ],
+    "location": "威海",
+    "date": "2025年6月8日",
+    "category": ["旅行"],
+    "tags": ["海蚀", "孤独", "高反差", "存在主义"],
+    "description": "黑礁石像被遗忘的琴键，浪一遍遍弹奏“继续向前”。"
+  },
+  {
+    "id": 7,
+    "title": "哈啤酒 吃嘎啦 洗海澡",
+    "images": [
+      "../file/photography/哈啤酒 吃嘎啦 洗海澡/1.jpg",
+      "../file/photography/哈啤酒 吃嘎啦 洗海澡/2.jpg",
+      "../file/photography/哈啤酒 吃嘎啦 洗海澡/3.jpg",
+      "../file/photography/哈啤酒 吃嘎啦 洗海澡/4.jpg",
+      "../file/photography/哈啤酒 吃嘎啦 洗海澡/5.jpg",
+      "../file/photography/哈啤酒 吃嘎啦 洗海澡/6.jpg"
+    ],
+    "location": "青岛",
+    "date": "2025年6月6日",
+    "category": ["旅行"],
+    "tags": ["啤酒沫", "夏日", "胶片颗粒", "人间烟火"],
+    "description": "泡沫、蛤蜊壳和咸湿的风，把青岛的傍晚调成一杯冒泡的 24 帧酒精。"
+  },
+  {
+    "id": 8,
+    "title": "北京转机·玻璃迷宫",
+    "images": [
+      "../file/photography/北京转机·玻璃迷宫/3.jpg",
+      "../file/photography/北京转机·玻璃迷宫/1.jpg",
+      "../file/photography/北京转机·玻璃迷宫/2.jpg",
+      "../file/photography/北京转机·玻璃迷宫/4.jpg"
+    ],
+    "location": "北京",
+    "date": "2025年6月4日",
+    "category": ["旅行"],
+    "tags": ["玻璃幕墙", "几何", "冷色", "疏离"],
+    "description": "T3 航站楼的反光把我切成无数碎片，每一片都在赶下一班不知去向的航班。"
+  },
+  {
+    "id": 9,
+    "title": "爱乐之城",
+    "images": [
+      "../file/photography/爱乐之城/3.jpg",
+      "../file/photography/爱乐之城/1.jpg",
+      "../file/photography/爱乐之城/2.jpg",
+      "../file/photography/爱乐之城/4.jpg",
+      "../file/photography/爱乐之城/5.jpg",
+      "../file/photography/爱乐之城/6.jpg"
+    ],
+    "location": "重庆社会主义学院",
+    "date": "2025年4月25日",
+    "category": ["校园"],
+    "tags": ["学院", "对称", "暖调", "理想主义"],
+    "description": "社会主义学院的红色走廊里，理想像回声一样来回踱步，不肯毕业。"
+  },
+  {
+    "id": 10,
+    "title": "新年香港",
+    "images": [
+      "../file/photography/新年香港/3.jpg",
+      "../file/photography/新年香港/1.jpg",
+      "../file/photography/新年香港/2.jpg",
+      "../file/photography/新年香港/4.jpg",
+      "../file/photography/新年香港/5.jpg",
+      "../file/photography/新年香港/6.jpg",
+      "../file/photography/新年香港/7.jpg"
+    ],
+    "location": "香港",
+    "date": "2025年1月1日",
+    "category": ["旅行"],
+    "tags": ["跨年", "霓虹", "长曝", "不眠"],
+    "description": "维港的烟火是城市打的嗝，我们在天星小轮上彻夜漂浮，像未寄出的明信片。"
+  },
+  {
+    "id": 11,
+    "title": "拳打懒瞓猪 腳踢大懶蟲",
+    "images": [
+      "../file/photography/拳打懒瞓猪 腳踢大懶蟲/5.jpg",
+      "../file/photography/拳打懒瞓猪 腳踢大懶蟲/1.jpg",
+      "../file/photography/拳打懒瞓猪 腳踢大懶蟲/2.jpg",
+      "../file/photography/拳打懒瞓猪 腳踢大懶蟲/3.jpg",
+      "../file/photography/拳打懒瞓猪 腳踢大懶蟲/4.jpg",
+      "../file/photography/拳打懒瞓猪 腳踢大懶蟲/6.jpg",
+      "../file/photography/拳打懒瞓猪 腳踢大懶蟲/7.jpg",
+      "../file/photography/拳打懒瞓猪 腳踢大懶蟲/8.jpg",
+      "../file/photography/拳打懒瞓猪 腳踢大懶蟲/9.jpg"
+    ],
+    "location": "广州荔枝湾",
+    "date": "2024年12月21日",
+    "category": ["旅行"],
+    "tags": ["粤剧", "西关", "高饱和", "冲突"],
+    "description": "脸谱与骑楼同框，水袖劈开骑楼下的热浪，一出戏把午睡的广州踢醒。"
+  },
+  {
+    "id": 12,
+    "title": "珠海·废墟圆舞曲",
+    "images": [
+      "../file/photography/珠海·废墟圆舞曲/3.jpg",
+      "../file/photography/珠海·废墟圆舞曲/1.jpg",
+      "../file/photography/珠海·废墟圆舞曲/2.jpg",
+      "../file/photography/珠海·废墟圆舞曲/4.jpg",
+      "../file/photography/珠海·废墟圆舞曲/5.jpg",
+      "../file/photography/珠海·废墟圆舞曲/6.jpg",
+      "../file/photography/珠海·废墟圆舞曲/7.jpg",
+      "../file/photography/珠海·废墟圆舞曲/8.jpg",
+      "../file/photography/珠海·废墟圆舞曲/9.jpg"
+    ],
+    "location": "珠海圆明园",
+    "date": "2024年10月2日",
+    "category": ["旅行"],
+    "tags": ["残柱", "巴洛克", "柔焦", "废墟美学"],
+    "description": "圆明新园的断墙跳起小步舞，我在月光里给它配了一首失而复得的华尔兹。"
+  },
+  {
+    "id": 13,
+    "title": "澳门·筹码与玫瑰",
+    "images": [
+      "../file/photography/澳门·筹码与玫瑰/2.jpg",
+      "../file/photography/澳门·筹码与玫瑰/1.jpg",
+      "../file/photography/澳门·筹码与玫瑰/3.jpg",
+      "../file/photography/澳门·筹码与玫瑰/4.jpg",
+      "../file/photography/澳门·筹码与玫瑰/5.jpg",
+      "../file/photography/澳门·筹码与玫瑰/6.jpg"
+    ],
+    "location": "澳门",
+    "date": "2024年10月1日",
+    "category": ["旅行"],
+    "tags": ["赌场", "教堂", "冷暖对撞", "欲望"],
+    "description": "玫瑰堂的彩玻璃把罪恶映成圣光，我在百家乐的绿毡上听见上帝掷骰子。"
+  },
+  {
+    "id": 14,
+    "title": "香港·姐姐与我",
+    "images": [
+      "../file/photography/香港·姐姐与我/12.jpg",
+      "../file/photography/香港·姐姐与我/1.jpg",
+      "../file/photography/香港·姐姐与我/2.jpg",
+      "../file/photography/香港·姐姐与我/3.jpg",
+      "../file/photography/香港·姐姐与我/4.jpg",
+      "../file/photography/香港·姐姐与我/5.jpg",
+      "../file/photography/香港·姐姐与我/6.jpg",
+      "../file/photography/香港·姐姐与我/7.jpg",
+      "../file/photography/香港·姐姐与我/8.jpg",
+      "../file/photography/香港·姐姐与我/9.jpg",
+      "../file/photography/香港·姐姐与我/10.jpg",
+      "../file/photography/香港·姐姐与我/11.jpg",
+      "../file/photography/香港·姐姐与我/13.jpg",
+      "../file/photography/香港·姐姐与我/14.jpg",
+      "../file/photography/香港·姐姐与我/15.jpg"
+    ],
+    "location": "香港",
+    "date": "2024年7月6日",
+    "category": ["旅行"],
+    "tags": ["亲情", "霓虹", "胶片", "时光隧道"],
+    "description": "她带我穿过重庆大厦的迷宫，像穿过她迟到的青春期，把狮子山日落塞进我的口袋。"
+  },
+  {
+    "id": 15,
+    "title": "学校·日常即永恒",
+    "images": [
+      "../file/photography/学校·日常即永恒/1.jpg",
+      "../file/photography/学校·日常即永恒/2.jpg",
+      "../file/photography/学校·日常即永恒/3.jpg",
+      "../file/photography/学校·日常即永恒/4.jpg",
+      "../file/photography/学校·日常即永恒/5.jpg",
+      "../file/photography/学校·日常即永恒/6.jpg",
+      "../file/photography/学校·日常即永恒/7.jpg",
+      "../file/photography/学校·日常即永恒/8.jpg",
+      "../file/photography/学校·日常即永恒/9.jpg"
+    ],
+    "location": "学校",
+    "date": "2024年3月2日",
+    "category": ["校园"],
+    "tags": ["校园", "静物", "柔光", "青春档案"],
+    "description": "课桌的划痕是摩斯密码，翻译过来全是“别长大”。"
+  },
+  {
+    "id": 16,
+    "title": "杭州·一个人的雨",
+    "images": [
+      "../file/photography/杭州·一个人的雨/1.jpg",
+      "../file/photography/杭州·一个人的雨/2.jpg",
+      "../file/photography/杭州·一个人的雨/3.jpg",
+      "../file/photography/杭州·一个人的雨/4.jpg",
+      "../file/photography/杭州·一个人的雨/5.jpg",
+      "../file/photography/杭州·一个人的雨/6.jpg",
+      "../file/photography/杭州·一个人的雨/7.jpg",
+      "../file/photography/杭州·一个人的雨/8.jpg",
+      "../file/photography/杭州·一个人的雨/9.jpg"
+    ],
+    "location": "杭州",
+    "date": "2024年1月25日",
+    "category": ["旅行"],
+    "tags": ["西湖", "烟雨", "低饱和", "孤独"],
+    "description": "我把断桥折成单人纸船，放进雨里，看它慢慢漂成一幅宋代水墨。"
+  },
+  {
+    "id": 17,
+    "title": "Shanghai·不眠流线",
+    "images": [
+      "../file/photography/Shanghai·不眠流线/1.jpg",
+      "../file/photography/Shanghai·不眠流线/2.jpg",
+      "../file/photography/Shanghai·不眠流线/3.jpg",
+      "../file/photography/Shanghai·不眠流线/4.jpg",
+      "../file/photography/Shanghai·不眠流线/5.jpg",
+      "../file/photography/Shanghai·不眠流线/6.jpg",
+      "../file/photography/Shanghai·不眠流线/7.jpg",
+      "../file/photography/Shanghai·不眠流线/8.jpg",
+      "../file/photography/Shanghai·不眠流线/9.jpg"
+    ],
+    "location": "上海",
+    "date": "2024年1月23日",
+    "category": ["旅行"],
+    "tags": ["外滩", "长曝", "赛博", "未来主义"],
+    "description": "黄浦江把高楼切成流动的条形码，我扫码进去，却找不到出口。"
+  },
+  {
+    "id": 18,
+    "title": "蘇·园林心跳",
+    "images": [
+      "../file/photography/蘇·园林心跳/1.jpg",
+      "../file/photography/蘇·园林心跳/2.jpg",
+      "../file/photography/蘇·园林心跳/3.jpg",
+      "../file/photography/蘇·园林心跳/4.jpg",
+      "../file/photography/蘇·园林心跳/5.jpg",
+      "../file/photography/蘇·园林心跳/6.jpg",
+      "../file/photography/蘇·园林心跳/7.jpg",
+      "../file/photography/蘇·园林心跳/8.jpg",
+      "../file/photography/蘇·园林心跳/9.jpg"
+    ],
+    "location": "苏州",
+    "date": "2024年1月21日",
+    "category": ["旅行"],
+    "tags": ["园林", "框景", "留白", "东方极简"],
+    "description": "拙政园的花窗是一只偷窥时间的眼睛，我把春天关在里面，不许它凋谢。"
+  },
+  {
+    "id": 19,
+    "title": "Hihiiiii, Nanjing",
+    "images": [
+      "../file/photography/Hihiiiii, Nanjing/5.jpg",
+      "../file/photography/Hihiiiii, Nanjing/1.jpg",
+      "../file/photography/Hihiiiii, Nanjing/2.jpg",
+      "../file/photography/Hihiiiii, Nanjing/3.jpg",
+      "../file/photography/Hihiiiii, Nanjing/4.jpg",
+      "../file/photography/Hihiiiii, Nanjing/6.jpg",
+      "../file/photography/Hihiiiii, Nanjing/7.jpg",
+      "../file/photography/Hihiiiii, Nanjing/8.jpg",
+      "../file/photography/Hihiiiii, Nanjing/9.jpg"
+    ],
+    "location": "南京",
+    "date": "2024年1月18日",
+    "category": ["旅行"],
+    "tags": ["古城", "胶片", "冷暖", "青年漫游"],
+    "description": "梧桐叶把中山陵的台阶染成焦糖色，我在1928年的风里打了个2024年的喷嚏。"
+  },
+  {
+    "id": 20,
+    "title": "又来重庆",
+    "images": [
+      "../file/photography/又来重庆/1.jpg",
+      "../file/photography/又来重庆/2.jpg",
+      "../file/photography/又来重庆/3.jpg",
+      "../file/photography/又来重庆/4.jpg",
+      "../file/photography/又来重庆/5.jpg",
+      "../file/photography/又来重庆/6.jpg",
+      "../file/photography/又来重庆/7.jpg",
+      "../file/photography/又来重庆/8.jpg"
+    ],
+    "location": "重庆",
+    "date": "2023年12月22日",
+    "category": ["旅行"],
+    "tags": ["重游", "轻轨", "夜景", "循环"],
+    "description": "二刷洪崖洞，像按了一次 Ctrl+Z，却撤销不掉第一次的眩晕。"
+  },
+  {
+    "id": 21,
+    "title": "山河锦绣",
+    "images": [
+      "../file/photography/山河锦绣/4.jpg",
+      "../file/photography/山河锦绣/1.jpg",
+      "../file/photography/山河锦绣/2.jpg",
+      "../file/photography/山河锦绣/3.jpg",
+      "../file/photography/山河锦绣/5.jpg",
+      "../file/photography/山河锦绣/6.jpg",
+      "../file/photography/山河锦绣/7.jpg",
+      "../file/photography/山河锦绣/8.jpg",
+      "../file/photography/山河锦绣/9.jpg",
+      "../file/photography/山河锦绣/10.jpg",
+      "../file/photography/山河锦绣/11.jpg",
+      "../file/photography/山河锦绣/12.jpg",
+      "../file/photography/山河锦绣/13.jpg",
+      "../file/photography/山河锦绣/14.jpg",
+      "../file/photography/山河锦绣/15.jpg"
+    ],
+    "location": "重庆",
+    "date": "2023年10月1日",
+    "category": ["旅行"],
+    "tags": ["国庆", "山城", "红色", "集体记忆"],
+    "description": "十万面红旗把嘉陵江煮沸，我在人潮里听见祖国的心跳，每分钟70万赫兹。"
+  },
+  {
+    "id": 22,
+    "title": "刘老师闪击重庆记",
+    "images": [
+      "../file/photography/刘老师闪击重庆记/2.jpg",
+      "../file/photography/刘老师闪击重庆记/1.jpg",
+      "../file/photography/刘老师闪击重庆记/3.jpg",
+      "../file/photography/刘老师闪击重庆记/4.jpg",
+      "../file/photography/刘老师闪击重庆记/5.jpg",
+      "../file/photography/刘老师闪击重庆记/6.jpg",
+      "../file/photography/刘老师闪击重庆记/7.jpg",
+      "../file/photography/刘老师闪击重庆记/8.jpg"
+    ],
+    "location": "重庆",
+    "date": "2023年9月23日",
+    "category": ["旅行"],
+    "tags": ["快闪", "火锅", "朋克", "山城"],
+    "description": "他48小时吃掉5顿火锅，把解放碑拍成赛博朋克海报，然后消失在李子坝的轻轨里。"
+  },
+  {
+    "id": 23,
+    "title": "双月湾·潮汐情书",
+    "images": [
+      "../file/photography/双月湾·潮汐情书/1.jpg",
+      "../file/photography/双月湾·潮汐情书/2.jpg",
+      "../file/photography/双月湾·潮汐情书/3.jpg",
+      "../file/photography/双月湾·潮汐情书/4.jpg"
+    ],
+    "location": "惠东",
+    "date": "2023年8月9日",
+    "category": ["旅行"],
+    "tags": ["海边", "蓝调", "双人", "青春残片"],
+    "description": "浪花写给沙滩的情书，被月光公证，又被日出撕碎。"
+  },
+  {
+    "id": 24,
+    "title": "军旗升旗的地方",
+    "images": [
+      "../file/photography/军旗升旗的地方/5.jpg",
+      "../file/photography/军旗升旗的地方/1.jpg",
+      "../file/photography/军旗升旗的地方/2.jpg",
+      "../file/photography/军旗升旗的地方/3.jpg",
+      "../file/photography/军旗升旗的地方/4.jpg",
+      "../file/photography/军旗升旗的地方/6.jpg",
+      "../file/photography/军旗升旗的地方/7.jpg",
+      "../file/photography/军旗升旗的地方/8.jpg",
+      "../file/photography/军旗升旗的地方/9.jpg"
+    ],
+    "location": "南昌",
+    "date": "2023年7月18日",
+    "category": ["旅行"],
+    "tags": ["军史", "日出", "广角", "肃穆"],
+    "description": "八一广场的旗杆把天空刺破一个洞，1933年的号角声还在里面回响。"
+  },
+  {
+    "id": 25,
+    "title": "千户苗寨",
+    "images": [
+      "../file/photography/千户苗寨/1.jpg",
+      "../file/photography/千户苗寨/2.jpg",
+      "../file/photography/千户苗寨/3.jpg",
+      "../file/photography/千户苗寨/4.jpg",
+      "../file/photography/千户苗寨/5.jpg",
+      "../file/photography/千户苗寨/6.jpg",
+      "../file/photography/千户苗寨/7.jpg",
+      "../file/photography/千户苗寨/8.jpg",
+      "../file/photography/千户苗寨/9.jpg"
+    ],
+    "location": "苗族自治州",
+    "date": "2023年7月16日",
+    "category": ["旅行"],
+    "tags": ["苗绣", "星空", "梯田", "民族志"],
+    "description": "吊脚楼的灯火亮起，像把银河穿成了苗绣，一针一线都是古老方言。"
+  },
+  {
+    "id": 26,
+    "title": "黄果树·七小孔",
+    "images": [
+      "../file/photography/黄果树·七小孔/1.jpg",
+      "../file/photography/黄果树·七小孔/2.jpg",
+      "../file/photography/黄果树·七小孔/3.jpg",
+      "../file/photography/黄果树·七小孔/4.jpg",
+      "../file/photography/黄果树·七小孔/5.jpg",
+      "../file/photography/黄果树·七小孔/6.jpg",
+      "../file/photography/黄果树·七小孔/7.jpg",
+      "../file/photography/黄果树·七小孔/8.jpg"
+    ],
+    "location": "安顺、布依族自治州",
+    "date": "2023年7月15日",
+    "category": ["旅行"],
+    "tags": ["瀑布", "喀斯特", "青绿", "秘境"],
+    "description": "水把石灰岩雕刻成翡翠走廊，我赤脚走进去，每一步都踩碎一块绿玻璃。"
+  },
+  {
+    "id": 27,
+    "title": "爽爽贵阳",
+    "images": [
+      "../file/photography/爽爽贵阳/1.jpg",
+      "../file/photography/爽爽贵阳/2.jpg",
+      "../file/photography/爽爽贵阳/3.jpg",
+      "../file/photography/爽爽贵阳/4.jpg",
+      "../file/photography/爽爽贵阳/5.jpg",
+      "../file/photography/爽爽贵阳/6.jpg",
+      "../file/photography/爽爽贵阳/7.jpg",
+      "../file/photography/爽爽贵阳/8.jpg",
+      "../file/photography/爽爽贵阳/9.jpg"
+    ],
+    "location": "贵阳",
+    "date": "2023年7月14日",
+    "category": ["旅行"],
+    "tags": ["高原", "冷色", "几何", "避暑"],
+    "description": "贵阳的云像没拧紧的牙膏，挤出大片凉意，把夏天按了暂停键。"
+  },
+  {
+    "id": 28,
+    "title": "与夕阳告别",
+    "images": [
+      "../file/photography/与夕阳告别/6.jpg",
+      "../file/photography/与夕阳告别/1.jpg",
+      "../file/photography/与夕阳告别/2.jpg",
+      "../file/photography/与夕阳告别/3.jpg",
+      "../file/photography/与夕阳告别/4.jpg",
+      "../file/photography/与夕阳告别/5.jpg",
+      "../file/photography/与夕阳告别/7.jpg",
+      "../file/photography/与夕阳告别/8.jpg",
+      "../file/photography/与夕阳告别/9.jpg",
+      "../file/photography/与夕阳告别/10.jpg",
+      "../file/photography/与夕阳告别/11.jpg",
+      "../file/photography/与夕阳告别/12.jpg",
+      "../file/photography/与夕阳告别/13.jpg",
+      "../file/photography/与夕阳告别/14.jpg",
+      "../file/photography/与夕阳告别/15.jpg",
+      "../file/photography/与夕阳告别/16.jpg",
+      "../file/photography/与夕阳告别/17.jpg"
+    ],
+    "location": "学校",
+    "date": "2023年6月26日",
+    "category": ["校园"],
+    "tags": ["校园", "黄昏", "高饱和", "离别"],
+    "description": "有人把灵魂挂在高层的栏杆上，夕阳替他烧完最后一支烟。"
+  },
+  {
+    "id": 29,
+    "title": "武汉·四月樱吹雪",
+    "images": [
+      "../file/photography/武汉·四月樱吹雪/1.jpg",
+      "../file/photography/武汉·四月樱吹雪/2.jpg",
+      "../file/photography/武汉·四月樱吹雪/3.jpg",
+      "../file/photography/武汉·四月樱吹雪/4.jpg",
+      "../file/photography/武汉·四月樱吹雪/5.jpg",
+      "../file/photography/武汉·四月樱吹雪/6.jpg",
+      "../file/photography/武汉·四月樱吹雪/7.jpg",
+      "../file/photography/武汉·四月樱吹雪/8.jpg",
+      "../file/photography/武汉·四月樱吹雪/9.jpg",
+      "../file/photography/武汉·四月樱吹雪/10.jpg",
+      "../file/photography/武汉·四月樱吹雪/11.jpg",
+      "../file/photography/武汉·四月樱吹雪/12.jpg",
+      "../file/photography/武汉·四月樱吹雪/13.jpg",
+      "../file/photography/武汉·四月樱吹雪/14.jpg",
+      "../file/photography/武汉·四月樱吹雪/15.jpg",
+      "../file/photography/武汉·四月樱吹雪/16.jpg",
+      "../file/photography/武汉·四月樱吹雪/17.jpg",
+      "../file/photography/武汉·四月樱吹雪/18.jpg"
+    ],
+    "location": "武汉",
+    "date": "2023年4月4日",
+    "category": ["旅行"],
+    "tags": ["樱花", "长堤", "胶片", "春日暴动"],
+    "description": "东湖的樱花像一场粉色雪崩，掩埋了封城的记忆，也掩埋了我。"
+  },
+  {
+    "id": 30,
+    "title": "重庆大礼堂·穹顶之下",
+    "images": [
+      "../file/photography/重庆大礼堂·穹顶之下/1.jpg",
+      "../file/photography/重庆大礼堂·穹顶之下/2.jpg",
+      "../file/photography/重庆大礼堂·穹顶之下/3.jpg",
+      "../file/photography/重庆大礼堂·穹顶之下/4.jpg",
+      "../file/photography/重庆大礼堂·穹顶之下/5.jpg",
+      "../file/photography/重庆大礼堂·穹顶之下/6.jpg",
+      "../file/photography/重庆大礼堂·穹顶之下/7.jpg",
+      "../file/photography/重庆大礼堂·穹顶之下/8.jpg",
+      "../file/photography/重庆大礼堂·穹顶之下/9.jpg"
+    ],
+    "location": "重庆大礼堂",
+    "date": "2023年3月13日",
+    "category": ["城市"],
+    "tags": ["穹顶", "对称", "黑白", "庄严"],
+    "description": "罗马柱撑起的回声，把我的脚步声翻译成拉丁文的祷词。"
+  },
+  {
+    "id": 31,
+    "title": "海棠溪·绿皮慢车",
+    "images": [
+      "../file/photography/海棠溪·绿皮慢车/1.jpg",
+      "../file/photography/海棠溪·绿皮慢车/2.jpg",
+      "../file/photography/海棠溪·绿皮慢车/3.jpg"
+    ],
+    "location": "重庆海棠溪",
+    "date": "2023年2月28日",
+    "category": ["城市"],
+    "tags": ["绿皮车", "苔藓", "慢速快门", "时间废墟"],
+    "description": "废弃的轨道长满耳朵，听见春天的列车永远不会进站。"
+  },
+  {
+    "id": 32,
+    "title": "开往春天的列车",
+    "images": [
+      "../file/photography/开往春天的列车/5.jpg",
+      "../file/photography/开往春天的列车/1.jpg",
+      "../file/photography/开往春天的列车/2.jpg",
+      "../file/photography/开往春天的列车/3.jpg",
+      "../file/photography/开往春天的列车/4.jpg",
+      "../file/photography/开往春天的列车/6.jpg",
+      "../file/photography/开往春天的列车/7.jpg",
+      "../file/photography/开往春天的列车/8.jpg",
+      "../file/photography/开往春天的列车/9.jpg"
+    ],
+    "location": "重庆佛图关",
+    "date": "2023年2月27日",
+    "category": ["城市"],
+    "tags": ["轻轨", "花海", "速度", "希望"],
+    "description": "列车穿过佛图关的二月，像子弹穿过糖纸，留下一地粉色弹壳。"
+  },
+  {
+    "id": 33,
+    "title": "冷淡洪崖洞",
+    "images": [
+      "../file/photography/冷淡洪崖洞/4.jpg",
+      "../file/photography/冷淡洪崖洞/1.jpg",
+      "../file/photography/冷淡洪崖洞/2.jpg",
+      "../file/photography/冷淡洪崖洞/3.jpg",
+      "../file/photography/冷淡洪崖洞/5.jpg",
+      "../file/photography/冷淡洪崖洞/6.jpg",
+      "../file/photography/冷淡洪崖洞/7.jpg",
+      "../file/photography/冷淡洪崖洞/8.jpg",
+      "../file/photography/冷淡洪崖洞/9.jpg"
+    ],
+    "location": "重庆洪崖洞",
+    "date": "2023年2月12日",
+    "category": ["城市"],
+    "tags": ["洪崖洞", "青蓝调", "赛博", "空城"],
+    "description": "关掉滤镜的洪崖洞像打烊的银河，只剩LED在加班。"
+  },
+  {
+    "id": 34,
+    "title": "蓝色洪崖洞",
+    "images": [
+      "../file/photography/蓝色洪崖洞/3.jpg",
+      "../file/photography/蓝色洪崖洞/1.jpg",
+      "../file/photography/蓝色洪崖洞/2.jpg",
+      "../file/photography/蓝色洪崖洞/4.jpg",
+      "../file/photography/蓝色洪崖洞/5.jpg",
+      "../file/photography/蓝色洪崖洞/6.jpg",
+      "../file/photography/蓝色洪崖洞/7.jpg"
+    ],
+    "location": "重庆大剧院",
+    "date": "2023年2月11日",
+    "category": ["城市"],
+    "tags": ["大剧院", "镜面", "蓝调", "倒影"],
+    "description": "嘉陵江把夜色打成碎片，大剧院一块块捡起来，拼成蓝色拼图。"
+  },
+  {
+    "id": 35,
+    "title": "香辣长沙",
+    "images": [
+      "../file/photography/香辣长沙/5.jpg",
+      "../file/photography/香辣长沙/1.jpg",
+      "../file/photography/香辣长沙/2.jpg",
+      "../file/photography/香辣长沙/3.jpg",
+      "../file/photography/香辣长沙/4.jpg",
+      "../file/photography/香辣长沙/6.jpg",
+      "../file/photography/香辣长沙/7.jpg",
+      "../file/photography/香辣长沙/8.jpg",
+      "../file/photography/香辣长沙/9.jpg",
+      "../file/photography/香辣长沙/10.jpg",
+      "../file/photography/香辣长沙/11.jpg",
+      "../file/photography/香辣长沙/12.jpg"
+    ],
+    "location": "长沙",
+    "date": "2023年1月12日",
+    "category": ["旅行"],
+    "tags": ["辣椒", "夜景", "高饱和", "食欲"],
+    "description": "解放西的臭豆腐把夜色炸成红色烟花，我在辣味的尽头看见凌晨三点的自己。"
+  },
+  {
+    "id": 36,
+    "title": "新年惠东",
+    "images": [
+      "../file/photography/新年惠东/4.jpg",
+      "../file/photography/新年惠东/1.jpg",
+      "../file/photography/新年惠东/2.jpg",
+      "../file/photography/新年惠东/3.jpg",
+      "../file/photography/新年惠东/5.jpg",
+      "../file/photography/新年惠东/6.jpg",
+      "../file/photography/新年惠东/7.jpg",
+      "../file/photography/新年惠东/8.jpg"
+    ],
+    "location": "惠东",
+    "date": "2023年1月1日",
+    "category": ["旅行"],
+    "tags": ["新年", "日出", "剪影", "重置"],
+    "description": "把去年的遗憾埋进沙里，让第一缕浪删掉它。"
+  },
+  {
+    "id": 37,
+    "title": "疫情鸿恩寺",
+    "images": [
+      "../file/photography/疫情鸿恩寺/2.jpg",
+      "../file/photography/疫情鸿恩寺/1.jpg",
+      "../file/photography/疫情鸿恩寺/3.jpg",
+      "../file/photography/疫情鸿恩寺/4.jpg",
+      "../file/photography/疫情鸿恩寺/5.jpg",
+      "../file/photography/疫情鸿恩寺/6.jpg"
+    ],
+    "location": "重庆鸿恩寺",
+    "date": "2022年11月4日",
+    "category": ["城市"],
+    "tags": ["寺院", "口罩", "暗红", "末日"],
+    "description": "钟声响起的瞬间，城市按下暂停键，我把恐慌关进光圈里。"
+  },
+  {
+    "id": 38,
+    "title": "烟火国庆",
+    "images": [
+      "../file/photography/烟火国庆/1.jpg",
+      "../file/photography/烟火国庆/2.jpg",
+      "../file/photography/烟火国庆/3.jpg",
+      "../file/photography/烟火国庆/4.jpg",
+      "../file/photography/烟火国庆/5.jpg",
+      "../file/photography/烟火国庆/6.jpg",
+      "../file/photography/烟火国庆/7.jpg",
+      "../file/photography/烟火国庆/8.jpg",
+      "../file/photography/烟火国庆/9.jpg",
+      "../file/photography/烟火国庆/10.jpg",
+      "../file/photography/烟火国庆/11.jpg"
+    ],
+    "location": "重庆",
+    "date": "2022年10月1日",
+    "category": ["城市"],
+    "tags": ["烟花", "人潮", "红色", "狂欢"],
+    "description": "十一秒的烟火照亮十一亿张脸，我在光里找自己。"
+  },
+  {
+    "id": 39,
+    "title": "中国不能没有农村",
+    "images": [
+      "../file/photography/中国不能没有农村/1.jpg",
+      "../file/photography/中国不能没有农村/2.jpg",
+      "../file/photography/中国不能没有农村/3.jpg",
+      "../file/photography/中国不能没有农村/4.jpg",
+      "../file/photography/中国不能没有农村/5.jpg"
+    ],
+    "location": "汕尾",
+    "date": "2022年8月3日",
+    "category": ["乡村"],
+    "tags": ["乡村", "高饱和", "土地", "根脉"],
+    "description": "汕尾的泥土把太阳染成铁锈色，我在田埂上听见祖先的呼吸。"
+  },
+  {
+    "id": 40,
+    "title": "成都·巴适得板",
+    "images": [
+      "../file/photography/成都·巴适得板/2.jpg",
+      "../file/photography/成都·巴适得板/1.jpg",
+      "../file/photography/成都·巴适得板/3.jpg",
+      "../file/photography/成都·巴适得板/4.jpg",
+      "../file/photography/成都·巴适得板/5.jpg",
+      "../file/photography/成都·巴适得板/6.jpg",
+      "../file/photography/成都·巴适得板/7.jpg"
+    ],
+    "location": "成都",
+    "date": "2022年7月13日",
+    "category": ["旅行"],
+    "tags": ["慢城", "茶馆", "暖调", "躺平"],
+    "description": "人民公园的盖碗茶把我泡成一株竹子，不想上班，只想发芽。"
+  },
+  {
+    "id": 41,
+    "title": "有温度重庆",
+    "images": [
+      "../file/photography/有温度重庆/23.jpg",
+      "../file/photography/有温度重庆/1.jpg",
+      "../file/photography/有温度重庆/2.jpg",
+      "../file/photography/有温度重庆/3.jpg",
+      "../file/photography/有温度重庆/4.jpg",
+      "../file/photography/有温度重庆/5.jpg",
+      "../file/photography/有温度重庆/6.jpg",
+      "../file/photography/有温度重庆/7.jpg",
+      "../file/photography/有温度重庆/8.jpg",
+      "../file/photography/有温度重庆/9.jpg",
+      "../file/photography/有温度重庆/10.jpg",
+      "../file/photography/有温度重庆/11.jpg",
+      "../file/photography/有温度重庆/12.jpg",
+      "../file/photography/有温度重庆/13.jpg",
+      "../file/photography/有温度重庆/14.jpg",
+      "../file/photography/有温度重庆/15.jpg",
+      "../file/photography/有温度重庆/16.jpg",
+      "../file/photography/有温度重庆/17.jpg",
+      "../file/photography/有温度重庆/18.jpg",
+      "../file/photography/有温度重庆/19.jpg",
+      "../file/photography/有温度重庆/20.jpg",
+      "../file/photography/有温度重庆/21.jpg",
+      "../file/photography/有温度重庆/22.jpg",
+      "../file/photography/有温度重庆/24.jpg",
+      "../file/photography/有温度重庆/25.jpg",
+      "../file/photography/有温度重庆/26.jpg",
+      "../file/photography/有温度重庆/27.jpg",
+      "../file/photography/有温度重庆/28.jpg",
+      "../file/photography/有温度重庆/29.jpg",
+      "../file/photography/有温度重庆/30.jpg"
+    ],
+    "location": "重庆",
+    "date": "2022年7月10日",
+    "category": ["旅行"],
+    "tags": ["烟火", "火锅", "暖色", "人情"],
+    "description": "30 张照片，每格温度 42℃，刚好涮一片毛肚。"
+  },
+  {
+    "id": 42,
+    "title": "鲜花·城市叛逆",
+    "images": [
+      "../file/photography/鲜花·城市叛逆/4.jpg",
+      "../file/photography/鲜花·城市叛逆/1.jpg",
+      "../file/photography/鲜花·城市叛逆/2.jpg",
+      "../file/photography/鲜花·城市叛逆/3.jpg"
+    ],
+    "location": "重庆",
+    "date": "2022年6月5日",
+    "category": ["城市"],
+    "tags": ["野花", "裂缝", "微距", "生命力"],
+    "description": "钢筋缝里开出的花，比玫瑰更懂革命。"
+  },
+  {
+    "id": 43,
+    "title": "雾都·大气失联",
+    "images": [
+      "../file/photography/雾都·大气失联/2.jpg",
+      "../file/photography/雾都·大气失联/1.jpg",
+      "../file/photography/雾都·大气失联/3.jpg",
+      "../file/photography/雾都·大气失联/4.jpg",
+      "../file/photography/雾都·大气失联/5.jpg",
+      "../file/photography/雾都·大气失联/6.jpg",
+      "../file/photography/雾都·大气失联/7.jpg",
+      "../file/photography/雾都·大气失联/8.jpg",
+      "../file/photography/雾都·大气失联/9.jpg",
+      "../file/photography/雾都·大气失联/10.jpg",
+      "../file/photography/雾都·大气失联/11.jpg",
+      "../file/photography/雾都·大气失联/12.jpg",
+      "../file/photography/雾都·大气失联/13.jpg",
+      "../file/photography/雾都·大气失联/14.jpg",
+      "../file/photography/雾都·大气失联/15.jpg"
+    ],
+    "location": "重庆",
+    "date": "2022年6月3日",
+    "category": ["城市"],
+    "tags": ["大雾", "冷色", "留白", "赛博"],
+    "description": "重庆把能见度调成 5%，让导航也迷了路。"
+  },
+  {
+    "id": 44,
+    "title": "彼方尚有荣光",
+    "images": [
+      "../file/photography/彼方尚有荣光/1.jpg",
+      "../file/photography/彼方尚有荣光/2.jpg",
+      "../file/photography/彼方尚有荣光/3.jpg",
+      "../file/photography/彼方尚有荣光/4.jpg",
+      "../file/photography/彼方尚有荣光/5.jpg",
+      "../file/photography/彼方尚有荣光/6.jpg",
+      "../file/photography/彼方尚有荣光/7.jpg",
+      "../file/photography/彼方尚有荣光/8.jpg",
+      "../file/photography/彼方尚有荣光/9.jpg",
+      "../file/photography/彼方尚有荣光/10.jpg",
+      "../file/photography/彼方尚有荣光/11.jpg",
+      "../file/photography/彼方尚有荣光/12.jpg",
+      "../file/photography/彼方尚有荣光/13.jpg",
+      "../file/photography/彼方尚有荣光/14.jpg",
+      "../file/photography/彼方尚有荣光/15.jpg",
+      "../file/photography/彼方尚有荣光/16.jpg",
+      "../file/photography/彼方尚有荣光/17.jpg",
+      "../file/photography/彼方尚有荣光/18.jpg"
+    ],
+    "location": "重庆",
+    "date": "2022年5月23日",
+    "category": ["城市"],
+    "tags": ["十八梯", "逆光", "金色", "微光城市"],
+    "description": "拆迁前的最后一缕夕照，像给老城颁发一枚迟到的勋章。"
+  },
+  {
+    "id": 45,
+    "title": "黑白·建校",
+    "images": [
+      "../file/photography/黑白·建校/1.jpg",
+      "../file/photography/黑白·建校/2.jpg",
+      "../file/photography/黑白·建校/3.jpg",
+      "../file/photography/黑白·建校/4.jpg",
+      "../file/photography/黑白·建校/5.jpg",
+      "../file/photography/黑白·建校/6.jpg",
+      "../file/photography/黑白·建校/7.jpg",
+      "../file/photography/黑白·建校/8.jpg",
+      "../file/photography/黑白·建校/9.jpg"
+    ],
+    "location": "学校",
+    "date": "2022年5月16日",
+    "category": ["校园"],
+    "tags": ["工地", "黑白", "局部色彩", "成长"],
+    "description": "教学楼的骨骼在黑白里疯长，只有安全帽还坚持黄色。"
+  }
+];
+
+  // 渲染照片网格
+  function renderGallery(list) {
+    const grid = document.getElementById('galleryGrid');
+    grid.innerHTML = '';
+    list.forEach(g => {
+      const card = document.createElement('div');
+      card.className = 'photo-card fade-in';
+      card.dataset.id = g.id;
+      const indicator = g.images.length > 1
+        ? `<div class="photo-group-indicator"><i class="fas fa-layer-group"></i> ${g.images.length}</div>`
+        : '';
+      card.innerHTML = `
+        <img src="${g.images[0]}" alt="${g.title}" class="photo-img">
+        ${indicator}
+        <div class="photo-overlay">
+          <h3 class="photo-title">${g.title}</h3>
+          <div class="photo-location"><i class="fas fa-location-dot"></i> ${g.location}</div>
+          <div class="photo-tags">${g.tags.map(t => `<span class="photo-tag">${t}</span>`).join('')}</div>
+        </div>`;
+      grid.appendChild(card);
+    });
+    addScrollAnimation();
+  }
+
+  // 滚动动画
+  function addScrollAnimation() {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('appear');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+  }
+
+  // 模态框
+  function setupModal() {
+    const modal = document.getElementById('photoModal');
+    const img = document.getElementById('modalImage');
+    const title = document.getElementById('modalTitle');
+    const loc = document.getElementById('modalLocation');
+    const date = document.getElementById('modalDate');
+    const desc = document.getElementById('modalDesc');
+    const tags = document.getElementById('modalTags');
+    const counter = document.getElementById('photoCounter');
+    const thumbCtn = document.getElementById('thumbnailContainer');
+    const closeBtn = document.querySelector('.close-btn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let group = null, idx = 0;
+
+    function openModal(id) {
+      group = photoGroups.find(g => g.id === id);
+      idx = 0;
+      updateModal();
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function updateModal() {
+      img.src = group.images[idx];
+      title.textContent = group.title;
+      loc.innerHTML = `<i class="fas fa-location-dot"></i> ${group.location}`;
+      date.innerHTML = `<i class="fas fa-calendar"></i> ${group.date}`;
+      desc.textContent = group.description;
+      counter.textContent = `${idx + 1} / ${group.images.length}`;
+      tags.innerHTML = group.tags.map(t => `<span class="photo-tag">${t}</span>`).join('');
+      // 缩略图
+      thumbCtn.innerHTML = '';
+      group.images.forEach((src, i) => {
+        const th = document.createElement('img');
+        th.src = src;
+        th.className = 'thumbnail' + (i === idx ? ' active' : '');
+        th.addEventListener('click', () => { idx = i; updateModal(); });
+        thumbCtn.appendChild(th);
+      });
+    }
+
+    prevBtn.addEventListener('click', () => {
+      idx = (idx - 1 + group.images.length) % group.images.length;
+      updateModal();
+    });
+    nextBtn.addEventListener('click', () => {
+      idx = (idx + 1) % group.images.length;
+      updateModal();
+    });
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeBtn.click();
+    });
+    document.addEventListener('keydown', e => {
+      if (!modal.classList.contains('open')) return;
+      if (e.key === 'ArrowLeft') prevBtn.click();
+      if (e.key === 'ArrowRight') nextBtn.click();
+      if (e.key === 'Escape') closeBtn.click();
+    });
+
+    // 卡片点击
+    document.addEventListener('click', e => {
+      const card = e.target.closest('.photo-card');
+      if (card) openModal(parseInt(card.dataset.id));
+    });
+  }
+
+  // 初始化
+  document.addEventListener('DOMContentLoaded', () => {
+    renderGallery(photoGroups);
+    setupModal();
+  });
+</script>
+
+</body>
+</html>

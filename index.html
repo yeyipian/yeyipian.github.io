@@ -8,6 +8,76 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="page/css/index.css">
     <link rel="icon" href="../logo.jpg" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <style>
+        /* 下拉菜单样式 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* 确保导航栏链接样式一致 */
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+        }
+        .wechat-trigger {
+    position: relative;
+}
+
+.wechat-qr {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: all .25s ease;
+    z-index: 1000;
+}
+
+.wechat-trigger:hover .wechat-qr {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+    </style>
 </head>
 
 <body>
@@ -15,10 +85,19 @@
     <nav class="navbar">
         <div class="logo">叶<span>一片</span></div>
         <ul class="nav-links">
-            <li><a href="#home">首页</a></li> 
-            <li><a href="blog.html">博客</a></li>
-            <li><a href="#features">功能入口</a></li>
-            <!-- <li><a href="#about">关于我</a></li> -->
+            <li><a href="#home">首页</a></li>
+            <!-- 下拉菜单 -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">我的世界</a>
+                <div class="dropdown-content">
+                    <a href="page/blog.html"><i class="fas fa-blog" style="margin-right: 5px;"></i> 个人博客</a>
+                    <a href="page/introduction.html"><i class="fas fa-book" style="margin-right: 5px;"></i> 个人简介</a>
+                    <a href="page/project.html"><i class="fas fa-images" style="margin-right: 5px;"></i> 作品集</a>
+                    <a href="page/photography.html"><i class="fas fa-camera" style="margin-right: 5px;"></i> 摄影集</a>
+                    <a href="page/equipment.html"><i class="fas fa-computer" style="margin-right: 5px;"></i> 装备栏</a>
+                    <a href="page/music.html"><i class="fas fa-music" style="margin-right: 5px;"></i> 音乐馆</a>
+                </div>
+            </li>
             <li><a href="#contact">联系</a></li>
         </ul>
     </nav>
@@ -30,7 +109,7 @@
         <!-- <div class="slogan floating">
             天地在兜里 我是叶一片
         </div> -->
-        <div class="social-icons" style="margin-bottom: 20px;" >
+        <div class="social-icons" style="margin-bottom: 20px;">
             <a href="#"><i class="fab fa-github"></i></a>
             <a href="#"><i class="fab fa-bilibili"></i></a>
             <a href="#"><i class="fab fa-tiktok"></i></a>
@@ -44,40 +123,13 @@
     <section class="features" id="features">
         <h2 class="section-title">我的世界</h2>
         <div class="features-grid">
-            <!-- <div class="feature-card fade-in">
-                <div class="feature-icon">
-                    <i class="fab fa-github"></i>
-                </div>
-                <h3 class="feature-title">GitHub</h3>
-                <p class="feature-desc">探索我的代码仓库，查看我的开源项目和开发作品</p>
-                <a href="#" class="btn">访问 GitHub</a>
-            </div>
-
-            <div class="feature-card fade-in">
-                <div class="feature-icon">
-                    <i class="fab fa-bilibili"></i>
-                </div>
-                <h3 class="feature-title">哔哩哔哩</h3>
-                <p class="feature-desc">观看我的视频内容，分享技术与创意</p>
-                <a href="#" class="btn">访问 B站</a>
-            </div>
-
-            <div class="feature-card fade-in">
-                <div class="feature-icon">
-                    <i class="fab fa-tiktok"></i>
-                </div>
-                <h3 class="feature-title">抖音</h3>
-                <p class="feature-desc">关注我的短视频，获取日常灵感和创意分享</p>
-                <a href="#" class="btn">访问抖音</a>
-            </div> -->
-
             <div class="feature-card fade-in">
                 <div class="feature-icon">
                     <i class="fas fa-blog"></i>
                 </div>
                 <h3 class="feature-title">个人博客</h3>
                 <p class="feature-desc">阅读我的技术文章和生活感悟</p>
-                <a href="blog.html" class="btn">访问博客</a>
+                <a href="page/blog.html" class="btn">访问博客</a>
             </div>
 
             <div class="feature-card fade-in">
@@ -86,7 +138,8 @@
                 </div>
                 <h3 class="feature-title">个人简介</h3>
                 <p class="feature-desc">了解我的经历、技能和个人故事</p>
-                <a href="#" class="btn">查看简介</a>
+                <a href="page/introduction.html" class="btn">查看简介</a>
+
             </div>
 
             <div class="feature-card fade-in">
@@ -95,8 +148,36 @@
                 </div>
                 <h3 class="feature-title">作品集</h3>
                 <p class="feature-desc">浏览我的设计作品和项目成果</p>
-                <a href="#" class="btn">查看作品</a>
+                <a href="page/project.html" class="btn">查看作品</a>
             </div>
+            <!-- 摄影集 -->
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <h3 class="feature-title">摄影集</h3>
+                <p class="feature-desc">查看我的摄影作品和照片集</p>
+                <a href="page/photography.html" class="btn">查看摄影集</a>
+            </div>
+            <!-- 装备 -->
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-computer"></i>
+                </div>
+                <h3 class="feature-title">装备栏</h3>
+                <p class="feature-desc">查看我的装备</p>
+                <a href="page/equipment.html" class="btn">查看装备</a>
+            </div>
+            <!-- 音乐馆 -->
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <h3 class="feature-title">音乐馆</h3>
+                <p class="feature-desc">查看我的音乐</p>
+                <a href="page/music.html" class="btn">查看音乐</a>
+            </div>
+
         </div>
     </section>
 
@@ -122,10 +203,12 @@
                 <h3>叶一片</h3>
                 <p style="color: #aaa; max-width: 300px; margin-bottom: 20px;">天地在兜里，我是叶一片</p>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-bilibili"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-weibo"></i></a>
+                    <a href="https://github.com/yeyipian"><i class="fab fa-github"></i></a>
+                    <a href="https://space.bilibili.com/87607674"><i class="fab fa-bilibili"></i></a>
+                    <a href="https://www.douyin.com/user/MS4wLjABAAAAliiakv9Jh2yOYOztD1uQHeruaGrUCgbbNvshN_hP2xZUNZi_7-EctVKtz1tstUDh?from_tab_name=main"
+                        target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://music.163.com/#/user/home?id=360800172" target="_blank"><i
+                            class="fa fa-music"></i></a>
                 </div>
             </div>
 
@@ -142,10 +225,10 @@
             <div class="footer-column">
                 <h3>探索更多</h3>
                 <ul class="footer-links">
-                    <li><a href="#">项目作品</a></li>
-                    <li><a href="#">摄影集</a></li>
-                    <li><a href="#">技术文章</a></li>
-                    <li><a href="#">设计资源</a></li>
+                    <li><a href="page/project.html">项目作品</a></li>
+                    <li><a href="page/photography.html">摄影集</a></li>
+                    <li><a href="page/equipment.html">装备栏</a></li>
+                    <li><a href="page/music.html">音乐馆</a></li>
                 </ul>
             </div>
 
@@ -153,18 +236,29 @@
                 <h3>联系我</h3>
                 <ul class="footer-links">
                     <li><a href="mailto:tizzyyc@163.com">tizzyyc@163.com</a></li>
-                    <li><a href="#">微信公众号</a></li>
-                    <li><a href="#">商务合作</a></li>
+                    <li class="wechat-trigger">
+                        <a>微信</a>
+                        <!-- 二维码弹层 -->
+                        <img class="wechat-qr" src="file/contact/wechat.jpg" alt="微信二维码">
+
+                    </li>
+                               <li class="wechat-trigger">
+                        <a>打赏一下</a>
+                        <!-- 二维码弹层 -->
+                        <img class="wechat-qr" src="file/contact/wechatpay.jpg" alt="微信二维码">
+
+                    </li>
                 </ul>
             </div>
         </div>
 
         <div class="copyright">
-            <p>&copy; 2023 叶一片 个人主页 | 风与我作伴白云作衣裳，天地在兜里面</p>
+            <p>&copy; 2025 叶一片 个人主页 | 风与我作伴白云作衣裳，天地在兜里面</p>
         </div>
     </footer>
 
     <script>
+
         // 滚动动画效果
         document.addEventListener('DOMContentLoaded', function () {
             const fadeElements = document.querySelectorAll('.fade-in');

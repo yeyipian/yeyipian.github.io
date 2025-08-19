@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摄影集 | 叶一片</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/photography.css">
+    <style>
+        /* 下拉菜单样式 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* 确保导航栏链接样式一致 */
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+        }
+
+
+        .wechat-trigger {
+            position: relative;
+        }
+
+        .wechat-qr {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 120px;
+            height: 120px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all .25s ease;
+            z-index: 1000;
+        }
+
+        .wechat-trigger:hover .wechat-qr {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">叶<span>一片</span></div>
+        <ul class="nav-links">
+            <li><a href="../index.html">首页</a></li>
+            <!-- 下拉菜单 -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">我的世界</a>
+                <div class="dropdown-content">
+                    <a href="../page/blog.html"><i class="fas fa-blog" style="margin-right: 5px;"></i> 个人博客</a>
+                    <a href="../page/introduction.html"><i class="fas fa-book" style="margin-right: 5px;"></i> 个人简介</a>
+                    <a href="../page/project.html"><i class="fas fa-images" style="margin-right: 5px;"></i> 作品集</a>
+                    <a href="#"><i class="fas fa-camera" style="margin-right: 5px;"></i> 摄影集</a>
+                    <a href="../page/equipment.html"><i class="fas fa-computer" style="margin-right: 5px;"></i> 装备栏</a>
+                    <a href="../page/music.html"><i class="fas fa-music" style="margin-right: 5px;"></i> 音乐馆</a>
+                </div>
+            </li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+    </nav>
+
+    <!-- 页面头部 -->
+    <header class="gallery-header">
+        <h1 class="gallery-title">光影世界</h1>
+        <p class="gallery-subtitle">透过镜头捕捉世界的瞬间，记录自然的诗意与城市的韵律。每一张照片都是时光的切片，讲述着独特的故事。</p>
+
+        <div class="gallery-stats">
+            <div class="stat-item">
+                <span class="number">45</span>
+                <span class="label">摄影作品</span>
+            </div>
+            <div class="stat-item">
+                <span class="number">26</span>
+                <span class="label">走过城市</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 摄影集网格 -->
+    <div class="gallery-container">
+        <div class="section-header">
+            <h2 class="section-title" style="color: white;">全部摄影作品</h2>
+            <a href="./AllPhotography.html" class="view-all">查看全部 <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- 照片卡片将通过JS动态生成 -->
+        </div>
+    </div>
+
+    <!-- 精选作品 -->
+    <section class="featured-section">
+        <h2 class="section-title" style="color: white;">精选作品</h2>
+
+        <div class="featured-grid" id="featuredGrid">
+            <!-- 精选作品卡片将通过JS动态生成 -->
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>叶一片</h3>
+                <p style="color: #aaa; max-width: 300px; margin-bottom: 20px;">探索数字世界的旅人，创造与分享的爱好者</p>
+                <div class="social-icons">
+                    <a href="https://github.com/yeyipian" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://space.bilibili.com/87607674"><i class="fab fa-bilibili"></i></a>
+                    <a href="https://www.douyin.com/user/MS4wLjABAAAAliiakv9Jh2yOYOztD1uQHeruaGrUCgbbNvshN_hP2xZUNZi_7-EctVKtz1tstUDh?from_tab_name=main"
+                        target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://music.163.com/#/user/home?id=360800172" target="_blank"><i
+                            class="fa fa-music"></i></a>
+                    <!-- <a href="https://weibo.com" target="_blank"><i class="fab fa-weibo"></i></a> -->
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>摄影主题</h3>
+                <ul class="footer-links">
+                    <li><a href="#">自然风光</a></li>
+                    <li><a href="#">城市建筑</a></li>
+                    <li><a href="#">人文纪实</a></li>
+                    <li><a href="#">夜景长曝</a></li>
+                    <li><a href="#">微距世界</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>摄影地点</h3>
+                <ul class="footer-links">
+                    <li><a href="#">中国系列</a></li>
+                    <li><a href="#">日本系列</a></li>
+                    <li><a href="#">东南亚系列</a></li>
+                    <li><a href="#">欧洲系列</a></li>
+                    <li><a href="#">北美系列</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>联系我</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:tizzyyc@163.com">tizzyyc@163.com</a></li>
+                    <li class="wechat-trigger">
+                        <a>微信</a>
+                        <!-- 二维码弹层 -->
+                        <img class="wechat-qr" src="../file/contact/wechat.jpg" alt="微信二维码">
+
+                    </li>
+                    <li class="wechat-trigger">
+                        <a>打赏一下</a>
+                        <!-- 二维码弹层 -->
+                        <img class="wechat-qr" src="../file/contact/wechatpay.jpg" alt="微信二维码">
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 叶一片摄影集 | 风与我作伴白云作衣裳，天地在兜里面</p>
+            <p style="margin-top: 10px;">所有图片版权归叶一片所有，未经许可不得使用</p>
+        </div>
+    </footer>
+
+    <!-- 图片模态框 -->
+    <div id="photoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-nav">
+                <div class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></div>
+                <div class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></div>
+            </div>
+            <div class="modal-img-container">
+                <img id="modalImage" class="modal-img" src="" alt="摄影作品">
+                <div class="photo-counter" id="photoCounter">1 / 5</div>
+            </div>
+            <div class="thumbnail-container" id="thumbnailContainer">
+                <!-- 缩略图将通过JS动态生成 -->
+            </div>
+            <div class="modal-info">
+                <h2 id="modalTitle" class="modal-title"></h2>
+                <div class="modal-meta">
+                    <span id="modalLocation"></span>
+                    <span id="modalDate"></span>
+                    <span id="modalCamera"></span>
+                    <span id="modalSettings"></span>
+                </div>
+                <p id="modalDesc" class="modal-desc"></p>
+                <div class="photo-tags" id="modalTags"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 照片组数据数组 - 每组包含多张照片
+        const photoGroups = [
+            {
+                id: 1,
+                title: "登泰山而小天下",
+                images: [
+                    "../file/photography/登泰山而小天下/1.jpg",
+                    "../file/photography/登泰山而小天下/2.jpg",
+                    "../file/photography/登泰山而小天下/3.jpg",
+                    "../file/photography/登泰山而小天下/4.jpg",
+                    "../file/photography/登泰山而小天下/5.jpg",
+                    "../file/photography/登泰山而小天下/6.jpg",
+                    "../file/photography/登泰山而小天下/7.jpg",
+                    "../file/photography/登泰山而小天下/8.jpg"
+                ],
+                location: "泰安泰山",
+                date: "2025年6月13日",
+                category: ["旅行"],
+                tags: ["极简", "日出", "负空间", "顿悟"],
+                description: "把十八盘折叠成一条直线，日出像一枚公章，在云海合同上盖下'渺小'二字。",
+                featured: false
+            },
+            {
+                id: 2,
+                title: "泉城72次心跳",
+                images: [
+                    "../file/photography/泉城72次心跳/5.jpg",
+                    "../file/photography/泉城72次心跳/1.jpg",
+                    "../file/photography/泉城72次心跳/2.jpg",
+                    "../file/photography/泉城72次心跳/3.jpg",
+                    "../file/photography/泉城72次心跳/4.jpg",
+                    "../file/photography/泉城72次心跳/6.jpg",
+                    "../file/photography/泉城72次心跳/7.jpg",
+                    "../file/photography/泉城72次心跳/8.jpg",
+                    "../file/photography/泉城72次心跳/9.jpg",
+                ],
+                location: "济南",
+                date: "2025年6月12日",
+                category: ["旅行"],
+                tags: ["泉水", "蓝色时刻", "微距", "疗愈"],
+                description: "趵突泉的每一次脉动，都是地球在深夜偷偷按下的 F5。",
+                featured: false
+            },
+            {
+                id: 3,
+                title: "香港·姐姐与我",
+                images: [
+                    "../file/photography/香港·姐姐与我/12.jpg",
+                    "../file/photography/香港·姐姐与我/1.jpg",
+                    "../file/photography/香港·姐姐与我/2.jpg",
+                    "../file/photography/香港·姐姐与我/3.jpg",
+                    "../file/photography/香港·姐姐与我/4.jpg",
+                    "../file/photography/香港·姐姐与我/5.jpg",
+                    "../file/photography/香港·姐姐与我/6.jpg",
+                    "../file/photography/香港·姐姐与我/7.jpg",
+                    "../file/photography/香港·姐姐与我/8.jpg",
+                    "../file/photography/香港·姐姐与我/9.jpg",
+                    "../file/photography/香港·姐姐与我/10.jpg",
+                    "../file/photography/香港·姐姐与我/11.jpg",
+                    "../file/photography/香港·姐姐与我/13.jpg",
+                    "../file/photography/香港·姐姐与我/14.jpg",
+                    "../file/photography/香港·姐姐与我/15.jpg",
+                ],
+                location: "香港",
+                date: "2024年7月6日",
+                category: ["旅行"],
+                tags: ["亲情", "霓虹", "胶片", "时光隧道"],
+                description: "她带我穿过重庆大厦的迷宫，像穿过她迟到的青春期，把狮子山日落塞进我的口袋。",
+                featured: false
+            },
+            {
+                id: 4,
+                title: "军旗升旗的地方",
+                images: [
+                    "../file/photography/军旗升旗的地方/5.jpg",
+                    "../file/photography/军旗升旗的地方/1.jpg",
+                    "../file/photography/军旗升旗的地方/2.jpg",
+                    "../file/photography/军旗升旗的地方/3.jpg",
+                    "../file/photography/军旗升旗的地方/4.jpg",
+                    "../file/photography/军旗升旗的地方/6.jpg",
+                    "../file/photography/军旗升旗的地方/7.jpg",
+                    "../file/photography/军旗升旗的地方/8.jpg",
+                    "../file/photography/军旗升旗的地方/9.jpg",
+                ],
+                location: "南昌",
+                date: "2023年7月18日",
+                category: ["旅行"],
+                tags: ["军史", "日出", "广角", "肃穆"],
+                description: "八一广场的旗杆把天空刺破一个洞，1933年的号角声还在里面回响。",
+                featured: false
+            },
+            {
+                id: 5,
+                title: "千户苗寨",
+                images: [
+                    "../file/photography/千户苗寨/1.jpg",
+                    "../file/photography/千户苗寨/2.jpg",
+                    "../file/photography/千户苗寨/3.jpg",
+                    "../file/photography/千户苗寨/4.jpg",
+                    "../file/photography/千户苗寨/5.jpg",
+                    "../file/photography/千户苗寨/6.jpg",
+                    "../file/photography/千户苗寨/7.jpg",
+                    "../file/photography/千户苗寨/8.jpg",
+                    "../file/photography/千户苗寨/9.jpg",
+                ],
+                location: "苗族自治州",
+                date: "2023年7月16日",
+                category: ["旅行"],
+                tags: ["苗绣", "星空", "梯田", "民族志"],
+                description: "吊脚楼的灯火亮起，像把银河穿成了苗绣，一针一线都是古老方言。",
+                featured: false
+            },
+            {
+                id: 6,
+                title: "爽爽贵阳",
+                images: [
+                    "../file/photography/爽爽贵阳/1.jpg",
+                    "../file/photography/爽爽贵阳/2.jpg",
+                    "../file/photography/爽爽贵阳/3.jpg",
+                    "../file/photography/爽爽贵阳/4.jpg",
+                    "../file/photography/爽爽贵阳/5.jpg",
+                    "../file/photography/爽爽贵阳/6.jpg",
+                    "../file/photography/爽爽贵阳/7.jpg",
+                    "../file/photography/爽爽贵阳/8.jpg",
+                    "../file/photography/爽爽贵阳/9.jpg",
+                ],
+                location: "贵阳",
+                date: "2023年7月14日",
+                category: ["旅行"],
+                tags: ["高原", "冷色", "几何", "避暑"],
+                description: "贵阳的云像没拧紧的牙膏，挤出大片凉意，把夏天按了暂停键。",
+                featured: false
+            },
+            {
+                id: 7,
+                title: "武汉·四月樱吹雪",
+                images: [
+                    "../file/photography/武汉·四月樱吹雪/1.jpg",
+                    "../file/photography/武汉·四月樱吹雪/2.jpg",
+                    "../file/photography/武汉·四月樱吹雪/3.jpg",
+                    "../file/photography/武汉·四月樱吹雪/4.jpg",
+                    "../file/photography/武汉·四月樱吹雪/5.jpg",
+                    "../file/photography/武汉·四月樱吹雪/6.jpg",
+                    "../file/photography/武汉·四月樱吹雪/7.jpg",
+                    "../file/photography/武汉·四月樱吹雪/8.jpg",
+                    "../file/photography/武汉·四月樱吹雪/9.jpg",
+                    "../file/photography/武汉·四月樱吹雪/10.jpg",
+                    "../file/photography/武汉·四月樱吹雪/11.jpg",
+                    "../file/photography/武汉·四月樱吹雪/12.jpg",
+                    "../file/photography/武汉·四月樱吹雪/13.jpg",
+                    "../file/photography/武汉·四月樱吹雪/14.jpg",
+                    "../file/photography/武汉·四月樱吹雪/15.jpg",
+                    "../file/photography/武汉·四月樱吹雪/16.jpg",
+                    "../file/photography/武汉·四月樱吹雪/17.jpg",
+                    "../file/photography/武汉·四月樱吹雪/18.jpg",
+                ],
+                location: "武汉",
+                date: "2023年4月4日",
+                category: ["旅行"],
+                tags: ["樱花", "长堤", "胶片", "春日暴动"],
+                description: "东湖的樱花像一场粉色雪崩，掩埋了封城的记忆，也掩埋了我。",
+                featured: false
+            },
+            {
+                id: 8,
+                title: "蓝色洪崖洞",
+                images: [
+                    "../file/photography/蓝色洪崖洞/3.jpg",
+                    "../file/photography/蓝色洪崖洞/1.jpg",
+                    "../file/photography/蓝色洪崖洞/2.jpg",
+                    "../file/photography/蓝色洪崖洞/4.jpg",
+                    "../file/photography/蓝色洪崖洞/5.jpg",
+                    "../file/photography/蓝色洪崖洞/6.jpg",
+                    "../file/photography/蓝色洪崖洞/7.jpg",
+                ],
+                location: "重庆大剧院",
+                date: "2023年2月11日",
+                category: ["城市"],
+                tags: ["大剧院", "镜面", "蓝调", "倒影"],
+                description: "嘉陵江把夜色打成碎片，大剧院一块块捡起来，拼成蓝色拼图。",
+                featured: false
+            }
+        ];
+
+        // 精选作品数据
+        const featuredPhotoGroups = [
+            {
+                id: 12,
+                title: "重庆大礼堂·穹顶之下",
+                images: [
+                    "../file/photography/重庆大礼堂·穹顶之下/5.jpg",
+                    "../file/photography/重庆大礼堂·穹顶之下/2.jpg",
+                    "../file/photography/重庆大礼堂·穹顶之下/3.jpg",
+                    "../file/photography/重庆大礼堂·穹顶之下/4.jpg",
+                    "../file/photography/重庆大礼堂·穹顶之下/1.jpg",
+                    "../file/photography/重庆大礼堂·穹顶之下/6.jpg",
+                    "../file/photography/重庆大礼堂·穹顶之下/7.jpg",
+                    "../file/photography/重庆大礼堂·穹顶之下/8.jpg",
+                    "../file/photography/重庆大礼堂·穹顶之下/9.jpg"
+                ],
+                location: "重庆大礼堂",
+                date: "2023年3月13日",
+                category: ["城市"],
+                tags: ["穹顶", "对称", "黑白", "庄严"],
+                description: "罗马柱撑起的回声，把我的脚步声翻译成拉丁文的祷词。",
+                featured: true
+            },
+              {
+                id: 7,
+                title: "武汉·四月樱吹雪",
+                images: [
+                    "../file/photography/武汉·四月樱吹雪/2.jpg",
+                    "../file/photography/武汉·四月樱吹雪/1.jpg",
+                    "../file/photography/武汉·四月樱吹雪/3.jpg",
+                    "../file/photography/武汉·四月樱吹雪/4.jpg",
+                    "../file/photography/武汉·四月樱吹雪/5.jpg",
+                    "../file/photography/武汉·四月樱吹雪/6.jpg",
+                    "../file/photography/武汉·四月樱吹雪/7.jpg",
+                    "../file/photography/武汉·四月樱吹雪/8.jpg",
+                    "../file/photography/武汉·四月樱吹雪/9.jpg",
+                    "../file/photography/武汉·四月樱吹雪/10.jpg",
+                    "../file/photography/武汉·四月樱吹雪/11.jpg",
+                    "../file/photography/武汉·四月樱吹雪/12.jpg",
+                    "../file/photography/武汉·四月樱吹雪/13.jpg",
+                    "../file/photography/武汉·四月樱吹雪/14.jpg",
+                    "../file/photography/武汉·四月樱吹雪/15.jpg",
+                    "../file/photography/武汉·四月樱吹雪/16.jpg",
+                    "../file/photography/武汉·四月樱吹雪/17.jpg",
+                    "../file/photography/武汉·四月樱吹雪/18.jpg",
+                ],
+                location: "武汉",
+                date: "2023年4月4日",
+                category: ["旅行"],
+                tags: ["樱花", "长堤", "胶片", "春日暴动"],
+                description: "东湖的樱花像一场粉色雪崩，掩埋了封城的记忆，也掩埋了我。",
+                featured: false
+            },
+ {
+    "id": 32,
+    "title": "开往春天的列车",
+    "images": [
+      "../file/photography/开往春天的列车/5.jpg",
+      "../file/photography/开往春天的列车/1.jpg",
+      "../file/photography/开往春天的列车/2.jpg",
+      "../file/photography/开往春天的列车/3.jpg",
+      "../file/photography/开往春天的列车/4.jpg",
+      "../file/photography/开往春天的列车/6.jpg",
+      "../file/photography/开往春天的列车/7.jpg",
+      "../file/photography/开往春天的列车/8.jpg",
+      "../file/photography/开往春天的列车/9.jpg"
+    ],
+    "location": "重庆佛图关",
+    "date": "2023年2月27日",
+    "category": ["城市"],
+    "tags": ["轻轨", "花海", "速度", "希望"],
+    "description": "列车穿过佛图关的二月，像子弹穿过糖纸，留下一地粉色弹壳。"
+  },
+        ];
+
+        // 渲染照片网格
+        function renderGallery(photoGroupsArray) {
+            const galleryGrid = document.getElementById('galleryGrid');
+            galleryGrid.innerHTML = '';
+
+            photoGroupsArray.forEach(group => {
+                const photoCard = document.createElement('div');
+                photoCard.className = 'photo-card fade-in';
+                photoCard.dataset.id = group.id;
+                photoCard.dataset.category = group.category.join(' ');
+
+                // 照片组指示器
+                const photoCountIndicator = group.images.length > 1 ?
+                    `<div class="photo-group-indicator">
+                        <i class="fas fa-layer-group"></i> ${group.images.length}
+                    </div>` : '';
+
+                photoCard.innerHTML = `
+                    <img src="${group.images[0]}" alt="${group.title}" class="photo-img">
+                    ${photoCountIndicator}
+                    <div class="photo-overlay">
+                        <h3 class="photo-title">${group.title}</h3>
+                        <div class="photo-location">
+                            <i class="fas fa-location-dot"></i> ${group.location}
+                        </div>
+                        <div class="photo-tags">
+                            ${group.tags.map(tag => `<span class="photo-tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+
+                galleryGrid.appendChild(photoCard);
+            });
+
+            // 添加滚动动画观察器
+            addScrollAnimation();
+        }
+
+        // 渲染精选作品
+        function renderFeatured() {
+            const featuredGrid = document.getElementById('featuredGrid');
+            featuredGrid.innerHTML = '';
+
+            featuredPhotoGroups.forEach(group => {
+                const featuredCard = document.createElement('div');
+                featuredCard.className = 'featured-card fade-in';
+                featuredCard.dataset.id = group.id;
+
+                // 照片组指示器
+                const photoCountIndicator = group.images.length > 1 ?
+                    `<div class="photo-group-indicator">
+                        <i class="fas fa-layer-group"></i> ${group.images.length} 张照片
+                    </div>` : '';
+
+                featuredCard.innerHTML = `
+                    <div style="position: relative;">
+                        <img src="${group.images[0]}" alt="${group.title}" class="featured-img">
+                        ${photoCountIndicator}
+                    </div>
+                    <div class="featured-content">
+                        <h3 class="featured-title">${group.title}</h3>
+                        <div class="featured-meta">
+                            <span><i class="fas fa-location-dot"></i> ${group.location}</span>
+                            <span><i class="fas fa-calendar"></i> ${group.date}</span>
+                        </div>
+                        <p class="featured-desc">
+                            ${group.description}
+                        </p>
+                        <div class="photo-tags">
+                            ${group.tags.map(tag => `<span class="photo-tag" style="background: #f0f7ff; color: #0071e3;">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+
+                featuredGrid.appendChild(featuredCard);
+            });
+
+            // 添加滚动动画观察器
+            addScrollAnimation();
+        }
+
+        // 滚动动画效果
+        function addScrollAnimation() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // 模态框功能
+        function setupModal() {
+            const modal = document.getElementById('photoModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalLocation = document.getElementById('modalLocation');
+            const modalDate = document.getElementById('modalDate');
+            const modalDesc = document.getElementById('modalDesc');
+            const modalTags = document.getElementById('modalTags');
+            const closeBtn = document.querySelector('.close-btn');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const thumbnailContainer = document.getElementById('thumbnailContainer');
+            const photoCounter = document.getElementById('photoCounter');
+
+            let currentGroup = null;
+            let currentPhotoIndex = 0;
+
+            // 打开模态框
+            function openModal(groupId, groupsArray) {
+                currentGroup = groupsArray.find(g => g.id === groupId);
+                currentPhotoIndex = 0;
+                updateModalContent();
+
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // 更新模态框内容
+            function updateModalContent() {
+                modalImg.src = currentGroup.images[currentPhotoIndex];
+                modalTitle.textContent = currentGroup.title;
+                modalLocation.innerHTML = `<i class="fas fa-location-dot"></i> ${currentGroup.location}`;
+                modalDate.innerHTML = `<i class="fas fa-calendar"></i> ${currentGroup.date}`;
+                modalDesc.textContent = currentGroup.description;
+
+                // 更新照片计数器
+                photoCounter.textContent = `${currentPhotoIndex + 1} / ${currentGroup.images.length}`;
+
+                // 更新标签
+                modalTags.innerHTML = '';
+                currentGroup.tags.forEach(tag => {
+                    const tagSpan = document.createElement('span');
+                    tagSpan.className = 'photo-tag';
+                    tagSpan.textContent = tag;
+                    modalTags.appendChild(tagSpan);
+                });
+
+                // 更新缩略图
+                updateThumbnails();
+            }
+
+            // 更新缩略图
+            function updateThumbnails() {
+                thumbnailContainer.innerHTML = '';
+
+                currentGroup.images.forEach((img, index) => {
+                    const thumbnail = document.createElement('img');
+                    thumbnail.src = img;
+                    thumbnail.className = 'thumbnail';
+                    if (index === currentPhotoIndex) {
+                        thumbnail.classList.add('active');
+                    }
+
+                    thumbnail.addEventListener('click', () => {
+                        currentPhotoIndex = index;
+                        updateModalContent();
+                    });
+
+                    thumbnailContainer.appendChild(thumbnail);
+                });
+            }
+
+            // 上一张
+            prevBtn.addEventListener('click', function () {
+                currentPhotoIndex = (currentPhotoIndex - 1 + currentGroup.images.length) % currentGroup.images.length;
+                updateModalContent();
+            });
+
+            // 下一张
+            nextBtn.addEventListener('click', function () {
+                currentPhotoIndex = (currentPhotoIndex + 1) % currentGroup.images.length;
+                updateModalContent();
+            });
+
+            // 关闭模态框
+            closeBtn.addEventListener('click', function () {
+                modal.classList.remove('open');
+                document.body.style.overflow = 'auto';
+            });
+
+            // 点击模态框背景关闭
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) {
+                    modal.classList.remove('open');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // 为照片卡片添加点击事件（事件委托）
+            document.addEventListener('click', function (e) {
+                const photoCard = e.target.closest('.photo-card');
+                if (photoCard) {
+                    const groupId = parseInt(photoCard.dataset.id);
+                    openModal(groupId, photoGroups);
+                }
+
+                const featuredCard = e.target.closest('.featured-card');
+                if (featuredCard) {
+                    const groupId = parseInt(featuredCard.dataset.id);
+                    openModal(groupId, [...photoGroups, ...featuredPhotoGroups]);
+                }
+            });
+
+            // 键盘导航支持
+            document.addEventListener('keydown', function (e) {
+                if (!modal.classList.contains('open')) return;
+
+                if (e.key === 'ArrowLeft') {
+                    currentPhotoIndex = (currentPhotoIndex - 1 + currentGroup.images.length) % currentGroup.images.length;
+                    updateModalContent();
+                } else if (e.key === 'ArrowRight') {
+                    currentPhotoIndex = (currentPhotoIndex + 1) % currentGroup.images.length;
+                    updateModalContent();
+                } else if (e.key === 'Escape') {
+                    modal.classList.remove('open');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function () {
+            // 渲染初始页面
+            renderGallery(photoGroups);
+            renderFeatured();
+
+            // 设置功能
+            setupModal();
+        });
+        // 导航栏滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

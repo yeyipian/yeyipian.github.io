@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目集 | 叶一片</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/project.css">
+    <style>
+        /* 下拉菜单样式 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* 确保导航栏链接样式一致 */
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+        }
+
+
+        .wechat-trigger {
+            position: relative;
+        }
+
+        .wechat-qr {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 120px;
+            height: 120px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all .25s ease;
+            z-index: 1000;
+        }
+
+        .wechat-trigger:hover .wechat-qr {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">叶<span>一片</span></div>
+        <ul class="nav-links">
+            <li><a href="../index.html">首页</a></li>
+            <!-- 下拉菜单 -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">我的世界</a>
+                <div class="dropdown-content">
+                    <a href="../page/blog.html"><i class="fas fa-blog" style="margin-right: 5px;"></i> 个人博客</a>
+                    <a href="../page/introduction.html"><i class="fas fa-book" style="margin-right: 5px;"></i> 个人简介</a>
+                    <a href="#"><i class="fas fa-images" style="margin-right: 5px;"></i> 作品集</a>
+                    <a href="../page/photography.html"><i class="fas fa-camera" style="margin-right: 5px;"></i> 摄影集</a>
+                    <a href="../page/equipment.html"><i class="fas fa-computer" style="margin-right: 5px;"></i> 装备栏</a>
+                    <a href="../page/music.html"><i class="fas fa-music" style="margin-right: 5px;"></i> 音乐馆</a>
+                </div>
+            </li>
+            <li><a href="#contact">联系</a></li>
+
+        </ul>
+    </nav>
+
+    <!-- 页面头部 -->
+    <header class="portfolio-header">
+        <h1 class="portfolio-title">作品集</h1>
+        <p class="portfolio-subtitle">探索技术与设计的交汇点，创造解决实际问题的数字产品。</p>
+
+        <!-- <div class="portfolio-stats">
+            <div class="stat-item">
+                <div class="number">24</div>
+                <div>已完成项目</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">8</div>
+                <div>进行中项目</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">16</div>
+                <div>技术栈应用</div>
+            </div>
+        </div> -->
+    </header>
+
+    <!-- 项目网格 -->
+    <!--      
+    <div class="portfolio-container">
+        <div class="portfolio-grid">
+     
+            <div class="project-card fade-in">
+                <div class="project-image" style="background: linear-gradient(45deg, #6a11cb, #2575fc);">
+                    <div style="display: flex; height: 100%; align-items: center; justify-content: center; color: white; font-size: 1.8rem; padding: 20px; text-align: center;">智能任务管理系统</div>
+                </div>
+                <div class="project-content">
+                    <span class="project-category">Web应用</span>
+                    <h3 class="project-title">TaskFlow 智能任务管理平台</h3>
+                    <p class="project-desc">基于AI的任务管理平台，通过智能算法优化任务分配和优先级排序，提高团队生产力。</p>
+                    <div class="project-meta">
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">AI集成</span>
+                        </div>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- 特色项目 -->
+    <section class="featured-projects">
+        <!-- <h2 class="section-title">精选项目</h2> -->
+
+        <!-- 特色项目1 -->
+        <div class="featured-project fade-in">
+            <div class="featured-image" style="background: linear-gradient(45deg, #6a11cb, #2575fc);">
+                <div style="text-align: center; color: white; padding: 30px;">
+                    <h3 style="font-size: 2.5rem; margin-bottom: 20px;">轨道交通管理系统</h3>
+                    <p>地铁脉搏，数据跳动，智慧出行</p>
+                </div>
+            </div>
+            <div class="featured-details">
+                <span class="featured-category">企业级全栈Web应用 · 数字化交通解决方案 · 毕业设计</span>
+                <h3 class="featured-title">轨道交通管理系统</h3>
+                <p class="featured-desc">
+                    本项目是一个面向城市轨道交通运营的数字化管理平台，旨在解决传统管理模式中存在的数据孤岛、信息整合困难、决策滞后等问题。
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-item">Vue.js</span>
+                    <span class="tech-item">Spring Boot</span>
+                    <span class="tech-item">MyBatis</span>
+                    <span class="tech-item">MySQL 8.0</span>
+                    <span class="tech-item">Redis</span>
+                </div>
+                <div class="project-links">
+                    <a href="./project/transit.html" class="btn">
+                        <i class="fas fa-external-link-alt"></i> 查看项目
+                    </a>
+                    <a href="#" class="btn btn-outline">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 特色项目2 -->
+
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer" id="contact">
+
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>叶一片</h3>
+                <p style="color: #aaa; max-width: 300px; margin-bottom: 20px;">探索数字世界的旅人，创造与分享的爱好者</p>
+                <div class="social-icons">
+                    <a href="https://github.com/yeyipian" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://space.bilibili.com/87607674"><i class="fab fa-bilibili"></i></a>
+                    <a href="https://www.douyin.com/user/MS4wLjABAAAAliiakv9Jh2yOYOztD1uQHeruaGrUCgbbNvshN_hP2xZUNZi_7-EctVKtz1tstUDh?from_tab_name=main"
+                        target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://music.163.com/#/user/home?id=360800172" target="_blank"><i
+                            class="fa fa-music"></i></a>
+                    <!-- <a href="https://weibo.com" target="_blank"><i class="fab fa-weibo"></i></a> -->
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>项目分类</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Web应用</a></li>
+                    <li><a href="#">移动应用</a></li>
+                    <li><a href="#">UI/UX设计</a></li>
+                    <li><a href="#">开源项目</a></li>
+                    <li><a href="#">设计系统</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>项目展示</h3>
+                <ul class="footer-links">
+                    <li><a href="#">精选项目</a></li>
+                    <li><a href="#">最新项目</a></li>
+                    <li><a href="#">开源项目</a></li>
+                    <li><a href="#">设计案例</a></li>
+                    <li><a href="#">技术文章</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>联系我</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:tizzyyc@163.com">tizzyyc@163.com</a></li>
+                    <li class="wechat-trigger">
+                        <a>微信</a>
+                        <!-- 二维码弹层 -->
+                        <img class="wechat-qr" src="../file/contact/wechat.jpg" alt="微信二维码">
+
+                    </li>
+                    <li class="wechat-trigger">
+                        <a>打赏一下</a>
+                        <!-- 二维码弹层 -->
+                        <img class="wechat-qr" src="../file/contact/wechatpay.jpg" alt="微信二维码">
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 叶一片项目集 | 风与我作伴白云作衣裳，天地在兜里面</p>
+            <p style="margin-top: 10px;">用技术创造价值，用设计传递情感</p>
+        </div>
+    </footer>
+
+    <script>
+        // 项目筛选功能
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const category = this.textContent;
+                // 这里可以添加实际的筛选逻辑
+                alert('将筛选分类: ' + category);
+            });
+        });
+
+        // 滚动动画效果
+        document.addEventListener('DOMContentLoaded', function () {
+            const fadeElements = document.querySelectorAll('.fade-in');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+        // 导航栏滚动事件
+        window.addEventListener('scroll', function () {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+
+        // 项目链接交互
+        document.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const projectCard = this.closest('.project-card');
+                const title = projectCard.querySelector('.project-title').textContent;
+                alert('查看项目: ' + title);
+            });
+        });
+    </script>
+</body>
+
+</html>
