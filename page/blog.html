@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/blog.css">
     <link rel="icon" href="../logo.jpg" type="image/x-icon">
     <style>
-        /* 下拉菜单样式 */
+        /* 基础样式保持不变 */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -42,7 +42,6 @@
             display: block;
         }
 
-        /* 确保导航栏链接样式一致 */
         .nav-links li {
             position: relative;
         }
@@ -77,16 +76,84 @@
             visibility: visible;
             transform: translateY(0);
         }
+
+        /* 动画效果 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* 分页样式 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+            gap: 8px;
+        }
+
+        .pagination button {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pagination button:hover {
+            background-color: #f5f5f5;
+            border-color: #ccc;
+        }
+
+        .pagination button.active {
+            background-color: #0071e3;
+            color: white;
+            border-color: #0071e3;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-info {
+            margin: 0 10px;
+            color: #666;
+        }
     </style>
 </head>
 
 <body>
     <!-- 导航栏 -->
     <nav class="navbar">
-        <div class="logo">叶<span>一片</span></div>
+        <a href="../index.html" class="logo">叶<span>一片</span></a>
         <ul class="nav-links">
             <li><a href="../index.html">首页</a></li>
-            <!-- 下拉菜单 -->
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle">我的世界</a>
                 <div class="dropdown-content">
@@ -108,130 +175,23 @@
         <p>分享技术思考、设计理念与生活感悟 · 探索数字世界的无限可能</p>
         <div class="blog-stats">
             <div class="stat-item">
-                <div class="number">2</div>
+                <div class="number">5</div> <!-- 总文章数增加以便演示分页 -->
                 <div>篇博文</div>
             </div>
             <div class="stat-item">
                 <div class="number">
                     <a href="blog/classification/lassification.html"
-                        style="color: #0071e3; text-decoration: none;">2</a>
+                        style="color: #0071e3; text-decoration: none;">6</a>
                 </div>
                 <div>个分类</div>
             </div>
-            <!-- <div class="stat-item">
-                <div class="number">126</div>
-                <div>个标签</div>
-            </div> -->
         </div>
     </header>
 
     <!-- 博客内容 -->
     <div class="blog-container">
-        <main class="blog-content">
-            <!-- 文章1 -->
-            <article class="post-card fade-in">
-                <div class="post-image floating" style="background: linear-gradient(45deg, #6a11cb, #2575fc);">
-                    软件测试-测试基础篇
-                </div>
-                <div class="post-content">
-                    <div class="post-meta">
-                        <span><i class="far fa-calendar"></i> 2025年80月18日</span>
-                        <span><i class="far fa-folder"></i> 软件测试</span>
-                    </div>
-                    <div class="post-tags">
-                        <span class="tag">软件测试</span>
-                        <span class="tag">测试基础</span>
-                        <span class="tag">测试用例</span>
-                        <span class="tag">缺陷管理</span>
-                        <span class="tag">质量保障</span>
-                    </div>
-                    <h2 class="post-title">软件测试-测试基础篇</h2>
-                    <p class="post-excerpt">
-                        摘要：介绍测试定义、分类、质量模型、用例编写、业务测试、Web 测试、缺陷管理及项目全流程。
-                    </p>
-                    <a href="blog/post1.html" class="btn">阅读全文</a>
-                </div>
-            </article>
-
-            <!-- 文章2 -->
-            <article class="post-card fade-in">
-                <div class="post-image floating" style="background: linear-gradient(45deg, #ff416c, #ff4b2b);">
-                    ❌拒绝“被”动态
-                </div>
-                <div class="post-content">
-                    <div class="post-meta">
-                        <span><i class="far fa-calendar"></i> 2025年02月16日</span>
-                        <span><i class="far fa-folder"></i> 社会观察</span>
-                    </div>
-                    <div class="post-tags">
-                        <span class="tag">被动态</span>
-                        <span class="tag">语言异化</span>
-                        <span class="tag">个体困境</span>
-                        <span class="tag">社会观察</span>
-                    </div>
-                    <h2 class="post-title">❌拒绝“被”动态</h2>
-                    <p class="post-excerpt">
-                        摘要：作者近期忙碌于上班、毕业设计等事务，重看《外来媳妇本地郎》受启发，发现 “被动态” 在生活中普遍存在，从写论文、实习到招聘、健康码等场景，“被”
-                        字从语法概念异化为生存前缀，权力、数据等借被动态改写现实，“被” 字还进化出赛博形态，虽语言是防线，但要认清 “被” 字句里隐身的施动者 。
-                    </p>
-                    <a href="blog/j拒绝被动态.html" class="btn">阅读全文</a>
-                </div>
-            </article>
-
-            <!-- 文章3 -->
-            <!-- <article class="post-card fade-in">
-                <div class="post-image floating" style="background: linear-gradient(45deg, #11998e, #38ef7d);">
-                    自然与技术
-                </div>
-                <div class="post-content">
-                    <div class="post-meta">
-                        <span><i class="far fa-calendar"></i> 2023年9月28日</span>
-                        <span><i class="far fa-folder"></i> 生活随笔</span>
-                        <span><i class="far fa-clock"></i> 5分钟阅读</span>
-                    </div>
-                    <div class="post-tags">
-                        <span class="tag">生活</span>
-                        <span class="tag">思考</span>
-                        <span class="tag">创作</span>
-                    </div>
-                    <h2 class="post-title">风与我作伴：在数字世界中寻找自然的灵感</h2>
-                    <p class="post-excerpt">
-                        "风与我作伴白云作衣裳，天地在兜里面" -
-                        这句slogan如何影响我的创作和生活？在这篇文章中，我将分享如何从自然中汲取灵感，应用于数字创作。探讨在忙碌的技术工作中保持内心平静的方法，以及如何将自然的韵律和美感融入界面设计和代码架构中。
-                    </p>
-                    <a href="#" class="btn">阅读全文</a>
-                </div>
-            </article> -->
-
-            <!-- 文章4 -->
-            <!-- <article class="post-card fade-in">
-                <div class="post-image floating" style="background: linear-gradient(45deg, #654ea3, #da98b4);">
-                    性能优化
-                </div>
-                <div class="post-content">
-                    <div class="post-meta">
-                        <span><i class="far fa-calendar"></i> 2023年9月15日</span>
-                        <span><i class="far fa-folder"></i> 前端技术</span>
-                        <span><i class="far fa-clock"></i> 10分钟阅读</span>
-                    </div>
-                    <div class="post-tags">
-                        <span class="tag">性能优化</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Web Vitals</span>
-                    </div>
-                    <h2 class="post-title">现代Web应用的性能优化：2023年实用指南</h2>
-                    <p class="post-excerpt">
-                        在用户期望越来越高的今天，应用性能已成为成功的关键因素。本文提供了一份全面的性能优化指南，涵盖从资源加载策略、代码分割、图像优化到运行时性能的各个方面。我将分享最新的工具和技术，以及如何利用浏览器的新特性提升应用性能，同时保持开发效率。
-                    </p>
-                    <a href="#" class="btn">阅读全文</a>
-                </div>
-            </article> -->
-
-            <!-- 分页 -->
-            <!-- <div class="pagination">
-                <a href="#" class="btn btn-outline"><i class="fas fa-arrow-left"></i> 上一页</a>
-                <a href="#" class="btn">下一页 <i class="fas fa-arrow-right"></i></a>
-            </div> -->
+        <main class="blog-content" id="articles-container">
+            <!-- 文章将通过JS动态生成 -->
         </main>
 
         <!-- 侧边栏 -->
@@ -241,7 +201,7 @@
                 <div class="author-avatar">叶</div>
                 <h3 class="author-name">叶一片</h3>
                 <p class="author-bio">
-                    前端开发者 & UI设计师<br>
+                    个人开发者<br>
                     热爱技术、设计和自然<br>
                     "风与我作伴白云作衣裳，天地在兜里面"
                 </p>
@@ -258,54 +218,29 @@
             <!-- 分类 -->
             <div class="sidebar-widget">
                 <h3 class="widget-title">文章分类</h3>
-                <ul class="categories-list">
-                    <li><a href="#">软件测试 <span>1</span></a></li>
-                    <li><a href="#">社会观察 <span>1</span></a></li>
+                <ul class="categories-list" id="categories-container">
+                    <!-- 分类将通过JS动态生成 -->
                 </ul>
             </div>
 
             <!-- 热门文章 -->
             <div class="sidebar-widget">
                 <h3 class="widget-title">热门文章</h3>
-                <ul class="popular-posts">
-                    <li>
-                        <a href="blog/post1.html">
-                            <div class="post-title">软件测试-基础篇</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="blog/j拒绝被动态.html">
-                            <div class="post-title">❌拒绝“被”动态</div>
-                        </a>
-                    </li>
+                <ul class="popular-posts" id="popular-posts-container">
+                    <!-- 热门文章将通过JS动态生成 -->
                 </ul>
             </div>
 
-            <!-- 标签云 -->
-            <!-- <div class="sidebar-widget">
-                <h3 class="widget-title">标签云</h3>
-                <div class="tag-cloud">
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">React</span>
-                    <span class="tag">Vue</span>
-                    <span class="tag">UI设计</span>
-                    <span class="tag">用户体验</span>
-                    <span class="tag">性能优化</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">TypeScript</span>
-                    <span class="tag">动画</span>
-                    <span class="tag">响应式设计</span>
-                    <span class="tag">WebAssembly</span>
-                </div>
-            </div> -->
+
         </aside>
     </div>
 
-    <!-- foot.html 引入foot.html -->
+    <!-- 分页控件 -->
+    <div class="pagination" id="pagination-container">
+        <!-- 分页将通过JS动态生成 -->
+    </div>
 
     <footer class="footer" id="contact">
-
         <div class="footer-content">
             <div class="footer-column">
                 <h3>叶一片</h3>
@@ -317,7 +252,6 @@
                         target="_blank"><i class="fab fa-tiktok"></i></a>
                     <a href="https://music.163.com/#/user/home?id=360800172" target="_blank"><i
                             class="fa fa-music"></i></a>
-                    <!-- <a href="https://weibo.com" target="_blank"><i class="fab fa-weibo"></i></a> -->
                 </div>
             </div>
 
@@ -341,36 +275,293 @@
                 </ul>
             </div>
 
-
             <div class="footer-column">
                 <h3>联系我</h3>
                 <ul class="footer-links">
                     <li><a href="mailto:tizzyyc@163.com">tizzyyc@163.com</a></li>
                     <li class="wechat-trigger">
                         <a>微信</a>
-                        <!-- 二维码弹层 -->
                         <img class="wechat-qr" src="../file/contact/wechat.jpg" alt="微信二维码">
-
                     </li>
                     <li class="wechat-trigger">
                         <a>打赏一下</a>
-                        <!-- 二维码弹层 -->
                         <img class="wechat-qr" src="../file/contact/wechatpay.jpg" alt="微信二维码">
-
                     </li>
                 </ul>
             </div>
         </div>
 
         <div class="copyright">
-            <p>&copy; 2023 叶一片 博客 | 风与我作伴白云作衣裳，天地在兜里面</p>
+            <p>&copy; 2025 叶一片 博客 | 风与我作伴白云作衣裳，天地在兜里面</p>
         </div>
     </footer>
 
     <script>
+        // 分页配置
+        const paginationConfig = {
+            itemsPerPage: 3, // 每页显示3篇文章
+            currentPage: 1   // 当前页码，默认第一页
+        };
+
+        // 文章数据（增加了更多文章以便演示分页）
+        const articles = [
+            {
+                id: 2,
+                title: "AI手工全流程测试",
+                excerpt: "本文详细介绍了如何将AI工具应用于软件测试全流程，包括结构化提示词模板设计、测试计划制定、测试用例设计、缺陷管理及测试报告编写等关键环节...",
+                date: "2025年08月20日",
+                category: "软件测试",
+                tags: ["软件测试", "AI应用", "测试流程", "测试计划", "缺陷管理", "测试报告"],
+                imageStyle: "background: linear-gradient(45deg, #4a6fa5, #60a3bc);",
+                imageText: "",
+                link: "blog/AI手工全流程测试.html"
+            },
+
+            {
+                id: 97,
+                title: "测试基础篇",
+                excerpt: "摘要：介绍测试定义、分类、质量模型、用例编写、业务测试、Web 测试、缺陷管理及项目全流程。",
+                date: "2025年08月18日",
+                category: "软件测试",
+                tags: ["软件测试", "测试基础", "测试用例", "缺陷管理", "质量保障"],
+                imageStyle: "background: linear-gradient(45deg, #6a11cb, #2575fc);",
+                imageText: "",
+                link: "blog/测试基础篇.html"
+            },
+            {
+                id: 98,
+                title: "❌拒绝“被”动态",
+                excerpt: "摘要：作者近期忙碌于上班、毕业设计等事务，重看《外来媳妇本地郎》受启发，发现 “被动态” 在生活中普遍存在...",
+                date: "2025年02月16日",
+                category: "社会观察",
+                tags: ["被动态", "语言异化", "个体困境", "社会观察"],
+                imageStyle: "background: linear-gradient(45deg, #ff416c, #ff4b2b);",
+                imageText: "",
+                link: "blog/j拒绝被动态.html"
+            },
+            {
+                id: 99,
+                title: "弱点",
+                excerpt: "摘要：作者观看电影《弱点》(The Blind Side)后的感悟，探讨了歧视、信任和保护意识三个盲点如何转化为人性弱点，以及影片反映的社会现象与价值观差异...",
+                date: "2022年11月26日",
+                category: "思考思索",
+                tags: ["电影观后感", "弱点", "人性思考", "社会观察", "种族歧视", "信任"],
+                imageStyle: "background: linear-gradient(45deg, #4facfe, #00f2fe);",
+                imageText: "",
+                link: "blog/弱点.html"
+            },
+            {
+                id: 100,
+                title: "看见人的故事",
+                excerpt: "摘要：作者阅读《看见》后的感悟，探讨了蒙昧、道德、疫情、教育、暴力与屈服等社会议题，反思如何真正'看见'他人与自我...",
+                date: "2022年10月20日",
+                category: "思考思索",
+                tags: ["读书笔记", "看见", "社会思考", "人性观察", "柴静"],
+                imageStyle: "background: linear-gradient(45deg, #3a7bd5, #3a6073);",
+                imageText: "",
+                link: "blog/看见人的故事.html"
+            },
+
+
+        ];
+
+        // 分类数据
+        const categories = [
+            { name: "软件测试", count: 2, link: "blog/classification/软件测试.html" },
+            { name: "社会观察", count: 1, link: "blog/classification/社会观察.html" },
+            { name: "思考思索", count: 2, link: "blog/classification/思考思索.html" },
+        ];
+
+        // 热门文章数据
+        const popularPosts = [
+            { title: "❌拒绝“被”动态", link: "blog/j拒绝被动态.html" },
+            { title: "弱点", link: "blog/弱点.html" },
+            { title: "看见人的故事", link: "blog/看见人的故事.html" },
+        ];
+
+
+
+        // 获取当前页应显示的文章
+        function getCurrentPageArticles() {
+            const startIndex = (paginationConfig.currentPage - 1) * paginationConfig.itemsPerPage;
+            const endIndex = startIndex + paginationConfig.itemsPerPage;
+            return articles.slice(startIndex, endIndex);
+        }
+
+        // 计算总页数
+        function getTotalPages() {
+            return Math.ceil(articles.length / paginationConfig.itemsPerPage);
+        }
+
+        // 生成文章列表（仅显示当前页的文章）
+        function renderArticles() {
+            const container = document.getElementById('articles-container');
+            const currentArticles = getCurrentPageArticles();
+            let html = '';
+
+            currentArticles.forEach(article => {
+                html += `
+                <article class="post-card fade-in">
+                    <div class="post-image floating" style="${article.imageStyle}">
+                        ${article.imageText}
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> ${article.date}</span>
+                            <span><i class="far fa-folder"></i> ${article.category}</span>
+                        </div>
+                        <div class="post-tags">
+                            ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                        <h2 class="post-title">${article.title}</h2>
+                        <p class="post-excerpt">${article.excerpt}</p>
+                        <a href="${article.link}" class="btn">阅读全文</a>
+                    </div>
+                </article>
+                `;
+            });
+
+            container.innerHTML = html;
+            // 重新应用动画效果
+            setupScrollAnimation();
+        }
+
+        // 生成分类列表
+        function renderCategories() {
+            const container = document.getElementById('categories-container');
+            let html = '';
+
+            categories.forEach(category => {
+                html += `
+                <li><a href="${category.link}">${category.name} <span>${category.count}</span></a></li>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // 生成热门文章列表
+        function renderPopularPosts() {
+            const container = document.getElementById('popular-posts-container');
+            let html = '';
+
+            popularPosts.forEach(post => {
+                html += `
+                <li>
+                    <a href="${post.link}">
+                        <div class="post-title">${post.title}</div>
+                    </a>
+                </li>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+
+
+        // 生成分页控件
+        function renderPagination() {
+            const container = document.getElementById('pagination-container');
+            const totalPages = getTotalPages();
+            let html = '';
+
+            // 上一页按钮
+            html += `
+            <button id="prev-page" ${paginationConfig.currentPage === 1 ? 'disabled' : ''}>
+                <i class="fas fa-chevron-left"></i> 上一页
+            </button>
+            `;
+
+            // 页码信息
+            html += `<span class="pagination-info">第 ${paginationConfig.currentPage} / ${totalPages} 页</span>`;
+
+            // 页码按钮（仅显示当前页附近的页码）
+            const visiblePages = 3; // 每次显示的页码数量
+            let startPage = Math.max(1, paginationConfig.currentPage - Math.floor(visiblePages / 2));
+            let endPage = Math.min(totalPages, startPage + visiblePages - 1);
+
+            // 调整起始页码以确保显示足够的页码
+            if (endPage - startPage + 1 < visiblePages) {
+                startPage = Math.max(1, endPage - visiblePages + 1);
+            }
+
+            // 添加第一页按钮（如果当前范围不包含第一页）
+            if (startPage > 1) {
+                html += `<button class="page-number" data-page="1">1</button>`;
+                if (startPage > 2) {
+                    html += `<span>...</span>`;
+                }
+            }
+
+            // 添加中间页码
+            for (let i = startPage; i <= endPage; i++) {
+                html += `
+                <button class="page-number ${paginationConfig.currentPage === i ? 'active' : ''}" data-page="${i}">
+                    ${i}
+                </button>
+                `;
+            }
+
+            // 添加最后一页按钮（如果当前范围不包含最后一页）
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    html += `<span>...</span>`;
+                }
+                html += `<button class="page-number" data-page="${totalPages}">${totalPages}</button>`;
+            }
+
+            // 下一页按钮
+            html += `
+            <button id="next-page" ${paginationConfig.currentPage === totalPages ? 'disabled' : ''}>
+                下一页 <i class="fas fa-chevron-right"></i>
+            </button>
+            `;
+
+            container.innerHTML = html;
+
+            // 绑定分页事件
+            bindPaginationEvents();
+        }
+
+        // 绑定分页事件
+        function bindPaginationEvents() {
+            // 上一页
+            document.getElementById('prev-page').addEventListener('click', () => {
+                if (paginationConfig.currentPage > 1) {
+                    paginationConfig.currentPage--;
+                    updatePagination();
+                }
+            });
+
+            // 下一页
+            document.getElementById('next-page').addEventListener('click', () => {
+                if (paginationConfig.currentPage < getTotalPages()) {
+                    paginationConfig.currentPage++;
+                    updatePagination();
+                }
+            });
+
+            // 页码按钮
+            document.querySelectorAll('.page-number').forEach(button => {
+                button.addEventListener('click', () => {
+                    const page = parseInt(button.dataset.page);
+                    paginationConfig.currentPage = page;
+                    updatePagination();
+                });
+            });
+        }
+
+        // 更新分页状态
+        function updatePagination() {
+            renderArticles();
+            renderPagination();
+            // 滚动到页面顶部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         // 滚动动画效果
-        document.addEventListener('DOMContentLoaded', function () {
+        function setupScrollAnimation() {
             const fadeElements = document.querySelectorAll('.fade-in');
 
             const observer = new IntersectionObserver((entries) => {
@@ -384,26 +575,33 @@
             fadeElements.forEach(element => {
                 observer.observe(element);
             });
-        });
+        }
 
         // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+        function setupSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
 
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function () {
+            renderArticles();
+            renderCategories();
+            renderPopularPosts();
+            renderPagination();
+            setupSmoothScroll();
         });
-
-
-
-
     </script>
 </body>
 

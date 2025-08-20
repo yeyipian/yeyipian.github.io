@@ -20,9 +20,17 @@
         <div class="logo">叶<span>一片</span></div>
         <ul class="nav-links">
             <li><a href="../index.html">首页</a></li>
-            <li><a href="../blog.html" style="color: #0071e3;">博客</a></li>
-            <li><a href="#">项目</a></li>
-            <li><a href="#">关于</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle">我的世界</a>
+                <div class="dropdown-content">
+                    <a href="../../page/blog.html"><i class="fas fa-blog" style="margin-right: 5px;"></i> 个人博客</a>
+                    <a href="../../page/introduction.html"><i class="fas fa-book" style="margin-right: 5px;"></i> 个人简介</a>
+                    <a href="../../page/project.html"><i class="fas fa-images" style="margin-right: 5px;"></i> 作品集</a>
+                    <a href="../../page/photography.html"><i class="fas fa-camera" style="margin-right: 5px;"></i> 摄影集</a>
+                    <a href="../../page/equipment.html"><i class="fas fa-computer" style="margin-right: 5px;"></i> 装备栏</a>
+                    <a href="../../page/music.html"><i class="fas fa-music" style="margin-right: 5px;"></i> 音乐馆</a>
+                </div>
+            </li>
             <li><a href="#contact">联系</a></li>
         </ul>
     </nav>
@@ -100,7 +108,7 @@
                 <div class="author-avatar">叶</div>
                 <h3 class="author-name">叶一片</h3>
                 <p class="author-bio">
-                    前端开发者 & UI设计师<br>
+                    个人开发者<br>
                     热爱技术、设计和自然<br>
                     "风与我作伴白云作衣裳，天地在兜里面"
                 </p>
@@ -117,105 +125,63 @@
     </div>
 
 
-
-    <!-- 相关文章 -->
-    <section class="related-articles">
-        <h2 class="related-title"><i class="fas fa-book-reader"></i> 相关推荐</h2>
-
-        <div class="articles-grid">
-            <div class="article-card">
-                <div class="article-card-image" style="background: linear-gradient(45deg, #11998e, #38ef7d);">
-                    语言与权力
-                </div>
-                <div class="article-card-content">
-                    <h3 class="article-card-title">语言中的权力游戏：从话语到现实</h3>
-                    <p class="article-card-excerpt">探讨语言如何被权力结构利用，以及话语体系对个体认知的塑造作用。</p>
-                    <div class="article-card-meta">
-                        <span><i class="far fa-calendar"></i> 2024-11-20</span>
-                        <span><i class="far fa-eye"></i> 1.2K</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="article-card">
-                <div class="article-card-image" style="background: linear-gradient(45deg, #ff416c, #ff4b2b);">
-                    算法时代
-                </div>
-                <div class="article-card-content">
-                    <h3 class="article-card-title">算法牢笼：我们如何失去选择权</h3>
-                    <p class="article-card-excerpt">解析算法推荐系统如何构建信息茧房，以及个体在数据洪流中的生存策略。</p>
-                    <div class="article-card-meta">
-                        <span><i class="far fa-calendar"></i> 2025-01-08</span>
-                        <span><i class="far fa-eye"></i> 1.7K</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="article-card">
-                <div class="article-card-image" style="background: linear-gradient(45deg, #654ea3, #da98b4);">
-                    现代生活
-                </div>
-                <div class="article-card-content">
-                    <h3 class="article-card-title">隐形的规训：现代生活中的权力网络</h3>
-                    <p class="article-card-excerpt">从职场到日常生活，揭示那些看不见的规则如何塑造我们的行为与思想。</p>
-                    <div class="article-card-meta">
-                        <span><i class="far fa-calendar"></i> 2024-12-15</span>
-                        <span><i class="far fa-eye"></i> 2.0K</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- 页脚 -->
-    <footer class="footer">
+     <footer class="footer" id="contact">
         <div class="footer-content">
             <div class="footer-column">
                 <h3>叶一片</h3>
-                <p style="color: #aaa; max-width: 300px; margin-bottom: 20px;">探索数字世界的旅人，创造与分享的爱好者</p>
+                <p style="color: #aaa; max-width: 300px; margin-bottom: 20px;">探索数字世界的旅人,创造与分享的爱好者</p>
                 <div class="social-icons-footer">
-                            <a href="https://github.com/yeyipian"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/yeyipian"><i class="fab fa-github"></i></a>
                     <a href="https://space.bilibili.com/87607674"><i class="fab fa-bilibili"></i></a>
-                            <a href="https://www.douyin.com/user/MS4wLjABAAAAliiakv9Jh2yOYOztD1uQHeruaGrUCgbbNvshN_hP2xZUNZi_7-EctVKtz1tstUDh?from_tab_name=main"
-                    target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="https://music.163.com/#/user/home?id=360800172" target="_blank"><i class="fa fa-music"></i></a>
+                    <a href="https://www.douyin.com/user/MS4wLjABAAAAliiakv9Jh2yOYOztD1uQHeruaGrUCgbbNvshN_hP2xZUNZi_7-EctVKtz1tstUDh?from_tab_name=main"
+                        target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://music.163.com/#/user/home?id=360800172" target="_blank"><i class="fa fa-music"></i></a>
                 </div>
             </div>
 
             <div class="footer-column">
-                <h3>博客分类</h3>
+                <h3>快速链接</h3>
                 <ul class="footer-links">
-                    <li><a href="#">前端技术</a></li>
-                    <li><a href="#">设计思维</a></li>
-                    <li><a href="#">生活随笔</a></li>
-                    <li><a href="#">项目案例</a></li>
+                    <li><a href="../../index.html">首页</a></li>
+                    <li><a href="../introduction.html">关于我</a></li>
+                    <li><a href="../blog.html">个人博客</a></li>
                 </ul>
             </div>
 
             <div class="footer-column">
-                <h3>实用资源</h3>
+                <h3>探索更多</h3>
                 <ul class="footer-links">
-                    <li><a href="#">设计工具</a></li>
-                    <li><a href="#">开发文档</a></li>
-                    <li><a href="#">学习路径</a></li>
-                    <li><a href="#">免费素材</a></li>
+                    <li><a href="../project.html">项目作品</a></li>
+                    <li><a href="../photography.html">摄影集</a></li>
+                    <li><a href="../equipment.html">装备栏</a></li>
+                    <li><a href="../music.html">音乐馆</a></li>
                 </ul>
             </div>
 
             <div class="footer-column">
                 <h3>联系我</h3>
                 <ul class="footer-links">
-                    <li><a href="mailto:contact@yeyipian.com">contact@yeyipian.com</a></li>
-                    <li><a href="#">微信公众号</a></li>
-                    <li><a href="#">商务合作</a></li>
+                    <li><a href="mailto:tizzyyc@163.com">tizzyyc@163.com</a></li>
+                    <li class="wechat-trigger">
+                        <a>微信</a>
+                        <!-- 二维码弹层 -->
+                        <img class="wechat-qr" src="../../file/contact/wechat.jpg" alt="微信二维码">
+                    </li>
+                    <li class="wechat-trigger">
+                        <a>打赏一下</a>
+                        <!-- 二维码弹层 -->
+                        <img class="wechat-qr" src="../../file/contact/wechatpay.jpg" alt="微信二维码">
+                    </li>
                 </ul>
             </div>
         </div>
 
         <div class="copyright">
-            <p>&copy; 2023 叶一片 博客 | 风与我作伴白云作衣裳，天地在兜里面</p>
+            <p>&copy; 2025 叶一片 博客 | 风与我作伴白云作衣裳，天地在兜里面</p>
         </div>
     </footer>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script>
@@ -249,6 +215,21 @@
                             behavior: 'smooth'
                         });
                     }
+                }
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });

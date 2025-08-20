@@ -47,11 +47,11 @@
             letter-spacing: -0.5px;
             display: flex;
             align-items: center;
+            text-decoration: none;
         }
         
         .logo span {
             color: var(--primary);
-            margin-left: 5px;
         }
         
         .logo i {
@@ -538,7 +538,7 @@
         }
 
         /* 导航栏样式 */
-        .navbar {
+        /* .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -551,18 +551,9 @@
             right: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        } */
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .logo span {
-            color: #0071e3;
-        }
-
+      
         .nav-links {
             display: flex;
             list-style: none;

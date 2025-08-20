@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试基础篇 | 叶一片的博客</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../css/post.css">
+            <link rel="icon" href="../../logo.jpg" type="image/x-icon">
+
+
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">叶<span>一片</span></div>
+        <ul class="nav-links">
+            <li><a href="../index.html">首页</a></li>
+                       <!-- 下拉菜单 -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">我的世界</a>
+                <div class="dropdown-content">
+                    <a href="../../page/blog.html"><i class="fas fa-blog" style="margin-right: 5px;"></i> 个人博客</a>
+                    <a href="../../page/introduction.html"><i class="fas fa-book" style="margin-right: 5px;"></i> 个人简介</a>
+                    <a href="../../page/project.html"><i class="fas fa-images" style="margin-right: 5px;"></i> 作品集</a>
+                    <a href="../../page/photography.html"><i class="fas fa-camera" style="margin-right: 5px;"></i> 摄影集</a>
+                    <a href="../../page/equipment.html"><i class="fas fa-computer" style="margin-right: 5px;"></i> 装备栏</a>
+                    <a href="../../page/music.html"><i class="fas fa-music" style="margin-right: 5px;"></i> 音乐馆</a>
+                </div>
+            </li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+    </nav>
+
+    <!-- 文章头部 -->
+    <header class="article-header">
+        <h1 class="article-title">测试基础篇</h1>
+
+        <div class="article-meta">
+            <!-- 原创 搬运 -->
+            <div class="meta-item">
+                <i class="fas fa-pen"></i> 原创
+            </div>
+            <!-- <div class="meta-item">
+                <i class="fas fa-share-alt"></i> 搬运
+            </div> -->
+            <div class="meta-item">
+                <i class="far fa-user"></i> 叶一片
+            </div>
+            <div class="meta-item">
+                <i class="far fa-calendar"></i> 2025年08月18日
+            </div>
+        </div>
+
+        <div class="tags">
+            <span class="tag">软件测试</span>
+            <span class="tag">测试基础</span>
+            <span class="tag">测试用例</span>
+            <span class="tag">缺陷管理</span>
+            <span class="tag">质量保障</span>
+        </div>
+
+    </header>
+
+    <!-- 文章内容 -->
+    <div class="article-container">
+        <article class="article-content">
+            <div class="article-body">
+                <p>测试=验证软件是否<strong>按预期运行</strong>，并<strong>及时暴露问题</strong>。</p>
+
+                <hr>
+
+                <h2 id="what-is-testing">1 测试是什么</h2>
+
+                <ul style="margin: 20px 0; padding-left: 30px; color: #444;">
+                    <li style="margin-bottom: 10px;"><strong>目的</strong>：保质量、降成本、提体验</li>
+                    <li style="margin-bottom: 10px;"><strong>时机</strong>：需求→设计→编码→<strong>测试</strong>→部署→维护</li>
+                </ul>
+
+                <hr>
+
+                <h2 id="testing-types">2 测试分类</h2>
+
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                    <thead>
+                        <tr style="background-color: #f5f5f5;">
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">维度</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">类型</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">关注点</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">负责人</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">按生产阶段</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">单元测试</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">源代码</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">开发</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;"></td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">集成测试</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">模块间交互</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">测试</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;"></td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">系统测试</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">整个系统</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">测试</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;"></td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">验收测试</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">用户视角</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">用户</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">按代码可见度</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">黑盒</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">输入/输出、UI</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">系统测试</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;"></td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">灰盒</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">接口、部分代码</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">集成测试</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;"></td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">白盒</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">全部代码逻辑</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">单元测试</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">其他</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">冒烟测试</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;" colspan="2">保证提测内容具备可测性</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;"></td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">回归测试</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;" colspan="2">保证bug修复、确保新功能对旧功能没有影响</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <hr>
+
+                <h2 id="quality-model">3 质量模型（测什么）</h2>
+
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                    <thead>
+                        <tr style="background-color: #f5f5f5;">
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">核心维度</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">说明</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">功能性</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">是否实现需求指定功能</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;"></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">性能</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">响应速度、资源占用、并发能力</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">专项测试</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">兼容性</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">跨平台/设备/浏览器运行能力</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;"></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">易用性</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">操作简洁性、学习成本</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;"></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">安全性</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">数据加密、防攻击能力</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">专项测试</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">可靠性</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">长时间运行稳定性</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;"></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">可移植性</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">系统迁移/升级便捷性</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;"></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">可维护性</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">问题修复与优化效率</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <hr>
+
+                <h2 id="test-cases">4 测试用例怎么写</h2>
+
+                <p><strong>8 要素</strong><br>
+                编号｜标题｜模块｜优先级｜前置条件｜步骤｜数据｜预期结果 ｜(实际结果)</p>
+
+                <p><strong>设计套路 （正常 + 异常场景）</strong></p>
+
+                <ul style="margin: 20px 0; padding-left: 30px; color: #444;">
+                    <li style="margin-bottom: 10px;"><strong>等价类</strong>：有效数据集合 vs 无效数据集合 - 表单元素（输入框、下拉框…）</li>
+                    <li style="margin-bottom: 10px;"><strong>边界值</strong>：长度范围 + 类型规则
+                        <ul style="margin: 10px 0; padding-left: 20px; color: #444;">
+                            <li>上点（边界值）</li>
+                            <li>离点（边界外最近点）</li>
+                            <li>内点（范围内任意点）</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 10px;"><strong>判定表</strong>：多条件组合逻辑（条件桩+动作桩→生成规则）
+                        <p style="margin: 10px 0;">一种以表格形式表达多条件逻辑判断的工具</p>
+                        <p style="margin: 10px 0;">作用：对多条件之间有约束规则的需求设计测试点</p>
+                        <p style="margin: 10px 0;">组成：</p>
+                        <ul style="margin: 10px 0; padding-left: 20px; color: #444;">
+                            <li>条件桩：列出问题中的所有条件（次序无所谓）</li>
+                            <li>动作桩：列出问题中可能采取的操作（可能有多个）</li>
+                            <li>条件项：列出条件所对应的取值，所有可能情况下的真假值</li>
+                            <li>动作项：推到出条件项（各种取值情况下应该采取的操作结果）</li>
+                        </ul>
+                        <p style="margin: 10px 0;">判定表中贯穿条件项和动作项的一列就是一条规则</p>
+                        <p style="margin: 10px 0;">提示：</p>
+                        <ul style="margin: 10px 0; padding-left: 20px; color: #444;">
+                            <li>• 判定表中贯穿条件项和动作项的一列就是一条规则</li>
+                            <li>• 假设有n个条件，每个条件的取值有两个(0,1)，全组合有 2的n次方种规则</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <hr>
+
+                <h2 id="business-testing">5 业务测试（流程图法）</h2>
+
+                <ol style="margin: 20px 0; padding-left: 30px; color: #444;">
+                    <li style="margin-bottom: 10px;">画出业务流程图</li>
+                    <li style="margin-bottom: 10px;">每条路径即一条用例</li>
+                </ol>
+
+                <blockquote>
+                    先跑通主流程（冒烟），再细化单模块
+                </blockquote>
+
+                <hr>
+
+                <h2 id="web-client-testing">6 Web 客户端测试</h2>
+
+                <h3 id="single-function-testing">6.1 单功能测试（如何测试）</h3>
+
+                <ol style="margin: 20px 0; padding-left: 30px; color: #444;">
+                    <li style="margin-bottom: 10px;">分析需求</li>
+                    <li style="margin-bottom: 10px;">提取测试点（参考质量模型）</li>
+                    <li style="margin-bottom: 10px;">转用例 → 执行 → 缺陷管理</li>
+                </ol>
+
+                <blockquote>
+                    执行之前的准备：项目提测内容开发已交付测试，测试环境已准备好
+                </blockquote>
+
+                <h3 id="case-design">6.2 用例设计</h3>
+
+                <p>参照第四点设计套路</p>
+
+                <h3 id="non-functional-focus">6.3 非功能重点</h3>
+
+                <ul style="margin: 20px 0; padding-left: 30px; color: #444;">
+                    <li style="margin-bottom: 10px;"><strong>兼容</strong>：Chrome / Firefox / Safari / Edge</li>
+                    <li style="margin-bottom: 10px;"><strong>易用</strong>：简洁直观</li>
+                    <li style="margin-bottom: 10px;"><strong>性能 & 安全</strong>：专项测试</li>
+                </ul>
+
+                <hr>
+
+                <h2 id="defect-management">7 缺陷管理</h2>
+
+                <ul style="margin: 20px 0; padding-left: 30px; color: #444;">
+                    <li style="margin-bottom: 10px;"><strong>缺陷衡量标准</strong>：少功能、多功能、功能错误、隐性需求未实现、体验差
+                        <ol style="margin: 10px 0; padding-left: 20px; color: #444;">
+                            <li>软件为实现需求，说明书中明确要求的功能（少功能）</li>
+                            <li>软件实现的功能超出需求，超出说明书指定范围（多功能）</li>
+                            <li>软件出现了需求说明书中知名不应该出现的错误（功能错误）</li>
+                            <li>软件未实现需求说明书中未明确指出但应该实现的要求（隐性功能缺失）</li>
+                            <li>软件难以理解，不易使用，运行缓慢用户体验差（不易使用）</li>
+                        </ol>
+                    </li>
+                    <li style="margin-bottom: 10px;"><strong>标题模板</strong>：【模块】操作 → 预期 vs 实际差异</li>
+                    <li style="margin-bottom: 10px;"><strong>正文 4 件套</strong>：环境、步骤、证据、严重/优先级</li>
+                    <li style="margin-bottom: 10px;"><strong>跟进 3 问</strong>：状态？已修？复测通过？</li>
+                </ul>
+
+                <hr>
+
+                <h2 id="full-testing-process">8 项目测试全流程</h2>
+
+                <p>需求文档：</p>
+
+                <ol style="margin: 20px 0; padding-left: 30px; color: #444;">
+                    <li style="margin-bottom: 10px;">需求分析与评审（看懂理解无歧义）</li>
+                    <li style="margin-bottom: 10px;">指定测试计划与方案（按部就班，有章法）</li>
+                    <li style="margin-bottom: 10px;">设计测试用例（测试一句，防漏测）</li>
+                </ol>
+
+                <p>软件包：</p>
+
+                <ol style="margin: 20px 0; padding-left: 30px; color: #444; start="4">
+                    <li style="margin-bottom: 10px;">执行测试用例（记录过程，有进度）</li>
+                    <li style="margin-bottom: 10px;">缺陷管理跟踪（问题反馈，有追踪）</li>
+                    <li style="margin-bottom: 10px;">编写测试报告（汇总结果）</li>
+                </ol>
+            </div>
+        </article>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="toc-widget">
+                <h3 class="toc-title"><i class="fas fa-list"></i> 文章目录</h3>
+                <ul class="toc-list">
+                    <li class="toc-h2"><a href="#what-is-testing">1 测试是什么</a></li>
+                    <li class="toc-h2"><a href="#testing-types">2 测试分类</a></li>
+                    <li class="toc-h2"><a href="#quality-model">3 质量模型（测什么）</a></li>
+                    <li class="toc-h2"><a href="#test-cases">4 测试用例怎么写</a></li>
+                    <li class="toc-h2"><a href="#business-testing">5 业务测试（流程图法）</a></li>
+                    <li class="toc-h2"><a href="#web-client-testing">6 Web 客户端测试</a></li>
+                    <li class="toc-h3"><a href="#single-function-testing">6.1 单功能测试（如何测试）</a></li>
+                    <li class="toc-h3"><a href="#case-design">6.2 用例设计</a></li>
+                    <li class="toc-h3"><a href="#non-functional-focus">6.3 非功能重点</a></li>
+                    <li class="toc-h2"><a href="#defect-management">7 缺陷管理</a></li>
+                    <li class="toc-h2"><a href="#full-testing-process">8 项目测试全流程</a></li>
+                </ul>
+            </div>
+
+            <div class="author-widget">
+                <div class="author-avatar">叶</div>
+                <h3 class="author-name">叶一片</h3>
+                <p class="author-bio">
+                    个人开发者<br>
+                    热爱技术、设计和自然<br>
+                    "风与我作伴白云作衣裳，天地在兜里面"
+                </p>
+                <div class="social-icons">
+                    <a href="https://github.com/yeyipian"><i class="fab fa-github"></i></a>
+                    <a href="https://space.bilibili.com/87607674"><i class="fab fa-bilibili"></i></a>
+                    <a href="https://www.douyin.com/user/MS4wLjABAAAAliiakv9Jh2yOYOztD1uQHeruaGrUCgbbNvshN_hP2xZUNZi_7-EctVKtz1tstUDh?from_tab_name=main"
+                        target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://music.163.com/#/user/home?id=360800172" target="_blank"><i
+                            class="fa fa-music"></i></a>
+                </div>
+            </div>
+
+
+        </aside>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>叶一片</h3>
+                <p style="color: #aaa; max-width: 300px; margin-bottom: 20px;">探索数字世界的旅人,创造与分享的爱好者</p>
+                <div class="social-icons-footer">
+                            <a href="https://github.com/yeyipian"><i class="fab fa-github"></i></a>
+                    <a href="https://space.bilibili.com/87607674"><i class="fab fa-bilibili"></i></a>
+                            <a href="https://www.douyin.com/user/MS4wLjABAAAAliiakv9Jh2yOYOztD1uQHeruaGrUCgbbNvshN_hP2xZUNZi_7-EctVKtz1tstUDh?from_tab_name=main"
+                    target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://music.163.com/#/user/home?id=360800172" target="_blank"><i class="fa fa-music"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>快速链接</h3>
+                <ul class="footer-links">
+                    <li><a href="../../index.html">首页</a></li>
+                    <li><a href="../introduction.html">关于我</a></li>
+                    <li><a href="../blog.html">个人博客</a></li>
+
+                </ul>
+            </div>
+
+              <div class="footer-column">
+                <h3>探索更多</h3>
+                <ul class="footer-links">
+                    <li><a href="../project.html">项目作品</a></li>
+                    <li><a href="../photography.html">摄影集</a></li>
+                    <li><a href="../equipment.html">装备栏</a></li>
+                    <li><a href="../music.html">音乐馆</a></li>
+                </ul>
+            </div>
+
+  
+            <div class="footer-column">
+                <h3>联系我</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:tizzyyc@163.com">tizzyyc@163.com</a></li>
+                    <li class="wechat-trigger">
+                        <a>微信</a>
+                        <!-- 二维码弹层 -->
+                        <img class="wechat-qr" src="../../file/contact/wechat.jpg" alt="微信二维码">
+
+                    </li>
+                    <li class="wechat-trigger">
+                        <a>打赏一下</a>
+                        <!-- 二维码弹层 -->
+                        <img class="wechat-qr" src="../../file/contact/wechatpay.jpg" alt="微信二维码">
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 叶一片 博客 | 风与我作伴白云作衣裳，天地在兜里面</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+        // 代码高亮
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((el) => {
+                hljs.highlightElement(el);
+            });
+        });
+
+        // 目录导航
+        const tocLinks = document.querySelectorAll('.toc-list a');
+
+        tocLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // 移除所有active类
+                tocLinks.forEach(l => l.classList.remove('active'));
+
+                // 添加active类到当前链接
+                this.classList.add('active');
+
+                // 平滑滚动到目标位置
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+          // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+    
+
+    </script>
+</body>
+
+</html>

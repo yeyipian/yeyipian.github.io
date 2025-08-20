@@ -245,6 +245,8 @@ body {
     font-weight: 700;
     color: #000;
     letter-spacing: -0.5px;
+    text-decoration: none;
+
 }
 
 .logo span {

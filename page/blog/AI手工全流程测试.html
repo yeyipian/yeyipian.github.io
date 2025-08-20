@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI手工全流程测试 | 叶一片的博客</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../css/post.css">
+    <link rel="icon" href="../../logo.jpg" type="image/x-icon">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">叶<span>一片</span></div>
+        <ul class="nav-links">
+            <li><a href="../index.html">首页</a></li>
+            <!-- 下拉菜单 -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">我的世界</a>
+                <div class="dropdown-content">
+                    <a href="../../page/blog.html"><i class="fas fa-blog" style="margin-right: 5px;"></i> 个人博客</a>
+                    <a href="../../page/introduction.html"><i class="fas fa-book" style="margin-right: 5px;"></i> 个人简介</a>
+                    <a href="../../page/project.html"><i class="fas fa-images" style="margin-right: 5px;"></i> 作品集</a>
+                    <a href="../../page/photography.html"><i class="fas fa-camera" style="margin-right: 5px;"></i> 摄影集</a>
+                    <a href="../../page/equipment.html"><i class="fas fa-computer" style="margin-right: 5px;"></i> 装备栏</a>
+                    <a href="../../page/music.html"><i class="fas fa-music" style="margin-right: 5px;"></i> 音乐馆</a>
+                </div>
+            </li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+    </nav>
+
+    <!-- 文章头部 -->
+    <header class="article-header">
+        <h1 class="article-title">AI手工全流程测试</h1>
+
+        <div class="article-meta">
+            <div class="meta-item">
+                <i class="fas fa-pen"></i> 原创
+            </div>
+            <div class="meta-item">
+                <i class="far fa-user"></i> 叶一片
+            </div>
+            <div class="meta-item">
+                <i class="far fa-calendar"></i> 2025年08月20日
+            </div>
+        </div>
+
+        <div class="tags">
+            <span class="tag">软件测试</span>
+            <span class="tag">AI应用</span>
+            <span class="tag">测试流程</span>
+            <span class="tag">测试管理</span>
+            <span class="tag">质量保障</span>
+        </div>
+    </header>
+
+    <!-- 文章内容 -->
+    <div class="article-container">
+        <article class="article-content">
+            <div class="article-body">
+                <h2 id="test-basic">一、测试基础</h2>
+                <!-- 点击跳转 -->
+                <a href="./测试基础篇.html" style="color: #007bff;">点击跳转</a>
+
+                <h2 id="ai-application">二、AI工具应用</h2>
+
+                <h3 id="prompt-template">2.1 结构化提示词模板</h3>
+
+                <p>利用AI，使用结构化表达，<strong>角色+任务+背景+要求</strong> 获得我们需要的结果</p>
+
+                <p>例如</p>
+
+                <blockquote>
+                    <p><strong>角色</strong>：10年测试经验工程师<br>
+                    <strong>任务</strong>：评审Tpshop需求文档<br>
+                    <strong>要求</strong>：</p>
+                    
+                    <ul>
+                        <li>从测试角度评审逻辑性与完整性</li>
+                        <li>从用户角度评审易用性与合理性</li>
+                    </ul>
+                    
+                    <p><strong>输出</strong>：评审建议与结果</p>
+                    
+                    <p>你是一名10年测试经验的工程师，现在需要对上述附件Tpshop需求文档进行评审，要求站在测试专业角度评审需求的逻辑性、需求完整性，站在用户角度评审易用性、合理性，给出评审建议和结果。</p>
+                </blockquote>
+
+                <hr>
+
+                <h2 id="test-plan">三、测试计划</h2>
+
+                <h3 id="test-plan-document">3.1 <strong>编写测试计划文档场景</strong></h3>
+
+                <p>例如</p>
+
+                <blockquote>
+                    <p><strong>角色</strong>：资深测试工程师<br>
+                    <strong>任务</strong>：编写Tpshop项目测试计划<br>
+                    <strong>背景</strong>：需求文档已完成，2天内验证所有模块，9月9日提测<br>
+                    <strong>要求</strong>：</p>
+                    
+                    <ul>
+                        <li>覆盖维度：功能、易用、兼容、安全、性能</li>
+                        <li>人员配置：张三（组长）、李四、王五</li>
+                        <li>包含：测试场景/用例设计、风险评估矩阵、甘特图</li>
+                        <li>标准：功能用例100%执行率准入，严重缺陷清零准出</li>
+                        <li>风险：预留半日缓冲，分级上报机制</li>
+                    </ul>
+                    
+                    <p><strong>输出</strong>：《Tpshop项目测试计划书》</p>
+                </blockquote>
+
+                <p>举例更优提示词：</p>
+
+                <p style="text-align: center; margin: 20px 0;">
+                    <img src="https://tc-cdn.flowus.cn/oss/83aab79f-9d0c-45de-84fc-c92d4199b046/image.png?time=1755676800&token=f1e9ed05ecb09692c465e4bad873e0ee112995fe092680df2c8ccb37c9a25b5e&role=free" 
+                         alt="更优提示词示例截图，展示了结构清晰的测试计划提示词" 
+                         style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                </p>
+
+                <hr>
+
+                <h2 id="test-design">四、测试设计</h2>
+
+                <p><strong>设计步骤</strong></p>
+
+                <ol>
+                    <li>根据需求设计测试点</li>
+                    <li>测试点评审</li>
+                    <li>将测试点转为用例执行文档</li>
+                </ol>
+
+                <h3 id="test-point-design">4.1 测试点设计</h3>
+
+                <p>例如</p>
+
+                <blockquote>
+                    <p><strong>角色</strong>：资深测试工程师</p>
+                    
+                    <p><strong>任务</strong>：根据Tpshop需求文档登录功能描述，设计测试点</p>
+                    
+                    <p><strong>背景</strong>：项目需求文档已完成。</p>
+                    
+                    <p><strong>要求</strong>：</p>
+                    
+                    <ol>
+                        <li>覆盖维度：功能、易用、兼容、安全、性能，测试范围为需求文档所有功能模块</li>
+                        <li>测试点要覆盖：100%需求、边界范围、格式、类型、为空</li>
+                    </ol>
+                    
+                    <p><strong>输出</strong>：测试点根据功能、兼容、安全等分类，每个分类要有：业务、正向、逆向区分</p>
+                </blockquote>
+
+                <h3 id="test-point-review">4.2 测试点评审</h3>
+
+                <p>利用AI进行查漏补缺，确保测试点的完整性和准确性，避免遗漏关键测试场景。通过AI工具可以快速比对类似项目的测试点库，发现潜在的测试盲区。</p>
+
+                <h3 id="test-case-document">4.3 将测试点转为用例执行文档</h3>
+
+                <p>测试用例8大要素：<br>
+                <code>用例编号、用例标题、模块、优先级、前置条件、测试步骤、预期结果、测试数据</code></p>
+
+                <h3 id="practical">4.4 实战</h3>
+
+                <p>实战路径：<a href="https://hmshop-test.itheima.net/Home/user/login.html" target="_blank" rel="noopener noreferrer">TPshop登录页</a></p>
+
+                <p><strong>执行</strong>：</p>
+
+                <ul>
+                    <li>根据优先级执行，一般先执行优先级高的用例</li>
+                    <li>记录执行结果：通过、不通过（原因、结果截图）</li>
+                </ul>
+
+                <hr>
+
+                <h2 id="defect-management">五、缺陷管理</h2>
+
+                <h3 id="defect-definition">5.1 缺陷定义</h3>
+
+                <p>软件中存在的任何问题都是缺陷（Bug），包括功能错误、性能问题、安全漏洞、用户体验不佳等。</p>
+
+                <h3 id="measurement-standard">#5.2 衡量标准</h3>
+
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                    <thead>
+                        <tr style="background-color: #f5f5f5;">
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">类型</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">描述</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">少功能</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">未实现需求说明书功能</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">多功能</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">超出需求范围的功能</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">功能错误</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">出现不应有的错误</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">隐性功能缺失</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">需求未明确但应实现的功能缺失</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">不易使用</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">难以理解、运行缓慢、体验差</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 id="defect-template">5.3 缺陷描述模板</h3>
+
+                <p>描述内容：</p>
+
+                <ul>
+                    <li>当前指派：将bug提交给谁</li>
+                    <li>Bug类型：代码错误、设计缺陷、……</li>
+                    <li>Bug标题：【模块】+动作+预期vs实际</li>
+                    <li>严重程度：bug严重程度</li>
+                    <li>优先级：bug修复紧急程度</li>
+                    <li>重现步骤：复现步骤</li>
+                    <li>附件：执行实际结果截图或日志文件</li>
+                </ul>
+
+                <p>例如</p>
+
+                <blockquote>
+                    <p><strong>角色</strong>：资深测试工程师</p>
+                    
+                    <p><strong>任务</strong>：针对用例执行结果，描述和提交缺陷</p>
+                    
+                    <p><strong>背景</strong>：项目测试环境：https://hmshop-test.itheima.net/Home/user/login.html</p>
+                    
+                    <p><strong>要求</strong>：</p>
+                    
+                    <ol>
+                        <li>bug描述和提交在禅道缺陷管理平台</li>
+                        <li>要包含以下内容：bug标题、当前指派、Bug类型、严重程度、优先级、重现步骤、附件</li>
+                    </ol>
+                    
+                    <p><strong>输出</strong>：缺陷描述相关内容</p>
+                </blockquote>
+
+                <p><strong>实战</strong>：<a href="https://zentao.demo.qucheng.cc/user-login.html" target="_blank" rel="noopener noreferrer">禅道登录页</a></p>
+
+                <hr>
+
+                <h2 id="test-report">六、测试报告</h2>
+
+                <h3 id="report-definition">6.1 定义</h3>
+
+                <p>测试工作的总结，记录过程、结果与结论，是项目质量评估的重要依据，也是后续改进的参考资料。</p>
+
+                <h3 id="report-structure">6.2 报告结构</h3>
+
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                    <thead>
+                        <tr style="background-color: #f5f5f5;">
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">部分</th>
+                            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">内容说明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">测试概述</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">目标、范围、环境</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">执行情况</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">批次、通过率</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">缺陷统计</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">数量、严重程度分布</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">结论与建议</td>
+                            <td style="border: 1px solid #ddd; padding: 12px; text-align: left;">测试结果、改进意见</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 id="report-template">6.3 报告提示词模板</h3>
+
+                <p>例如</p>
+
+                <blockquote>
+                    <p><strong>角色</strong>：资深测试工程师</p>
+                    
+                    <p><strong>任务</strong>：针对用例执行结果，编写测试报告</p>
+                    
+                    <p><strong>背景</strong>：tpshop项目，测试内容为附件需求文档所有功能模块</p>
+                    
+                    <p><strong>要求</strong>：</p>
+                    
+                    <ol>
+                        <li>根据附件执行用例结果编写报告，报告要有状态看板或分布图</li>
+                        <li>测试报告内容含：测试概述（测试目标、范围、环境）、执行情況（批次、通过率）、缺陷统计（缺陷数量、严重程度分布）、结论与建议（测试结果、改进意见）</li>
+                    </ol>
+                    
+                    <p><strong>输出</strong>：markdown格式测试报告</p>
+                </blockquote>
+
+                <p style="text-align: center; margin: 20px 0;">
+                    <img src="https://tc-cdn.flowus.cn/oss/3c5e7b79-2072-4215-8d70-7ae8504f59df/image.png?time=1755676800&token=ffb7c4fa36590f5798c35652d64454a0cfd371ce45fdb407478b633bccda8825&role=free" 
+                         alt="测试报告提示词示例截图" 
+                         style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                </p>
+            </div>
+        </article>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="toc-widget">
+                <h3 class="toc-title"><i class="fas fa-list"></i> 文章目录</h3>
+                <ul class="toc-list">
+                    <li class="toc-h2"><a href="#test-basic">一、测试基础</a></li>
+                    <li class="toc-h2"><a href="#ai-application">二、AI工具应用</a>
+                        <ul class="toc-children">
+                            <li class="toc-h3"><a href="#prompt-template">2.1 结构化提示词模板</a></li>
+                        </ul>
+                    </li>
+                    <li class="toc-h2"><a href="#test-plan">三、测试计划</a>
+                        <ul class="toc-children">
+                            <li class="toc-h3"><a href="#test-plan-document">3.1 编写测试计划文档场景</a></li>
+                        </ul>
+                    </li>
+                    <li class="toc-h2"><a href="#test-design">四、测试设计</a>
+                        <ul class="toc-children">
+                            <li class="toc-h3"><a href="#test-point-design">4.1 测试点设计</a></li>
+                            <li class="toc-h3"><a href="#test-point-review">4.2 测试点评审</a></li>
+                            <li class="toc-h3"><a href="#test-case-document">4.3 将测试点转为用例执行文档</a></li>
+                            <li class="toc-h3"><a href="#practical">4.4 实战</a></li>
+                        </ul>
+                    </li>
+                    <li class="toc-h2"><a href="#defect-management">五、缺陷管理</a>
+                        <ul class="toc-children">
+                            <li class="toc-h3"><a href="#defect-definition">5.1 缺陷定义</a></li>
+                            <li class="toc-h3"><a href="#measurement-standard">5.2 衡量标准</a></li>
+                            <li class="toc-h3"><a href="#defect-template">5.3 缺陷描述模板</a></li>
+                        </ul>
+                    </li>
+                    <li class="toc-h2"><a href="#test-report">六、测试报告</a>
+                        <ul class="toc-children">
+                            <li class="toc-h3"><a href="#report-definition">6.1 定义</a></li>
+                            <li class="toc-h3"><a href="#report-structure">6.2 报告结构</a></li>
+                            <li class="toc-h3"><a href="#report-template">6.3 报告提示词模板</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="author-widget">
+                <div class="author-avatar">叶</div>
+                <h3 class="author-name">叶一片</h3>
+                <p class="author-bio">
+                    个人开发者<br>
+                    热爱技术、设计和自然<br>
+                    "风与我作伴白云作衣裳，天地在兜里面"
+                </p>
+                <div class="social-icons">
+                    <a href="https://github.com/yeyipian"><i class="fab fa-github"></i></a>
+                    <a href="https://space.bilibili.com/87607674"><i class="fab fa-bilibili"></i></a>
+                    <a href="https://www.douyin.com/user/MS4wLjABAAAAliiakv9Jh2yOYOztD1uQHeruaGrUCgbbNvshN_hP2xZUNZi_7-EctVKtz1tstUDh?from_tab_name=main"
+                        target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://music.163.com/#/user/home?id=360800172" target="_blank"><i
+                            class="fa fa-music"></i></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>叶一片</h3>
+                <p style="color: #aaa; max-width: 300px; margin-bottom: 20px;">探索数字世界的旅人,创造与分享的爱好者</p>
+                <div class="social-icons-footer">
+                    <a href="https://github.com/yeyipian"><i class="fab fa-github"></i></a>
+                    <a href="https://space.bilibili.com/87607674"><i class="fab fa-bilibili"></i></a>
+                    <a href="https://www.douyin.com/user/MS4wLjABAAAAliiakv9Jh2yOYOztD1uQHeruaGrUCgbbNvshN_hP2xZUNZi_7-EctVKtz1tstUDh?from_tab_name=main"
+                        target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://music.163.com/#/user/home?id=360800172" target="_blank"><i class="fa fa-music"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>快速链接</h3>
+                <ul class="footer-links">
+                    <li><a href="../../index.html">首页</a></li>
+                    <li><a href="../introduction.html">关于我</a></li>
+                    <li><a href="../blog.html">个人博客</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>探索更多</h3>
+                <ul class="footer-links">
+                    <li><a href="../project.html">项目作品</a></li>
+                    <li><a href="../photography.html">摄影集</a></li>
+                    <li><a href="../equipment.html">装备栏</a></li>
+                    <li><a href="../music.html">音乐馆</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>联系我</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:tizzyyc@163.com">tizzyyc@163.com</a></li>
+                    <li class="wechat-trigger">
+                        <a>微信</a>
+                        <img class="wechat-qr" src="../../file/contact/wechat.jpg" alt="微信二维码">
+                    </li>
+                    <li class="wechat-trigger">
+                        <a>打赏一下</a>
+                        <img class="wechat-qr" src="../../file/contact/wechatpay.jpg" alt="微信支付二维码">
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 叶一片 博客 | 风与我作伴白云作衣裳，天地在兜里面</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+        // 代码高亮
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((el) => {
+                hljs.highlightElement(el);
+            });
+        });
+
+        // 目录导航交互
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        
+        tocLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // 移除所有active类
+                tocLinks.forEach(l => l.classList.remove('active'));
+                
+                // 添加active类到当前链接
+                this.classList.add('active');
+                
+                // 平滑滚动到目标位置
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 微信二维码显示/隐藏
+        const wechatTriggers = document.querySelectorAll('.wechat-trigger');
+        wechatTriggers.forEach(trigger => {
+            const link = trigger.querySelector('a');
+            const qrCode = trigger.querySelector('.wechat-qr');
+            
+            link.addEventListener('mouseenter', () => {
+                qrCode.style.display = 'block';
+            });
+            
+            trigger.addEventListener('mouseleave', () => {
+                qrCode.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>
+    

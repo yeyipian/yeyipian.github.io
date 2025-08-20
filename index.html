@@ -7,7 +7,7 @@
     <title>叶一片 - 个人主页</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="page/css/index.css">
-    <link rel="icon" href="../logo.jpg" type="image/x-icon">
+    <link rel="icon" href="logo.jpg" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <style>
         /* 下拉菜单样式 */
@@ -53,37 +53,41 @@
             padding: 10px 15px;
             text-decoration: none;
         }
+
         .wechat-trigger {
-    position: relative;
-}
+            position: relative;
+        }
 
-.wechat-qr {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 120px;
-    height: 120px;
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(6px);
-    transition: all .25s ease;
-    z-index: 1000;
-}
+        .wechat-qr {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 120px;
+            height: 120px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all .25s ease;
+            z-index: 1000;
+        }
 
-.wechat-trigger:hover .wechat-qr {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
+        .wechat-trigger:hover .wechat-qr {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
     </style>
 </head>
 
 <body>
     <!-- 导航栏 -->
     <nav class="navbar">
-        <div class="logo">叶<span>一片</span></div>
+                <a href="index.html" class="logo">叶<span>一片</span></a>
+
+        <!-- <div class="logo" href="index.html">叶<span>一片</span></div> -->
+
         <ul class="nav-links">
             <li><a href="#home">首页</a></li>
             <!-- 下拉菜单 -->
@@ -109,11 +113,11 @@
         <!-- <div class="slogan floating">
             天地在兜里 我是叶一片
         </div> -->
-        <div class="social-icons" style="margin-bottom: 20px;">
+        <!-- <div class="social-icons" style="margin-bottom: 20px;">
             <a href="#"><i class="fab fa-github"></i></a>
             <a href="#"><i class="fab fa-bilibili"></i></a>
             <a href="#"><i class="fab fa-tiktok"></i></a>
-        </div>
+        </div> -->
 
         <a href="#features" class="btn">探索更多</a>
 
@@ -217,8 +221,9 @@
                 <ul class="footer-links">
                     <li><a href="#home">首页</a></li>
                     <li><a href="#features">功能入口</a></li>
-                    <li><a href="#about">关于我</a></li>
-                    <li><a href="#">个人博客</a></li>
+                    <li><a href="page/introduction.html">关于我</a></li>
+                    <li><a href="page/blog.html">个人博客</a></li>
+
                 </ul>
             </div>
 
@@ -242,7 +247,7 @@
                         <img class="wechat-qr" src="file/contact/wechat.jpg" alt="微信二维码">
 
                     </li>
-                               <li class="wechat-trigger">
+                    <li class="wechat-trigger">
                         <a>打赏一下</a>
                         <!-- 二维码弹层 -->
                         <img class="wechat-qr" src="file/contact/wechatpay.jpg" alt="微信二维码">
