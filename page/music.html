@@ -4,109 +4,760 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>音乐馆 - 叶一片</title>
+    <title>音乐馆 | 叶一片的博客</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-    <link rel="stylesheet" href="../page/css/music.css">
     <link rel="icon" href="../logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../page/css/music.css">
+
 </head>
 
 <body>
     <!-- 导航栏 -->
     <nav class="navbar">
-        <a href="../index.html" class="logo">叶<span>一片</span></a>
-
+        <div class="logo">叶<span>一片</span></div>
+        <ul class="nav-links">
+            <li><a href="../index.html">首页</a></li>
+            <!-- 下拉菜单 -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">我的世界</a>
+                <div class="dropdown-content">
+                    <a href="./blog.html"><i class="fas fa-blog" style="margin-right: 5px;"></i> 个人博客</a>
+                    <a href="./introduction.html"><i class="fas fa-book" style="margin-right: 5px;"></i> 个人简介</a>
+                    <a href="./project.html"><i class="fas fa-images" style="margin-right: 5px;"></i> 作品集</a>
+                    <a href="./photography.html"><i class="fas fa-camera" style="margin-right: 5px;"></i> 摄影集</a>
+                    <a href="./equipment.html"><i class="fas fa-computer" style="margin-right: 5px;"></i> 装备栏</a>
+                    <a href="./music.html"><i class="fas fa-music" style="margin-right: 5px;"></i> 音乐馆</a>
+                </div>
+            </li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
     </nav>
 
-    <!-- 主要内容 -->
     <div class="container">
+        <!-- 主内容区 -->
         <div class="main-content">
-            <div class="construction-icon">
-                <i class="fas fa-tools"></i>
+            <div class="playlist-header">
+                <h2>我的音乐库</h2>
+                <p>共 5 首歌曲，5 张专辑，3 位艺术家</p>
+                <div class="actions">
+                    <!-- <button class="btn btn-primary">
+                        <i class="fas fa-play"></i> 随机播放
+                    </button> -->
+                    <!-- <button class="btn btn-secondary">
+                        <i class="fas fa-sliders-h"></i> 排序
+                    </button> -->
+                </div>
             </div>
-            
-            <h1>页面正在开发中</h1>
-            
-            <p>我们正在努力打造一个更好的体验，这个页面即将到来。<br>请稍后再来查看，感谢您的耐心等待！</p>
-            
-            <div class="progress-container">
-                <div class="progress-bar"></div>
+
+            <div class="songs-list">
+                <!-- 歌曲列表将由JavaScript动态生成 -->
             </div>
-            
-            <!-- <div class="countdown">
-                <div class="countdown-item">
-                    <div class="countdown-number" id="days">--</div>
-                    <div class="countdown-label">天</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="hours">--</div>
-                    <div class="countdown-label">时</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="minutes">--</div>
-                    <div class="countdown-label">分</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="seconds">--</div>
-                    <div class="countdown-label">秒</div>
-                </div>
-            </div> -->
-            
-            <div>
-                <a href="../index.html" class="btn">返回首页</a>
-                <a href="mailto:tizzyyc@163.com" class="btn btn-outline">联系我</a>
+        </div>
+
+        <!-- 歌词面板 -->
+        <div class="lyrics-panel">
+            <h3>歌词</h3>
+            <div class="lyrics-container">
+                <!-- 歌词将由JavaScript动态生成 -->
             </div>
         </div>
     </div>
 
-    <!-- 页脚 -->
+    <!-- 播放器控制 -->
+    <div class="player-controls">
+        <div class="song-info-small">
+            <img src="../logo.jpg" alt="当前播放">
 
+            <div>
+                <h4>歌曲名称</h4>
+                <p>歌手名称</p>
+            </div>
+        </div>
+
+        <div class="playback-controls">
+            <div class="control-buttons">
+                <!-- <button><i class="fas fa-random"></i></button> -->
+                <button><i class="fas fa-step-backward"></i></button>
+                <button class="play-pause"><i class="fas fa-play"></i></button>
+                <button><i class="fas fa-step-forward"></i></button>
+                <!-- <button><i class="fas fa-redo"></i></button> -->
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-time">0:00</div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="progress-time">0:00</div>
+            </div>
+        </div>
+
+        <div class="volume-controls">
+            <i class="fas fa-volume-up volume-icon"></i>
+            <div class="volume-bar">
+                <div class="volume-level"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" id="contact">
+        <p>© 2025 叶一片的音乐馆 | 风与我作伴白云作衣裳，天地在兜里面</p>
+    </footer>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
 
     <script>
-        // 倒计时功能
-        function updateCountdown() {
-            // 设置目标日期（示例设置为3天后）
-            const targetDate = new Date();
-            targetDate.setDate(targetDate.getDate() + 3);
-            
-            const now = new Date();
-            const difference = targetDate - now;
-            
-            if (difference <= 0) {
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-                return;
+        // 音乐数据
+        const musicLibrary = [
+            {
+                id: 1,
+                title: "冷战",
+                artist: "Tizzy T & Vinida万妮达",
+                album: "做旧",
+                duration: "3:43",
+                cover: "../file/music/冷战.jpg",
+                file: "../file/music/冷战.mp3",
+                lyrics: [
+                    { time: 0, text: "作词 : TizzyT" },
+                    { time: 1, text: "作曲 : TizzyT" },
+                    { time: 2, text: "编曲 : 细GalaxyMan" },
+                    { time: 3, text: "制作人 : 细GalaxyMan/Tim姜皓天/TizzyT" },
+                    { time: 4, text: "录音工程 : Tim姜皓天" },
+                    { time: 5, text: "音频编辑 : Tim姜皓天/阿烈" },
+                    { time: 6, text: "混音&母带 : 周天澈@Studio21A" },
+                    { time: 7, text: "宣传统筹 : 张兆婧" },
+                    { time: 8, text: "经纪统筹 : 尹俊钦" },
+                    { time: 9, text: "团队协力 : 王烁" },
+                    { time: 10, text: "音乐营销 : 张馨艺/钱娇" },
+                    { time: 11, text: "总策划 : 张馨艺Summer" },
+                    { time: 12, text: "出品人 : TizzyT" },
+                    { time: 13, text: "监制 : 亚侬/陆瑒" },
+                    { time: 14, text: "OP : SFNT Record" },
+                    { time: 15, text: "SP : 银河方舟StarNation" },
+                    { time: 28, text: "不知道算是谁的错" },
+                    { time: 31, text: "两个人变得话不多" },
+                    { time: 34, text: "气氛尴尬但不戳破" },
+                    { time: 37, text: "就得过且过" },
+                    { time: 40, text: "当发现互相都在躲" },
+                    { time: 44, text: "伤人的话都不想说" },
+                    { time: 47, text: "气氛尴尬但不戳破" },
+                    { time: 50, text: "都得过且过" },
+                    { time: 55, text: "你不找我我不找你都不主动" },
+                    { time: 58, text: "像陌生人但这关系又不普通" },
+                    { time: 61, text: "你有人陪我有人陪都不寂寞" },
+                    { time: 64, text: "太久没联系连号码你都记错" },
+                    { time: 68, text: "互相在躲 都装很忙" },
+                    { time: 71, text: "心里的看法宁愿去跟别人讲" },
+                    { time: 74, text: "电话不接 但没吵架" },
+                    { time: 77, text: "打完包的双人床各自不讲话" },
+                    { time: 80, text: "你答应寻找突破" },
+                    { time: 82, text: "在夜里陪我哭过" },
+                    { time: 84, text: "答应陪我一起出没" },
+                    { time: 85, text: "事后却全无收获" },
+                    { time: 88, text: "我不想让这游戏限制你" },
+                    { time: 90, text: "连我朋友都要问我是不是在骗自己" },
+                    { time: 93, text: "接起讲不完的话" },
+                    { time: 95, text: "聊到电话不舍得挂" },
+                    { time: 97, text: "这个气氛超尴尬" },
+                    { time: 98, text: "明明知道你跟我都放不下" },
+                    { time: 100, text: "谁被谁偷走了心" },
+                    { time: 103, text: "在各自的流浪 都找不出原因" },
+                    { time: 106, text: "不知道算是谁的错" },
+                    { time: 109, text: "两个人变得话不多" },
+                    { time: 112, text: "气氛尴尬但不戳破" },
+                    { time: 115, text: "就得过且过" },
+                    { time: 118, text: "当发现互相都在躲" },
+                    { time: 122, text: "伤人的话都不想说" },
+                    { time: 125, text: "气氛尴尬但不戳破" },
+                    { time: 128, text: "都得过且过" },
+                    { time: 132, text: "他带你逛过街看过戏" },
+                    { time: 134, text: "给你买礼物在太古里" },
+                    { time: 135, text: "你撒过娇 发脾气" },
+                    { time: 137, text: "埋怨他不够 在乎你" },
+                    { time: 138, text: "在那一天摔烂手机" },
+                    { time: 140, text: "负面的情绪在repeat" },
+                    { time: 142, text: "你不再相信 他说的话" },
+                    { time: 143, text: "甚至怀疑他没爱过" },
+                    { time: 145, text: "信息删了写 删了写" },
+                    { time: 146, text: "最后也没有传送" },
+                    { time: 148, text: "他的电话号码太熟悉" },
+                    { time: 149, text: "但你没有拨通" },
+                    { time: 151, text: "原本两个人的剧本" },
+                    { time: 152, text: "现在你变成观众" },
+                    { time: 154, text: "在夜里流过的泪水" },
+                    { time: 156, text: "是你在自我感动" },
+                    { time: 157, text: "最近你阴晴不定" },
+                    { time: 159, text: "他的话你听不进" },
+                    { time: 161, text: "情绪被牵着走" },
+                    { time: 162, text: "才发现自己病不轻" },
+                    { time: 164, text: "当有人提到他的名字" },
+                    { time: 166, text: "你会条件反射" },
+                    { time: 167, text: "一个人的房间里" },
+                    { time: 169, text: "在床上你辗转反侧" },
+                    { time: 171, text: "回过头 拥抱过后" },
+                    { time: 174, text: "陷入重复的拉扯" },
+                    { time: 176, text: "你正被推着走" },
+                    { time: 177, text: "都上了锁" },
+                    { time: 179, text: "不甘示弱" },
+                    { time: 180, text: "想不通 搞不懂 这算是谁的错" },
+                    { time: 183, text: "不知道算是谁的错" },
+                    { time: 186, text: "两个人变得话不多" },
+                    { time: 189, text: "气氛尴尬但不戳破" },
+                    { time: 192, text: "就得过且过" },
+                    { time: 196, text: "当发现互相都在躲" },
+                    { time: 199, text: "伤人的话都不想说" },
+                    { time: 202, text: "气氛尴尬但不戳破" },
+                    { time: 205, text: "都得过且过" }
+                ]
+            },
+            {
+                id: 2,
+                title: "用背脊唱情歌",
+                artist: "Gareth.T",
+                album: "用背脊唱情歌",
+                duration: "3:30",
+                cover: "../file/music/用背脊唱情歌.jpg",
+                file: "../file/music/用背脊唱情歌.mp3",
+                lyrics: [
+                    { time: 0.58, text: "用背脊唱情歌 - Gareth.T" },
+                    { time: 2.04, text: "词：黄伟文" },
+                    { time: 3.07, text: "曲：汤令山" },
+                    { time: 4.23, text: "主唱：汤令山" },
+                    { time: 5.46, text: "编曲：Gab de Leon/Gareth.T/李一丁/Nic Tsui/Patrick Yip/Tom Wong" },
+                    { time: 9.14, text: "制作人：Gareth.T/Patrick Yip" },
+                    { time: 12.79, text: "麻烦 各位都不望我" },
+                    { time: 19.1, text: "望住 我怎么敢去唱 情歌" },
+                    { time: 25.36, text: "然而 我想拣今日 来流露我凄楚" },
+                    { time: 31.92, text: "听完的人 请你扮傻" },
+                    { time: 37.92, text: "但唱毕 全场静 其实 路人 并不傻" },
+                    { time: 44.16, text: "都猜中我 为你捱尽折磨" },
+                    { time: 50.84, text: "眼泪若嫌多 用背脊唱情歌" },
+                    { time: 56.92, text: "难道从后脑 可以望穿我 心里痛什么" },
+                    { time: 63.51, text: "正面像全裸" },
+                    { time: 65.54, text: "遮丑的布 就别来戮破" },
+                    { time: 69.81, text: "愿这歌 悲到 一转背 人间都 忘掉我" },
+                    { time: 88.51, text: "原来 我不懂怎样爱" },
+                    { time: 94.88, text: "但是 作的恋歌也算精彩" },
+                    { time: 101.09, text: "忘形 到真失恋后 偿还十倍悲哀" },
+                    { time: 107.77, text: "终于一个人 站在舞台" },
+                    { time: 113.71, text: "愿这歌 流行着 遗下 二人 没将来" },
+                    { time: 119.99, text: "歌者痛了 人们还在喝彩" },
+                    { time: 126.68, text: "眼泪若嫌多 用背脊唱情歌" },
+                    { time: 132.65, text: "难道从后脑 可以望穿我 心里痛什么" },
+                    { time: 139.35, text: "正面像全裸" },
+                    { time: 141.38, text: "遮丑的布 就别来戮破" },
+                    { time: 145.56, text: "愿这歌 悲到 一转背 人间都 忘掉我" },
+                    { time: 154.73, text: "尚有 沉重的几句 非要唱不可" },
+                    { time: 164.64, text: "世事没如果 别再冀盼如果" },
+                    { time: 170.87, text: "明明 放低的你 经已唱新歌" },
+                    { time: 177.19, text: "我尚在如此 不知丑 唱着别离开我" },
+                    { time: 183.4, text: "失去你 唯有等歌迷去 喜欢我" }
+                ]
+            },
+            {
+                id: 3,
+                title: "国际孤独等级",
+                artist: "Gareth.T",
+                album: "国际孤独等级",
+                duration: "3:03",
+                cover: "../file/music/国际孤独等级.webp",
+                file: "../file/music/国际孤独等级.mp3",
+                lyrics: [
+                    { time: 0.000, text: "作词 : 黄伟文" },
+                    { time: 0.001, text: "作曲 : Gareth.T/Teddy Fan" },
+                    { time: 0.002, text: "编曲 : Teddy Fan/Patrick Yip" },
+                    { time: 0.003, text: "监制 : Gareth.T/Teddy Fan/Patrick Yip" },
+                    { time: 0.05, text: "不怕寂寞" },
+                    { time: 2.80, text: "沉迷手机就过" },
+                    { time: 7.06, text: "喜欢孤独" },
+                    { time: 9.67, text: "别派人来找我" },
+                    { time: 13.87, text: "订票单人去北非看骆驼" },
+                    { time: 18.35, text: "独个报名上甜品课" },
+                    { time: 21.69, text: "就算搬家惯了自助" },
+                    { time: 25.06, text: "未叫手足协助" },
+                    { time: 30.54, text: "越来越无耐性" },
+                    { time: 33.75, text: "共谁或谁扮饮胜" },
+                    { time: 38.24, text: "我对着镜举杯祝酒致敬" },
+                    { time: 42.53, text: "行我～路不用你尊敬" },
+                    { time: 50.04, text: "途人被清空多洁净" },
+                    { time: 56.57, text: "不怕寂寞" },
+                    { time: 59.39, text: "沉迷手机就过" },
+                    { time: 63.14, text: "喜欢孤独" },
+                    { time: 66.14, text: "别派人来找我" },
+                    { time: 70.14, text: "订票单人去北非看骆驼" },
+                    { time: 74.62, text: "独个报名上甜品课" },
+                    { time: 78.34, text: "就算搬家惯了自助" },
+                    { time: 81.52, text: "未叫手足协助" },
+                    { time: 86.46, text: "但求别人亦遗下我" },
+                    { time: 90.32, text: "别来扮成热情扮帮我" },
+                    { time: 93.92, text: "那是你为了 feel good 想拯救我" },
+                    { time: 99.11, text: "门闭着过生日也不错" },
+                    { time: 106.35, text: "闲杂人都不必道贺" },
+                    { time: 112.22, text: "不怕寂寞" },
+                    { time: 115.64, text: "流连K房就过" },
+                    { time: 119.72, text: "喜欢孤独" },
+                    { time: 122.79, text: "像恶灵缠绕我" },
+                    { time: 126.61, text: "就算将来有肿瘤要摘除" },
+                    { time: 131.03, text: "独个来医院就办妥" },
+                    { time: 134.69, text: "换个假名到处订座" },
+                    { time: 137.81, text: "叫天煞孤星可以幺" },
+                    { time: 141.61, text: "我不怕闷 寂寞生出佛陀" },
+                    { time: 147.68, text: "六根清净比起给怨侣缠身好过" },
+                    { time: 155.06, text: "不怕寂寞" },
+                    { time: 158.25, text: "流连K房就过" },
+                    { time: 162.06, text: "喜欢孤独" },
+                    { time: 164.78, text: "像恶灵缠绕我" },
+                    { time: 169.11, text: "在我身旁这刻迫满熟人" },
+                    { time: 173.46, text: "大概谁都很羡慕我" },
+                    { time: 177.03, text: "若我敢讲更爱独坐" },
+                    { time: 180.39, text: "未够感～恩" },
+                    { time: 183.01, text: "仿佛很折堕" }]
+            },
+            {
+                id: 4,
+                title: "劲浪漫 超温馨",
+                artist: "Gareth.T",
+                album: "劲浪漫 超温馨",
+                duration: "3:18",
+                cover: "../file/music/劲浪漫 超温馨.jpg",
+                file: "../file/music/劲浪漫 超温馨.mp3",
+                lyrics: [
+                    { time: 0.14, text: "Gareth.T - 劲浪漫 超温馨" },
+                    { time: 0.44, text: "作词：黄伟文" },
+                    { time: 0.60, text: "作曲：Gareth.T、范梓谦" },
+                    { time: 11.89, text: "人人话我笨 作歌点发达" },
+                    { time: 17.34, text: "就算搵够 买盒饭 唔慌多" },
+                    { time: 22.71, text: "而浪漫 个名几咁劲" },
+                    { time: 27.76, text: "累我拖你入局 两份去捱穷" },
+                    { time: 33.37, text: "你知今年 圣诞冇大餐" },
+                    { time: 35.84, text: "就话空气 当礼物 冇问题" },
+                    { time: 38.62, text: "如果灯饰数闷 又冇酒" },
+                    { time: 41.09, text: "就买 两粒烧卖 当火鸡" },
+                    { time: 45.05, text: "银行存款等如零穷鬼点谈情" },
+                    { time: 50.76, text: "寒酸炒冷饭 我会比三粒星" },
+                    { time: 56.06, text: "傻佬点形成 傻婆点形成" },
+                    { time: 61.52, text: "提子乾两份面 穷但超温馨" },
+                    { time: 66.82, text: "If that's all we have" },
+                    { time: 69.50, text: "Yeah yeah Yeah yeah" },
+                    { time: 72.08, text: "If that's all we have" },
+                    { time: 75.96, text: "Yeah" },
+                    { time: 78.94, text: "坏对象 拍拖先会闷" },
+                    { time: 83.84, text: "劲好彩今次係遇上真正高手" },
+                    { time: 89.60, text: "上个月 唔使点上网" },
+                    { time: 94.65, text: "无聊一个互望" },
+                    { time: 97.18, text: "原来好睇过YouTube" },
+                    { time: 99.80, text: "你使乜心急 带我去日本" },
+                    { time: 102.48, text: "铜锣湾够有 五十支绿茶" },
+                    { time: 105.01, text: "唔担心要 睇餸先食饭" },
+                    { time: 107.74, text: "係你教识 开心咁简单" },
+                    { time: 111.69, text: "银行存款等如零穷鬼点谈情" },
+                    { time: 117.49, text: "寒酸炒冷饭 我会比三粒星" },
+                    { time: 122.64, text: "傻佬点形成 傻婆点形成" },
+                    { time: 128.16, text: "提子乾两份面 穷但超温馨" },
+                    { time: 133.36, text: "If that's all we have" },
+                    { time: 135.91, text: "Woo Woo We have" },
+                    { time: 138.64, text: "唔豪但够杀" },
+                    { time: 141.47, text: "If that's all we have" },
+                    { time: 144.15, text: "唔使点搭车" },
+                    { time: 146.73, text: "唔使出街食" },
+                    { time: 149.31, text: "唔使点著衫" },
+                    { time: 151.94, text: "淨係抱得好紧" },
+                    { time: 154.59, text: "唔使懒高级" },
+                    { time: 157.33, text: "唔使碌黑卡" },
+                    { time: 159.80, text: "床铺碌一日" },
+                    { time: 162.63, text: "同样觉得high" },
+                    { time: 165.41, text: "If that's all we have" },
+                    { time: 170.76, text: "If that's all we have" },
+                    { time: 181.48, text: "If that's all we have" },
+                    { time: 187.14, text: "If that's all we have" }]
+            },
+            {
+                id: 5,
+                title: "100",
+                artist: "Tizzy T",
+                album: "黑怕盲盒Vol.1示爱系列",
+                duration: "3:45",
+                cover: "../file/music/100.webp",
+                file: "../file/music/100.mp3",
+                lyrics: [
+                    { time: 0.00, text: "100 - Tizzy T" },
+                    { time: 0.14, text: "词：Tizzy T" },
+                    { time: 0.24, text: "曲：Tizzy T" },
+                    { time: 0.35, text: "编曲：Tim姜皓天/细GalaxyMan/Tizzy T" },
+                    { time: 0.70, text: "制作人：Tim姜皓天/Tizzy T" },
+                    { time: 1.01, text: "键盘：段阿翥" },
+                    { time: 1.19, text: "贝斯：Simon彭宏立" },
+                    { time: 1.40, text: "吉他：Neo牛聖戈" },
+                    { time: 1.61, text: "录音工程：Tim姜皓天" },
+                    { time: 1.89, text: "录音室：Studio21A" },
+                    { time: 2.03, text: "音频编辑：阿烈" },
+                    { time: 2.24, text: "混音母带：周天澈@Studio21A" },
+                    { time: 2.53, text: "我想要陪在你的周围" },
+                    { time: 4.68, text: "跟你爱到一百岁" },
+                    { time: 9.78, text: "一直到我们白了头发" },
+                    { time: 11.87, text: "也一样显得很般配" },
+                    { time: 16.50, text: "无论何时我会穿过人群拥抱你" },
+                    { time: 23.50, text: "我给你的爱至死不渝到下个世纪" },
+                    { time: 31.77, text: "想写一首属于你的情歌" },
+                    { time: 33.56, text: "虽然五线谱我还是没能看懂" },
+                    { time: 35.26, text: "不过我想了一段好听的旋律" },
+                    { time: 37.29, text: "风格是你平时哼的那种" },
+                    { time: 39.21, text: "歌词里表达我对你的思念" },
+                    { time: 40.85, text: "是这首歌大致的内容" },
+                    { time: 42.63, text: "如果你听到这里嘴角上扬" },
+                    { time: 44.48, text: "那它就算发挥了作用" },
+                    { time: 46.27, text: "你说你不喜欢听我放的hip hop" },
+                    { time: 48.12, text: "那这首我就不加808" },
+                    { time: 49.82, text: "我可以为你学唱转音假音也" },
+                    { time: 51.77, text: "可以为了你去学吉他" },
+                    { time: 53.53, text: "当我写这一句的时候我在想" },
+                    { time: 55.20, text: "Baby此刻的你会是在干嘛" },
+                    { time: 57.07, text: "如果你喜欢听我就一直唱" },
+                    { time: 58.71, text: "唱到我声音都沙哑" },
+                    { time: 60.65, text: "想把这份礼物送到你的手中" },
+                    { time: 62.55, text: "我希望它最好不要 delay" },
+                    { time: 64.26, text: "我得确保我的传达没有 失真" },
+                    { time: 66.07, text: "这一点我一直深有体会" },
+                    { time: 67.86, text: "我会为你调整我的 eq" },
+                    { time: 69.22, text: "Baby我知道很多时候我都有点自以为" },
+                    { time: 71.46, text: "现在把我对你的爱进行 压缩" },
+                    { time: 73.08, text: "然后全部放进这首歌里面" },
+                    { time: 74.67, text: "我想要陪在你的周围" },
+                    { time: 76.85, text: "跟你爱到一百岁" },
+                    { time: 81.89, text: "一直到我们白了头发" },
+                    { time: 84.09, text: "也一样显得很般配" },
+                    { time: 88.64, text: "无论何时我会穿过人群拥抱你" },
+                    { time: 95.88, text: "我给你的爱至死不渝到下个世纪" },
+                    { time: 103.88, text: "这个乱糟糟的世界" },
+                    { time: 105.06, text: "祈祷我们可以避开所有苦难" },
+                    { time: 107.39, text: "如果可以的话" },
+                    { time: 108.62, text: "跟你一起我想时间变得缓慢" },
+                    { time: 110.88, text: "直到我们慢慢老去" },
+                    { time: 112.29, text: "春夏秋冬感受四季转换" },
+                    { time: 114.55, text: "日子一天一天平平淡淡" },
+                    { time: 116.66, text: "我想要的多么简单" },
+                    { time: 118.30, text: "所以当下我最大的愿望" },
+                    { time: 120.30, text: "就是能够和你维持现状" },
+                    { time: 121.74, text: "当我们靠在一起吹着晚风" },
+                    { time: 123.93, text: "看月亮还是照常挂在天上" },
+                    { time: 125.50, text: "昨晚我临睡前最后我想的是你" },
+                    { time: 127.42, text: "当醒过来第一个想的是你" },
+                    { time: 129.30, text: "因为你我变得更加坚定" },
+                    { time: 131.10, text: "在我身边你放心做你自己" },
+                    { time: 133.03, text: "生活中有太多压力" },
+                    { time: 134.25, text: "但希望我们不会因此太沮丧" },
+                    { time: 136.69, text: "我会把你拥入怀里" },
+                    { time: 137.80, text: "当你难过当你时而感到迷茫" },
+                    { time: 139.94, text: "那些条条框框纷纷扰扰" },
+                    { time: 141.96, text: "希望我们不会因此被影响" },
+                    { time: 143.55, text: "有天变得健忘" },
+                    { time: 144.58, text: "希望这首可以提醒我们" },
+                    { time: 146.08, text: "曾经多么爱对方" },
+                    { time: 148.55, text: "我想要陪在你的周围" },
+                    { time: 150.80, text: "跟你爱到一百岁" },
+                    { time: 155.90, text: "一直到我们白了头发" },
+                    { time: 157.96, text: "也一样显得很般配" },
+                    { time: 162.70, text: "无论何时我会穿过人群拥抱你" },
+                    { time: 169.75, text: "我给你的爱至死不渝到下个世纪" },
+                    { time: 177.26, text: "我想要陪在你的周围" },
+                    { time: 179.71, text: "跟你爱到一百岁" },
+                    { time: 184.45, text: "一直到我们白了头发" },
+                    { time: 186.87, text: "也一样显得很般配" },
+                    { time: 191.69, text: "无论何时我会穿过人群拥抱你" },
+                    { time: 198.81, text: "我给你的爱至死不渝到下个世纪" },
+                    { time: 206.41, text: "我想要陪在你的周围" },
+                    { time: 208.57, text: "跟你爱到一百岁" },
+                    { time: 213.49, text: "一直到我们白了头发" },
+                    { time: 215.76, text: "也一样显得很般配" },
+                    { time: 216.65, text: "银河方舟 说唱企划" },
+                    { time: 216.91, text: "「黑怕盲盒Vol.1示爱系列」" },
+                    { time: 217.26, text: "品牌视觉：舒陈栋Pali/暴宇/BC CHAN" },
+                    { time: 217.66, text: "营销策划：贾梦圆/陈钰彬/张馨艺Summer/钱娇" },
+                    { time: 218.25, text: "总企划：张馨艺Summer" },
+                    { time: 218.47, text: "出品人：陆瑒" },
+                    { time: 218.65, text: "出品：银河方舟StarNation" },
+                    { time: 218.89, text: "特别感谢：Tizzy T工作室" }
+                ]
             }
-            
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
-        
-        // 初始化倒计时
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-        
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
+
+        ];
+
+        // 当前播放状态
+        let currentSong = null;
+        let isPlaying = false;
+        let currentTime = 0;
+        let currentLyricIndex = 0;
+        let audioPlayer = null;
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function () {
+            const songsList = document.querySelector('.songs-list');
+            const lyricsContainer = document.querySelector('.lyrics-container');
+            const playPauseBtn = document.querySelector('.play-pause');
+            const progressBar = document.querySelector('.progress');
+            const currentTimeDisplay = document.querySelector('.progress-time:first-child');
+            const totalTimeDisplay = document.querySelector('.progress-time:last-child');
+            const volumeLevel = document.querySelector('.volume-level');
+            const songInfoSmall = document.querySelector('.song-info-small');
+
+            // 渲染歌曲列表
+            function renderSongs() {
+                songsList.innerHTML = '';
+
+                musicLibrary.forEach(song => {
+                    const songItem = document.createElement('div');
+                    songItem.className = 'song-item';
+                    songItem.dataset.id = song.id;
+
+                    songItem.innerHTML = `
+                        <img src="${song.cover}" alt="${song.title}">
+                        <div class="song-info">
+                            <h4>${song.title}</h4>
+                            <p>${song.artist} • ${song.album}</p>
+                        </div>
+                        <div class="song-duration">${song.duration}</div>
+                    `;
+
+                    songItem.addEventListener('click', function () {
+                        playSong(song);
                     });
+
+                    songsList.appendChild(songItem);
+                });
+            }
+
+            // 渲染歌词
+            function renderLyrics() {
+                if (!currentSong) return;
+
+                lyricsContainer.innerHTML = '';
+
+                currentSong.lyrics.forEach((lyric, index) => {
+                    const lyricLine = document.createElement('div');
+                    lyricLine.className = 'lyric-line';
+                    lyricLine.dataset.time = lyric.time;
+                    lyricLine.textContent = lyric.text;
+
+                    if (index === currentLyricIndex) {
+                        lyricLine.classList.add('active');
+                    }
+
+                    lyricsContainer.appendChild(lyricLine);
+                });
+
+                // 滚动到当前歌词
+                const activeLyric = document.querySelector('.lyric-line.active');
+                if (activeLyric) {
+                    activeLyric.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+
+            // 播放歌曲
+            function playSong(song) {
+                currentSong = song;
+                isPlaying = true;
+
+                // 更新UI
+                document.querySelectorAll('.song-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                document.querySelector(`.song-item[data-id="${song.id}"]`).classList.add('active');
+
+                // 更新播放器信息
+                songInfoSmall.querySelector('img').src = song.cover;
+                songInfoSmall.querySelector('h4').textContent = song.title;
+                songInfoSmall.querySelector('p').textContent = song.artist;
+
+                // 更新播放按钮
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+
+                // 设置音频源并播放
+                if (!audioPlayer) {
+                    audioPlayer = document.getElementById('audioPlayer');
+                }
+
+                audioPlayer.src = song.file;
+                audioPlayer.load();
+
+                // 等待音频加载完成后播放
+                audioPlayer.addEventListener('loadedmetadata', function onLoaded() {
+                    // 更新总时长
+                    const duration = audioPlayer.duration;
+                    const minutes = Math.floor(duration / 60);
+                    const seconds = Math.floor(duration % 60);
+                    totalTimeDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+                    audioPlayer.play();
+                    audioPlayer.removeEventListener('loadedmetadata', onLoaded);
+                });
+
+                audioPlayer.addEventListener('error', function (e) {
+                    console.error('音频加载错误:', e);
+                    // 显示友好的错误提示
+                    const errorMsg = document.createElement('div');
+                    errorMsg.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: rgba(0,0,0,0.8);
+                        color: white;
+                        padding: 20px;
+                        border-radius: 10px;
+                        z-index: 1000;
+                        text-align: center;
+                    `;
+                    errorMsg.innerHTML = `
+                        <i class="fas fa-exclamation-triangle" style="color: #ff6b6b; font-size: 24px; margin-bottom: 10px;"></i>
+                        <p>音频文件加载失败</p>
+                        <p style="font-size: 12px; opacity: 0.8;">文件: ${song.file}</p>
+                        <button onclick="this.parentElement.remove()" style="
+                            margin-top: 10px;
+                            padding: 5px 15px;
+                            background: #ff6b6b;
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                        ">确定</button>
+                    `;
+                    document.body.appendChild(errorMsg);
+
+                    // 重置播放状态
+                    isPlaying = false;
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                });
+
+                // 监听播放进度
+                audioPlayer.addEventListener('timeupdate', updateProgress);
+
+                // 监听播放结束 - 自动播放下一首
+                audioPlayer.addEventListener('ended', function () {
+                    if (!currentSong) return;
+
+                    let currentIndex = musicLibrary.findIndex(song => song.id === currentSong.id);
+                    let nextIndex = (currentIndex + 1) % musicLibrary.length;
+
+                    // 如果已经是最后一首，回到第一首
+                    playSong(musicLibrary[nextIndex]);
+                });
+
+                // 渲染歌词
+                renderLyrics();
+
+                // 开始实际播放
+                startRealPlayback();
+            }
+
+            // 更新播放进度
+            function updateProgress() {
+                if (!audioPlayer || !currentSong) return;
+
+                currentTime = audioPlayer.currentTime;
+
+                // 更新进度条
+                const progressPercent = (currentTime / audioPlayer.duration) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+
+                // 更新时间显示
+                const minutes = Math.floor(currentTime / 60);
+                const seconds = Math.floor(currentTime % 60);
+                currentTimeDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+                // 更新歌词高亮
+                if (currentSong && currentSong.lyrics) {
+                    let newLyricIndex = 0;
+
+                    for (let i = 0; i < currentSong.lyrics.length; i++) {
+                        if (currentTime >= currentSong.lyrics[i].time) {
+                            newLyricIndex = i;
+                        } else {
+                            break;
+                        }
+                    }
+
+                    if (newLyricIndex !== currentLyricIndex) {
+                        currentLyricIndex = newLyricIndex;
+                        renderLyrics();
+                    }
+                }
+            }
+
+            // 开始实际播放
+            function startRealPlayback() {
+                currentTime = 0;
+                currentLyricIndex = 0;
+            }
+
+            // 播放/暂停按钮点击事件
+            playPauseBtn.addEventListener('click', function () {
+                if (!currentSong) {
+                    playSong(musicLibrary[0]);
+                    return;
+                }
+
+                isPlaying = !isPlaying;
+
+                if (isPlaying) {
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                    if (audioPlayer) {
+                        audioPlayer.play();
+                    }
+                } else {
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                    if (audioPlayer) {
+                        audioPlayer.pause();
+                    }
                 }
             });
+
+            // 进度条点击事件
+            document.querySelector('.progress-bar').addEventListener('click', function (e) {
+                if (!currentSong || !audioPlayer) return;
+
+                const rect = this.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const percent = clickX / rect.width;
+
+                const newTime = audioPlayer.duration * percent;
+                audioPlayer.currentTime = newTime;
+                currentTime = newTime;
+            });
+
+            // 音量控制
+            document.querySelector('.volume-bar').addEventListener('click', function (e) {
+                const rect = this.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const percent = clickX / rect.width;
+
+                volumeLevel.style.width = `${percent * 100}%`;
+                if (audioPlayer) {
+                    audioPlayer.volume = percent;
+                }
+            });
+
+            // 上一首/下一首按钮
+            document.querySelector('.fa-step-backward').closest('button').addEventListener('click', function () {
+                if (!currentSong) return;
+
+                let currentIndex = musicLibrary.findIndex(song => song.id === currentSong.id);
+                let prevIndex = (currentIndex - 1 + musicLibrary.length) % musicLibrary.length;
+
+                playSong(musicLibrary[prevIndex]);
+            });
+
+            document.querySelector('.fa-step-forward').closest('button').addEventListener('click', function () {
+                if (!currentSong) return;
+
+                let currentIndex = musicLibrary.findIndex(song => song.id === currentSong.id);
+                let nextIndex = (currentIndex + 1) % musicLibrary.length;
+
+                playSong(musicLibrary[nextIndex]);
+            });
+
+            // 初始化
+            renderSongs();
         });
     </script>
 </body>

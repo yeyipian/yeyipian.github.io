@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的演唱会收藏 | 叶一片的博客</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../page/css/live.css">
+    <link rel="icon" href="../logo.jpg" type="image/x-icon">
+
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">叶<span>一片</span></div>
+        <ul class="nav-links">
+            <li><a href="../index.html">首页</a></li>
+            <!-- 下拉菜单 -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">我的世界</a>
+                <div class="dropdown-content">
+                    <a href="./blog.html"><i class="fas fa-blog" style="margin-right: 5px;"></i> 个人博客</a>
+                    <a href="./introduction.html"><i class="fas fa-book" style="margin-right: 5px;"></i> 个人简介</a>
+                    <a href="./project.html"><i class="fas fa-images" style="margin-right: 5px;"></i> 作品集</a>
+                    <a href="./photography.html"><i class="fas fa-camera" style="margin-right: 5px;"></i> 摄影集</a>
+                    <a href="./equipment.html"><i class="fas fa-computer" style="margin-right: 5px;"></i> 装备栏</a>
+                    <a href="./music.html"><i class="fas fa-music" style="margin-right: 5px;"></i> 音乐馆</a>
+                </div>
+            </li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- 页面标题 -->
+        <header class="page-header">
+            <h1 class="page-title">我的演唱会收藏</h1>
+            <p class="page-subtitle">这里收藏了我观看过的精彩演唱会，点击B站链接可直接跳转观看。音乐是灵魂的共鸣，现场是永恒的记忆。</p>
+        </header>
+
+        <!-- 统计信息 -->
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="total-concerts">7</div>
+                <div class="stat-label">场演唱会</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="total-artists">3</div>
+                <div class="stat-label">位艺术家</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="total-cities">3</div>
+                <div class="stat-label">座城市</div>
+            </div>
+        </div>
+
+        <!-- 搜索框 -->
+        <div class="search-box">
+            <input type="text" class="search-input" id="search-input" placeholder="搜索演唱会名称、地点或系列...">
+        </div>
+
+        <!-- 筛选器 -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="series">按系列</button>
+            <button class="filter-btn" data-filter="year">按年份</button>
+            <button class="filter-btn" data-filter="city">按城市</button>
+        </div>
+
+        <!-- 演唱会网格 -->
+        <div class="concerts-grid" id="concerts-grid">
+            <!-- 演唱会卡片将由JavaScript动态生成 -->
+        </div>
+    </div>
+
+    <footer class="footer" id="contact">
+        <p>© 2025 叶一片的演唱会收藏 | 风与我作伴白云作衣裳，天地在兜里面</p>
+        <p>所有视频版权归原作者所有，本站仅作收集整理</p>
+    </footer>
+
+    <script>
+        // 演唱会数据
+        const concerts = [
+            {
+                title: "Tizzy T 2023来之不易 重庆站",
+                artist: "Tizzy T",
+                series: "来之不易",
+                date: "2023/04/20",
+                location: "重庆",
+                image: "../file/live/tt23重庆.png",
+                bilibiliUrl: "https://www.bilibili.com/video/BV1WzG9zzEhs/?spm_id_from=333.1387.homepage.video_card.click",
+                description: "Tizzy T 来之不易巡回演唱会重庆站，现场气氛热烈，经典歌曲引发全场大合唱。"
+            },
+            {
+                title: "Tizzy T 2024来之不易 广州站",
+                artist: "Tizzy T",
+                series: "来之不易",
+                date: "2024/01/27",
+                location: "广州",
+                image: "../file/live/tt24广州.png",
+                bilibiliUrl: "https://www.bilibili.com/video/BV1TbGbzgEtk/?spm_id_from=333.1387.homepage.video_card.click&vd_source=b7836febeb7e502c5484dbf8a165c6f8",
+                description: "Tizzy T 广州站演出，舞台效果震撼，与粉丝互动频繁，现场体验极佳。"
+            },
+            {
+                title: "Tizzy T 2024蝴蝶效应 香港站",
+                artist: "Tizzy T",
+                series: "蝴蝶效应",
+                date: "2024/11/30",
+                location: "香港",
+                image: "../file/live/tt24香港.png",
+                bilibiliUrl: "https://www.bilibili.com/video/BV1JnGtzdEij/?spm_id_from=333.1387.homepage.video_card.click",
+                description: "Tizzy T 蝴蝶效应巡回演唱会香港站，国际化舞台设计，全新编曲令人耳目一新。"
+            },
+            {
+                title: "Tizzy T 2025蝴蝶效应 深圳站",
+                artist: "Tizzy T",
+                series: "蝴蝶效应",
+                date: "2025/03/15",
+                location: "深圳",
+                image: "../file/live/tt25深圳.png",
+                bilibiliUrl: "https://www.bilibili.com/video/BV1G1G1zYEQX/?spm_id_from=333.1387.homepage.video_card.click",
+                description: "Tizzy T 深圳站演出，舞台科技感十足，灯光音响效果顶尖，歌迷热情高涨。"
+            },
+            {
+                title: "Tizzy T 2025蝴蝶效应 广州站",
+                artist: "Tizzy T",
+                series: "蝴蝶效应",
+                date: "2025/06/28",
+                location: "广州",
+                image: "../file/live/tt25广州.png",
+                bilibiliUrl: "https://www.bilibili.com/video/BV18NgQzTE8F/?spm_id_from=333.1387.homepage.video_card.click",
+                description: "Tizzy T 重返广州，全新曲目首唱，舞台效果升级，为歌迷带来惊喜不断的夜晚。"
+            },
+            {
+                title: "王以太Love Me Later 广州站",
+                artist: "王以太",
+                series: "Love Me Later",
+                date: "2024/11/06",
+                location: "广州",
+                image: "../file/live/王以太.png",
+                bilibiliUrl: "https://search.bilibili.com/all?keyword=%E7%8E%8B%E4%BB%A5%E5%A4%AA24%E5%B9%BF%E5%B7%9E&from_source=webtop_search&spm_id_from=333.1007&search_source=5",
+                description: "王以太Love Me Later巡回演唱会，爵士与说唱的完美融合，展现多元音乐风格。"
+            },
+            {
+                title: "薛之谦 2024天外来物 重庆站",
+                artist: "薛之谦",
+                series: "天外来物",
+                date: "2024/04/13",
+                location: "重庆",
+                image: "../file/live/薛之谦.png",
+                bilibiliUrl: "https://search.bilibili.com/all?keyword=%E8%96%9B%E4%B9%8B%E8%B0%A6+2024+%E5%A4%A9%E5%A4%96%E6%9D%A5%E7%89%A9%E9%87%8D%E5%BA%86%E7%AB%99&from_source=webtop_search&spm_id_from=333.1007&search_source=5",
+                description: "薛之谦天外来物巡回演唱会重庆站，幽默互动与深情演唱相结合，现场笑声与感动并存。"
+            }
+        ];
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function () {
+            const concertsGrid = document.getElementById('concerts-grid');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const searchInput = document.getElementById('search-input');
+
+            // 初始渲染演唱会卡片
+            renderConcerts(concerts);
+
+            // 筛选功能
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // 移除所有按钮的active类
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                    // 为当前点击的按钮添加active类
+                    this.classList.add('active');
+
+                    const filterType = this.getAttribute('data-filter');
+                    filterConcerts(filterType);
+                });
+            });
+
+            // 搜索功能
+            searchInput.addEventListener('input', function () {
+                const searchTerm = this.value.toLowerCase();
+                const filteredConcerts = concerts.filter(concert => {
+                    return (
+                        concert.title.toLowerCase().includes(searchTerm) ||
+                        concert.artist.toLowerCase().includes(searchTerm) ||
+                        concert.series.toLowerCase().includes(searchTerm) ||
+                        concert.location.toLowerCase().includes(searchTerm)
+                    );
+                });
+
+                renderConcerts(filteredConcerts);
+            });
+
+            // 渲染演唱会卡片函数
+            function renderConcerts(concertsArray) {
+                concertsGrid.innerHTML = '';
+
+                if (concertsArray.length === 0) {
+                    concertsGrid.innerHTML = '<div class="no-results"><i class="fas fa-music fa-3x"></i><h3>没有找到匹配的演唱会</h3><p>尝试调整搜索条件或筛选条件</p></div>';
+                    return;
+                }
+
+                concertsArray.forEach(concert => {
+                    const concertCard = document.createElement('div');
+                    concertCard.className = 'concert-card';
+
+                    // 格式化日期
+                    const concertDate = new Date(concert.date);
+                    const formattedDate = concertDate.toLocaleDateString('zh-CN', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+
+                    concertCard.innerHTML = `
+                        <img src="${concert.image}" alt="${concert.title}" class="concert-img">
+                        <div class="concert-info">
+                            <h3 class="concert-title">${concert.title}</h3>
+                            <div class="concert-artist">${concert.artist}</div>
+                            <span class="concert-series">${concert.series}</span>
+                            <div class="concert-date"><i class="far fa-calendar-alt"></i> ${formattedDate}</div>
+                            <div class="concert-location"><i class="fas fa-map-marker-alt"></i> ${concert.location}</div>
+                            <p class="concert-desc">${concert.description}</p>
+                            <div class="concert-actions">
+                                <a href="${concert.bilibiliUrl}" class="btn btn-primary" target="_blank">
+                                    <i class="fab fa-bilibili"></i> B站观看
+                                </a>
+                              
+                            </div>
+                        </div>
+                    `;
+
+                    concertsGrid.appendChild(concertCard);
+                });
+
+                // 更新统计信息
+                document.getElementById('total-concerts').textContent = concertsArray.length;
+
+                // 计算不同艺术家数量
+                const artists = new Set(concertsArray.map(concert => concert.artist));
+                document.getElementById('total-artists').textContent = artists.size;
+
+                // 计算不同城市数量
+                const cities = new Set(concertsArray.map(concert => concert.location));
+                document.getElementById('total-cities').textContent = cities.size;
+            }
+
+            // 筛选演唱会函数
+            function filterConcerts(filterType) {
+                let filteredConcerts = [...concerts];
+
+                if (filterType === 'series') {
+                    // 按系列分组
+                    const seriesMap = {};
+                    concerts.forEach(concert => {
+                        if (!seriesMap[concert.series]) {
+                            seriesMap[concert.series] = [];
+                        }
+                        seriesMap[concert.series].push(concert);
+                    });
+
+                    // 清空当前显示
+                    concertsGrid.innerHTML = '';
+
+                    // 按系列渲染
+                    for (const series in seriesMap) {
+                        const seriesHeader = document.createElement('h2');
+                        seriesHeader.textContent = series;
+                        seriesHeader.style.color = '#a29bfe';
+                        seriesHeader.style.margin = '30px 0 15px';
+                        seriesHeader.style.gridColumn = '1 / -1';
+                        concertsGrid.appendChild(seriesHeader);
+
+                        seriesMap[series].forEach(concert => {
+                            const concertCard = document.createElement('div');
+                            concertCard.className = 'concert-card';
+
+                            const concertDate = new Date(concert.date);
+                            const formattedDate = concertDate.toLocaleDateString('zh-CN', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                            });
+
+                            concertCard.innerHTML = `
+                                <img src="${concert.image}" alt="${concert.title}" class="concert-img">
+                                <div class="concert-info">
+                                    <h3 class="concert-title">${concert.title}</h3>
+                                    <div class="concert-artist">${concert.artist}</div>
+                                    <div class="concert-date"><i class="far fa-calendar-alt"></i> ${formattedDate}</div>
+                                    <div class="concert-location"><i class="fas fa-map-marker-alt"></i> ${concert.location}</div>
+                                    <p class="concert-desc">${concert.description}</p>
+                                    <div class="concert-actions">
+                                        <a href="${concert.bilibiliUrl}" class="btn btn-primary" target="_blank">
+                                            <i class="fab fa-bilibili"></i> B站观看
+                                        </a>
+                                        <a href="#" class="btn btn-secondary">
+                                            <i class="far fa-heart"></i> 收藏
+                                        </a>
+                                    </div>
+                                </div>
+                            `;
+
+                            concertsGrid.appendChild(concertCard);
+                        });
+                    }
+
+                    return;
+                } else if (filterType === 'year') {
+                    // 按年份排序
+                    filteredConcerts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                } else if (filterType === 'city') {
+                    // 按城市分组
+                    const cityMap = {};
+                    concerts.forEach(concert => {
+                        if (!cityMap[concert.location]) {
+                            cityMap[concert.location] = [];
+                        }
+                        cityMap[concert.location].push(concert);
+                    });
+
+                    // 清空当前显示
+                    concertsGrid.innerHTML = '';
+
+                    // 按城市渲染
+                    for (const city in cityMap) {
+                        const cityHeader = document.createElement('h2');
+                        cityHeader.textContent = city;
+                        cityHeader.style.color = '#a29bfe';
+                        cityHeader.style.margin = '30px 0 15px';
+                        cityHeader.style.gridColumn = '1 / -1';
+                        concertsGrid.appendChild(cityHeader);
+
+                        cityMap[city].forEach(concert => {
+                            const concertCard = document.createElement('div');
+                            concertCard.className = 'concert-card';
+
+                            const concertDate = new Date(concert.date);
+                            const formattedDate = concertDate.toLocaleDateString('zh-CN', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                            });
+
+                            concertCard.innerHTML = `
+                                <img src="${concert.image}" alt="${concert.title}" class="concert-img">
+                                <div class="concert-info">
+                                    <h3 class="concert-title">${concert.title}</h3>
+                                    <div class="concert-artist">${concert.artist}</div>
+                                    <span class="concert-series">${concert.series}</span>
+                                    <div class="concert-date"><i class="far fa-calendar-alt"></i> ${formattedDate}</div>
+                                    <p class="concert-desc">${concert.description}</p>
+                                    <div class="concert-actions">
+                                        <a href="${concert.bilibiliUrl}" class="btn btn-primary" target="_blank">
+                                            <i class="fab fa-bilibili"></i> B站观看
+                                        </a>
+                                        <a href="#" class="btn btn-secondary">
+                                            <i class="far fa-heart"></i> 收藏
+                                        </a>
+                                    </div>
+                                </div>
+                            `;
+
+                            concertsGrid.appendChild(concertCard);
+                        });
+                    }
+
+                    return;
+                }
+
+                renderConcerts(filteredConcerts);
+            }
+
+            // 收藏功能
+            document.addEventListener('click', function (e) {
+                if (e.target.classList.contains('fa-heart') || e.target.parentElement.classList.contains('btn-secondary')) {
+                    e.preventDefault();
+                    const heartIcon = e.target.classList.contains('fa-heart') ? e.target : e.target.querySelector('i');
+
+                    if (heartIcon.classList.contains('far')) {
+                        heartIcon.classList.remove('far');
+                        heartIcon.classList.add('fas');
+                        heartIcon.style.color = '#e74c3c';
+                    } else {
+                        heartIcon.classList.remove('fas');
+                        heartIcon.classList.add('far');
+                        heartIcon.style.color = '';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
