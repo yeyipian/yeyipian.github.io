@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="./css/equipment.css">
-        <link rel="icon" href="../logo.jpg" type="image/x-icon">
+    <link rel="icon" href="../logo.jpg" type="image/x-icon">
 
     <style>
         /* 下拉菜单样式 */
@@ -113,13 +113,14 @@
     </section>
 
     <!-- 装备分类 -->
-    <div class="category-tabs">
-        <button class="category-tab active" data-category="all">全部装备</button>
-        <button class="category-tab" data-category="digital">数码产品</button>
-        <button class="category-tab" data-category="audio">音频设备</button>
-        <button class="category-tab" data-category="wearable">智能穿戴</button>
-        <button class="category-tab" data-category="other">其他装备</button>
-    </div>
+<div class="category-tabs">
+    <button type="button" class="category-tab active" data-category="all">全部装备</button>
+    <button type="button" class="category-tab" data-category="digital">数码产品</button>
+    <button type="button" class="category-tab" data-category="audio">音频设备</button>
+    <button type="button" class="category-tab" data-category="wearable">智能穿戴</button>
+    <button type="button" class="category-tab" data-category="mi">小米之家</button>
+    <button type="button" class="category-tab" data-category="other">其他装备</button>
+</div>
 
     <!-- 装备网格 -->
     <div class="equipment-grid" id="equipment-container">
@@ -188,7 +189,7 @@
             {
                 id: 1,
                 name: "联想小新 Pro 16 2021锐龙版",
-                category: "digital",
+                category: ["digital"],
                 description: "高性能轻薄本，适合编程和设计工作",
                 specs: ["R7 5800H", "16GB RAM", "512GB SSD", "集成显卡"],
                 icon: "laptop",
@@ -198,7 +199,7 @@
             {
                 id: 2,
                 name: "小米15",
-                category: "digital",
+                category: ["digital", "mi"],
                 description: "旗舰智能手机，提供出色的性能和摄影能力",
                 specs: ["黑色", "16GB RAM", "512GB存储", "骁龙8 Gen 4"],
                 icon: "mobile",
@@ -207,16 +208,25 @@
             {
                 id: 3,
                 name: "小米平板6s Pro",
-                category: "digital",
+                category: ["digital", "mi"],
                 description: "大屏平板电脑，适合娱乐和轻度办公",
                 specs: ["12GB RAM", "256GB存储", "12.4英寸屏幕", "骁龙8 Gen 2"],
                 icon: "tablet",
                 image: "../file/equipment/image (3).png"
             },
             {
+                id: 7,
+                name: "DJI Pocket 3",
+                category: ["digital"],
+                description: "便携云台相机，拍摄稳定高清视频",
+                specs: ["1英寸CMOS", "4K/120fps", "三轴机械云台", "2英寸旋转屏"],
+                icon: "camera",
+                image: "../file/equipment/image.png"
+            },
+            {
                 id: 4,
                 name: "AirPods Pro (第二代)",
-                category: "audio",
+                category: ["digital"],
                 description: "主动降噪无线耳机，提供沉浸式音频体验",
                 specs: ["主动降噪", "空间音频", "自适应通透模式", "MagSafe充电"],
                 icon: "headphones",
@@ -226,34 +236,45 @@
             {
                 id: 5,
                 name: "Redmi Watch 4",
-                category: "wearable",
+                category: ["digital"],
                 description: "智能手表，监测健康数据和运动状态",
                 specs: ["银雪白", "1.97英寸AMOLED", "心率监测", "长达20天续航"],
                 icon: "clock",
                 image: "../file/equipment/image (4).png"
             },
+
             {
-                id: 6,
-                name: "米家电动剃须刀S101",
-                category: "other",
-                description: "便携式电动剃须刀，适合旅行和日常使用",
-                specs: ["岩砂灰", "Type-C充电", "IPX7防水", "双环刀网"],
-                icon: "cut",
-                image: "../file/equipment/image (5).png"
+                id: 10,
+                name: "米家桌面移动风扇",
+                category: ["other"],
+                description: "小巧机身适配桌面场景，轻便易挪动，柔和送风，为办公学习带来舒适凉意",
+                specs: ["三档风速调节", "USB 供电便捷", "可拆洗防尘网", "低至 35dB 静音运行"],
+                icon: "fan",
+                image: "../file/equipment/image (8).png"
             },
             {
-                id: 7,
-                name: "DJI Pocket 3",
-                category: "digital",
-                description: "便携云台相机，拍摄稳定高清视频",
-                specs: ["1英寸CMOS", "4K/120fps", "三轴机械云台", "2英寸旋转屏"],
-                icon: "camera",
-                image: "../file/equipment/image.png"
+                id: 11,
+                name: "米家智能直流变频落地扇 1X 升级版",
+                category: ["other"],
+                description: "直流变频电机节能省电，支持多场景智能控制，升级送风结构，覆盖范围更广",
+                specs: ["直流变频电机", "APP + 语音双控", "120° 广角送风", "一级能效标准"],
+                icon: "fan",
+                image: "../file/equipment/image (9).png"
             },
+            {
+                id: 12,
+                name: "Xiaomi 路由器 4A 千兆版",
+                category: ["digital"],
+                description: "千兆速率家用路由器，适配多设备同时连接，信号覆盖广，保障家庭网络稳定流畅",
+                specs: ["全千兆网口", "2.4G+5G 双频 WiFi", "覆盖面积约 100㎡", "支持 30 + 设备并发", "米家 APP 智能管理"],
+                icon: "fas fa-wifi",
+                image: "../file/equipment/image (10).png"
+            },
+
             {
                 id: 8,
                 name: "小米无线鼠标3彩色版",
-                category: "digital",
+                category: ["digital"], // 修复：改为数组
                 description: "轻量化无线鼠标，多彩配色，办公娱乐两相宜",
                 specs: ["2.4GHz无线连接", "1000DPI分辨率", "12个月续航", "轻音按键设计"],
                 icon: "computer-mouse",
@@ -262,14 +283,30 @@
             {
                 id: 9,
                 name: "小米体脂秤",
-                category: "other",
+                category: ["other"],
                 description: "精准测量体脂率，支持多用户管理，健康数据一目了然",
                 specs: ["高精度压力传感器", "13项身体数据", "APP数据同步", "钢化玻璃面板"],
                 icon: "weight",
                 image: "../file/equipment/image (7).png"
-            }
-
-
+            },
+            {
+                id: 14,
+                name: "米家保温杯口袋版",
+                category: ["other"],
+                description: "迷你便携口袋设计，轻松收纳于背包、口袋，长效控温锁热，满足日常通勤饮水需求",
+                specs: ["350mL 容量", "6 小时保温 / 12 小时保冷", "食品级 304 不锈钢", "轻量化约 200g", "密封防漏设计"],
+                icon: "mug-hot",
+                image: "../file/equipment/image (11).png"
+            },
+            {
+                id: 6,
+                name: "米家电动剃须刀S101",
+                category: ["other"],
+                description: "便携式电动剃须刀，适合旅行和日常使用",
+                specs: ["岩砂灰", "Type-C充电", "IPX7防水", "双环刀网"],
+                icon: "fas fa-cut",
+                image: "../file/equipment/image (5).png"
+            },
         ];
 
         // 分类图标映射
@@ -277,7 +314,8 @@
             digital: "laptop",
             audio: "headphones",
             wearable: "clock",
-            other: "gift"
+            other: "gift",
+            mi: "fa-home"
         };
 
         // 分类名称映射
@@ -285,7 +323,8 @@
             digital: "数码产品",
             audio: "音频设备",
             wearable: "智能穿戴",
-            other: "其他装备"
+            other: "其他装备",
+            mi: "小米之家"
         };
 
         // 渲染装备卡片
@@ -295,12 +334,19 @@
 
             const filteredEquipment = category === 'all'
                 ? equipmentData
-                : equipmentData.filter(item => item.category === category);
+                : equipmentData.filter(item => {
+                    // 确保category是数组
+                    const categories = Array.isArray(item.category) ? item.category : [item.category];
+                    // 判断装备的分类数组中是否包含目标分类
+                    return categories.includes(category);
+                });
 
             filteredEquipment.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'equipment-card';
-                card.setAttribute('data-category', item.category);
+                // 确保category是数组
+                const categories = Array.isArray(item.category) ? item.category : [item.category];
+                card.setAttribute('data-category', categories.join(' '));
 
                 card.innerHTML = `
                     <img src="${item.image}" alt="${item.name}" class="equipment-image">
@@ -309,8 +355,9 @@
                         <div class="card-icon">
                             <i class="fas fa-${item.icon}"></i>
                         </div>
-                        <span class="equipment-category">${categoryNames[item.category]}</span>
-                        </div>
+                        <span class="equipment-category">
+                            ${categories.map(cat => categoryNames[cat]).join(' / ')} 
+                        </span>                        </div>
 
                         <h3 class="equipment-name">${item.name}</h3>
                         <p class="equipment-desc">${item.description}</p>
@@ -319,7 +366,6 @@
                         </div>
                     </div>
                 `;
-                // <a href="#" class="equipment-link">查看详情 <i class="fas fa-arrow-right"></i></a>
 
                 container.appendChild(card);
             });
@@ -333,7 +379,10 @@
             // 分类筛选功能
             const tabs = document.querySelectorAll('.category-tab');
             tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
+                tab.addEventListener('click', (e) => {
+                    // 阻止事件冒泡，确保点击有效
+                    e.stopPropagation();
+                    
                     tabs.forEach(t => t.classList.remove('active'));
                     tab.classList.add('active');
                     const category = tab.getAttribute('data-category');
